@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@200;500;700&display=swap');
+
+// config
+$color-theme-1: #266A2E;
+$color-theme-2: #593E1A;
+$color-theme-3: #6B78B4;
+$color-theme-4: #79BEDB;
+
+$color-black: #000;
+$color-white: #fff;
+$color-dark-gray: #444;
+$color-medium-gray: #888;
+$color-light-gray: #bbb;
+$color-white-gray: #eee;
+
+$font-size-largest: 36px;
+$font-size-larger: 24px;
+$font-size-medium: 18px;
+$font-size-regular: 14px;
+$font-size-small: 12px;
+$font-size-smallest: 11px;
+
+$screen-size-tablet: 1179px;
+$screen-size-mobile: 539px;
+
+
+// common
+@import './common/reset';
+@import './common/header';
+@import './common/footer';
+
+// main
+@import './main/main';
+@import './main/books';
+@import './main/visual';
+@import './main/reviews';
+@import './main/pics';
+@import './main/vids';
+@import './main/subs';
+@import './main/btns';
+
+body{
+  font-family: 'Noto Serif KR', serif;
+  font-weight: 100;
+}
+
+.inner{
+  width: 1180px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: $screen-size-tablet) {
+  .inner{
+    width: 100%;
+    margin: 0;
+  }
+}
