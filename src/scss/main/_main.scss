@@ -1,8 +1,8 @@
-#main{
+main{
   figure,section{
     height: 100vh;
     
-    &:nth-child(odd){
+    &:nth-child(even){
       background-color: $color-light-gray;
     }
   }

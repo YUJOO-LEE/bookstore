@@ -77,12 +77,15 @@
         align-items: center;
 
         .login{
-          padding: 10px 20px;
           border-radius: 20px;
           background-color: $color-black;
-          color: $color-white;
-          font-size: $font-size-small;
-          cursor: pointer;
+
+          a{
+            display: block;
+            padding: 10px 20px;
+            color: $color-white;
+            font-size: $font-size-small;
+          }
         }
   
         .search{

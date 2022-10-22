@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faPenNib, faAt } from '@fortawesome/free-solid-svg-icons';
+import { NavLink } from 'react-router-dom';
 
 export default function Footer() {
   return (
@@ -9,12 +10,36 @@ export default function Footer() {
         <div className='inner'>
           <p><span>Notice</span>Here Comes Title</p>
           <ul>
-            <li>Book</li>
-            <li>Review</li>
-            <li>Photo</li>
-            <li>Video</li>
-            <li>About</li>
-            <li>Location</li>
+            <li>
+              <NavLink to={'/book'} activeClassName='on'>
+              Book
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/review'} activeClassName='on'>
+              Review
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/photo'} activeClassName='on'>
+              Photo
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/video'} activeClassName='on'>
+              Video
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/about'} activeClassName='on'>
+              About
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to={'/store'} activeClassName='on'>
+              Store
+              </NavLink>
+            </li>
           </ul>
         </div>
       </div>
