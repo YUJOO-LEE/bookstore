@@ -41,7 +41,9 @@ export default function Header(props) {
             </Link>
             <h1>
               <NavLink to={'/'} activeClassName='on'>
-              Yujoo
+              <p>Yu</p>
+              <p><span></span><span></span></p>
+              <p>joo</p>
               </NavLink>
             </h1>
             <ul>
@@ -87,7 +89,9 @@ export default function Header(props) {
       <div className={`mobileNav ${isMobileNavOn && 'on'}`} ref={mobileNav}>
         <h1>
           <NavLink to={'/'} activeClassName='on' className='logo'>
-          Yujoo
+            <p>Yu</p>
+            <p><span></span><span></span></p>
+            <p>joo</p>
           </NavLink>
           <Link className='btnCloseMobileNav' onClick={toggleMobileNav}>
             <FontAwesomeIcon icon={faX}></FontAwesomeIcon>

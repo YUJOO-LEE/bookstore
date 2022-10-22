@@ -45,7 +45,11 @@ export default function Footer() {
       </div>
       <address>
         <div className='inner'>
-          <h2>Yujoo</h2>
+          <h2>
+            <p>Yu</p>
+            <p><span></span><span></span></p>
+            <p>joo</p>
+          </h2>
           <p>Garosu-gil, Gangnam-gu, Seoul, 43</p>
           <p>2022 Yujoo &copy; All Right reserved.</p>
 

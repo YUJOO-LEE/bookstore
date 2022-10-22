@@ -3,12 +3,13 @@
   height: 100px;
   position: fixed;
   z-index: 10;
-  background-color: $color-white;
+  background-color: rgba($color: $color-white, $alpha: 0.2);
+  backdrop-filter: blur(20px);
 
   .subNav{
     width: 100%;
     height: 35px;
-    border-bottom: 1px solid $color-white-gray;
+    border-bottom: 1px solid rgba($color: $color-light-gray, $alpha: 0.2);
 
     .inner{
       height: 100%;
@@ -76,16 +77,13 @@
           svg{
             width: 100%;
             height: 100%;
-            stroke: $color-white;
-            stroke-width: 40;
           }
         }
 
         h1{
           margin-right: 20px;
           a{
-            font-size: $font-size-larger;
-            color: $color-black;
+            @include logo;
           }
         }
   
@@ -112,8 +110,6 @@
           svg{
             width: 100%;
             height: 100%;
-            stroke: $color-white;
-            stroke-width: 20;
           }
         }
       }
@@ -168,6 +164,7 @@
       .logo{
         font-size: $font-size-larger;
         color: $color-black;
+        @include logo;
       }
 
       .btnCloseMobileNav{
@@ -181,8 +178,6 @@
         svg{
           width: 100%;
           height: 100%;
-          stroke: $color-white;
-          stroke-width: 20;
         }
       }
     }
@@ -200,8 +195,6 @@
         height: 20px;
         fill: $color-white;
         color: $color-white;
-        stroke: $color-theme-1;
-        stroke-width: 40;
         margin-right: 5px;
       }
 
