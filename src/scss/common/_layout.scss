@@ -1,0 +1,11 @@
+section.content{
+  width: 100%;
+  height: auto;
+  padding-top: 100px;
+}
+
+@media screen and (max-width: $screen-size-tablet) {
+  section.content{
+    padding-top: 55px;
+  }
+}
