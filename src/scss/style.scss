@@ -71,6 +71,16 @@ $screen-size-mobile: 539px;
 @import './main/subs';
 @import './main/btns';
 
+// sub
+@import './sub/about';
+@import './sub/book';
+@import './sub/login';
+@import './sub/photo';
+@import './sub/review';
+@import './sub/store';
+@import './sub/video';
+
+
 body{
   font-family: 'Noto Serif KR', serif;
   font-weight: 100;
