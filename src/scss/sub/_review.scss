@@ -1,0 +1,130 @@
+.review{
+  .form{
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid $color-light-gray;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+
+    p{
+      position: relative;
+
+      &.content{
+        flex: 1;
+      }
+
+      label{
+        position: absolute;
+        top: 5px;
+        left: 10px;
+        font-size: $font-size-regular;
+        line-height: 2;
+        color: $color-medium-gray;
+        transition: 0.5s;
+      }
+
+      input{
+        width: 100%;
+        padding: 5px 10px;
+        border: 1px solid $color-light-gray;
+        border-right: 0;
+        font-family: inherit;
+        font-size: $font-size-regular;
+        line-height: 2;
+        resize: none;
+
+        &:focus+label,&.on+label{
+          padding: 0 5px;
+          top: -10px;
+          background-color: $color-white;
+          font-size: $font-size-smallest;
+          color: $color-black;
+        }
+      }
+    }
+
+    button{
+      padding: 10px 20px;
+      border: 0;
+      outline: 0;
+      font-family: inherit;
+      font-size: $font-size-regular;
+      color: $color-white;
+      cursor: pointer;
+
+      &.btnReset{
+        background-color: $color-medium-gray;
+      }
+      &.btnSubmit{
+        background-color: $color-theme-2;
+      }
+    }
+  }
+
+  .listBox{
+    width: 100%;
+    padding: 30px;
+    margin-bottom: 20px;
+    border: 1px solid $color-light-gray;
+    border-radius: 10px;
+
+    article{
+      width: 100%;
+      padding-bottom: 30px;
+      border-bottom: 1px solid $color-light-gray;
+      margin-bottom: 30px;
+
+      &:last-of-type{
+        padding-bottom: 0;
+        border-bottom: 0;
+        margin-bottom: 0;
+      }
+
+      ul{
+        width: 100%;
+        display: flex;
+        align-items: center;
+
+        .txt{
+          flex: 1;
+
+          h3{
+            font-size: $font-size-medium;
+            margin-bottom: 10px;
+          }
+
+          p{
+            font-size: $font-size-regular;
+          }
+        }
+
+        .btns{
+          width: 130px;
+          display: flex;
+          justify-content: flex-end;
+
+          span{
+            padding: 6px 12px;
+            border: 0;
+            outline: 0;
+            font-size: $font-size-small;
+            color: $color-white;
+            cursor: pointer;
+
+            &.btnEdit,&.btnCancle{
+              background-color: $color-medium-gray;
+            }
+            &.btnDelete{
+              background-color: $color-theme-3;
+            }
+            &.btnUpdate{
+              background-color: $color-theme-1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
