@@ -1,7 +1,6 @@
 main{
   figure,section{
     height: 100vh;
-    padding-top: 100px;
     
     &:nth-child(even){
       background-color: $color-light-gray;
@@ -12,7 +11,6 @@ main{
 @media screen and (max-width: $screen-size-tablet) {
   main{
     figure,section{
-      padding-top: 55px;
     }
   }
 }
