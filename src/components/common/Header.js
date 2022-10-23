@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function Header(props) {
 
-  // 헤더
+  // 메뉴 출력
   const Header = useRef(null);
   const [ scrollPosition, setScrollPosition ] = useState(1);
   const [ isHeaderOn, setHeaderOn ] = useState(true);
@@ -16,6 +16,17 @@ export default function Header(props) {
   // 모바일 메뉴
   const mobileNav = useRef(null);
   const [ isMobileNavOn, setMobileNav ] = useState(false);
+
+  // 메뉴 별 컬러
+  const figureColor = {
+    book: ['#266A2E', '#593E1A'],
+    review: ['#593E1A', '#6B78B4'],
+    photo: ['#6B78B4', '#79BEDB'],
+    video: ['#79BEDB', '#f5d547'],
+    login: ['#f5d547', '#e38883'],
+    about: ['#e38883', '#888'],
+    store: ['#888', '#266A2E']
+  };
 
   // 모바일 메뉴 노출
   const toggleMobileNav = (e)=>{
@@ -44,12 +55,14 @@ export default function Header(props) {
         <div className='inner'>
           <ul>
             <li>
-              <NavLink to='/about' activeClassName='on'>
+              <NavLink to='/about'
+                activeStyle={{color: figureColor.about[0]}}>
               About
               </NavLink>
             </li>
             <li>
-              <NavLink to='/store' activeClassName='on'>
+              <NavLink to='/store'
+                activeStyle={{color: figureColor.store[0]}}>
               Store
               </NavLink>
             </li>
@@ -63,7 +76,7 @@ export default function Header(props) {
               <FontAwesomeIcon icon={faBars}></FontAwesomeIcon>
             </Link>
             <h1>
-              <NavLink to='/' activeClassName='on'>
+              <NavLink to='/'>
               <p>Yu</p>
               <p><span></span><span></span></p>
               <p>joo</p>
@@ -71,22 +84,26 @@ export default function Header(props) {
             </h1>
             <ul>
               <li>
-                <NavLink to='/book' activeClassName='on'>
+                <NavLink to='/book'
+                activeStyle={{color: figureColor.book[0]}}>
                 Book
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/review' activeClassName='on'>
+                <NavLink to='/review'
+                activeStyle={{color: figureColor.review[0]}}>
                 Review
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/photo' activeClassName='on'>
+                <NavLink to='/photo'
+                activeStyle={{color: figureColor.photo[0]}}>
                 Photo
                 </NavLink>
               </li>
               <li>
-                <NavLink to='/video' activeClassName='on'>
+                <NavLink to='/video'
+                activeStyle={{color: figureColor.video[0]}}>
                 Video
                 </NavLink>
               </li>

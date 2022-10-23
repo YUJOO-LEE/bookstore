@@ -2,6 +2,23 @@ section.content{
   width: 100%;
   height: auto;
   padding-top: 100px;
+
+  .inner{
+    figure{
+      width: 100%;
+      height: 100px;
+      background-color: $color-black;
+      border-radius: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+      
+      h2{
+        color: $color-white;
+      }
+    }
+  }
 }
 
 @media screen and (max-width: $screen-size-tablet) {
