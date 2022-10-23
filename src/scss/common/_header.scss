@@ -139,6 +139,14 @@
             a{
               font-size: $font-size-medium;
               color: $color-black;
+
+              &.on{
+                color: $color-theme-1;
+              }
+
+              &:hover{
+                text-decoration: underline;
+              }
             }
           }
         }
