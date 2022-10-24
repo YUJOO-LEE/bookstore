@@ -1,14 +1,15 @@
 import Layout from '../common/Layout';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Book() {
 
   //f3b4c5064be29701921427a3d6702642
   //query: keyword, size: num, page: startNum
-  const [books, setBooks] = useState([]);
-  const [query, setQuery] = useState('');
   const categories = ['책', '테크', '브랜딩', '사회', '소설'];
+  const [books, setBooks] = useState([]);
+  const [query, setQuery] = useState(categories[0]);
   
   // search book api
   const bookSearch = (params) => {
@@ -33,8 +34,6 @@ export default function Book() {
     } else {
       setBooks(books.concat(data.documents));
     }
-
-    console.log(data.documents);
   };
 
   // 책 검색
@@ -44,11 +43,7 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    if (query.length > 0) {
-      bookSearchHttpHandler(query, true);
-    } else {
-      bookSearchHttpHandler('책', true);
-    }
+    bookSearchHttpHandler(query, true);
   }, [query]);
 
   return (
@@ -71,6 +66,7 @@ export default function Book() {
           return(
           <article key={idx}>
             <div className="imgBox">
+            <a href={item.url} target='_blank'>
               <div className="bg">
                 <img src={item.thumbnail} alt={item.title} />
               </div>
@@ -81,6 +77,7 @@ export default function Book() {
               <div className="pic">
                 <img src={item.thumbnail} alt={item.title} />
               </div>
+            </a>
             </div>
             {item.status === '정상판매' ? <p className="onSale on">구매가능</p> : <p className="onSale">구매불가</p>}
             <div className="txtBox">
