@@ -8,6 +8,7 @@ export default function Book() {
   //query: keyword, size: num, page: startNum
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState('');
+  const categories = ['책', '테크', '브랜딩', '사회', '소설'];
   
   // search book api
   const bookSearch = (params) => {
@@ -52,22 +53,46 @@ export default function Book() {
 
   return (
     <Layout name='book'>
+      <div className="category">
+        <ul>
+          {categories.map((cate, idx)=>{
+            return (
+              <li key={idx}
+                onClick={()=>{searchBook(cate)}}
+                className={query === cate ? 'on' : null}
+              >#{cate}</li>
+            )
+          })}
+        </ul>
+      </div>
+
       <div className="frame">
         {books.map((item, idx)=>{
           return(
-          <arcicle key={idx}>
-            <div className="pic">
-              <img src={item.thumbnail} alt={item.title} />
+          <article key={idx}>
+            <div className="imgBox">
+              <div className="bg">
+                <img src={item.thumbnail} alt={item.title} />
+              </div>
+              <div className="title">
+                <p>{item.publisher}</p>
+                <h3>{item.title}</h3>
+              </div>
+              <div className="pic">
+                <img src={item.thumbnail} alt={item.title} />
+              </div>
             </div>
-            <div className="txt">
-              <h3>{item.title}</h3>
-              <p>
+            {item.status === '정상판매' ? <p className="onSale on">구매가능</p> : <p className="onSale">구매불가</p>}
+            <div className="txtBox">
+              <p className='desc'>
+                {item.contents}
+              </p>
+              <p className='author'>
                 {item.authors[0]}
                 {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
               </p>
-              <p>{item.publisher}</p>
             </div>
-          </arcicle>
+          </article>
         )})}
       </div>
     </Layout>
