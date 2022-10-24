@@ -24,7 +24,7 @@
     font-size: $font-size-medium;
     color: transparent;
     cursor: pointer;
-    transition: 0.5s;
+    transition: all 0.5s, color 0.5s 0.1s;
 
     &:hover,&.on{
       max-width: 150px;
