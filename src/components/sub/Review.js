@@ -29,7 +29,7 @@ export default function Review() {
   const resetForm = () => {
     inputTitle.current.value = '';
     inputContent.current.value = '';
-  }
+  };
 
   const createPost = () => {
     const title = inputTitle.current.value.trim();
@@ -59,7 +59,7 @@ export default function Review() {
       }
       return data;
     }));
-  }
+  };
 
   const enableUpdate = (index) => {
     setPosts(posts.map((data, i)=>{
@@ -71,7 +71,7 @@ export default function Review() {
         return data;
       })
     );
-  }
+  };
 
   const disableUpdate = (index) => {
     setPosts(posts.map((data, i)=>{
@@ -79,11 +79,19 @@ export default function Review() {
         return data;
       })
     );
-  }
+  };
 
   const deletePost = (index) => {
     setPosts(posts.filter((_, i)=> i !== (index)));
-  }
+  };
+
+  const checkTyped = (e)=>{
+    if (e.target.value.length) {
+      e.target.classList.add('typed');
+    } else {
+      e.target.classList.remove('typed');
+    }
+  };
 
   useEffect(()=>{
     localStorage.setItem('post', JSON.stringify(posts));
@@ -93,11 +101,11 @@ export default function Review() {
     <Layout name='review'>
     <div className='form'>
       <p className='title'>
-        <input type='text' id='title' pattern=".*\S.*" ref={inputTitle} />
+        <input type='text' id='title' pattern=".*\S.*" ref={inputTitle} onInput={checkTyped} />
         <label htmlFor='title'>Title</label>
       </p>
       <p className='content'>
-        <input type='text' id='content' pattern=".*\S.*" ref={inputContent} />
+        <input type='text' id='content' pattern=".*\S.*" ref={inputContent} onInput={checkTyped} />
         <label htmlFor='content'>Content</label>
       </p>
       <button className='btnReset' onClick={resetForm}>Reset</button>
@@ -111,21 +119,21 @@ export default function Review() {
             {data.enableUpdate
               ? <>
               <ul>
-                <li className='txt'>
+                <li className='txt edit'>
                   <input
                   type="text"
                   defaultValue={data.title} 
-                  ref={editTitle} 
+                  ref={editTitle}  onInput={checkTyped}
                   />
                   <input
                   type="text"
                   defaultValue={data.content} 
-                  ref={editContent} 
+                  ref={editContent}  onInput={checkTyped}
                   />
                 </li>
                 <li className='btns'>
-                  <span className='btnCancle' onClick={()=>{disableUpdate(i)}}>Calcle</span>
-                  <span className='btnUpdate' onClick={()=>{editPost(i)}}>Update</span>
+                  <button className='btnCancle' onClick={()=>{disableUpdate(i)}}>Calcle</button>
+                  <button className='btnUpdate' onClick={()=>{editPost(i)}}>Update</button>
                 </li>
               </ul>
               </>
@@ -136,8 +144,8 @@ export default function Review() {
                   <p>{data.content}</p>
                 </li>
                 <li className='btns'>
-                  <span className='btnEdit' onClick={()=>{enableUpdate(i)}}>Edit</span>
-                  <span className='btnDelete' onClick={()=>{deletePost(i)}}>Delete</span>
+                  <button className='btnEdit' onClick={()=>{enableUpdate(i)}}>Edit</button>
+                  <button className='btnDelete' onClick={()=>{deletePost(i)}}>Delete</button>
                 </li>
               </ul>
               </>
