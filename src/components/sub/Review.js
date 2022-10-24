@@ -5,12 +5,12 @@ export default function Review() {
 
   const getLocalData = () => {
     const dummyPosts = [
-      { title: 'TITLE01', content: "HERE COMES DESCRIPTION IN DETAILS."},
-      { title: 'TITLE02', content: "HERE COMES DESCRIPTION IN DETAILS."},
-      { title: 'TITLE03', content: "HERE COMES DESCRIPTION IN DETAILS."},
-      { title: 'TITLE04', content: "HERE COMES DESCRIPTION IN DETAILS."},
-      { title: 'TITLE05', content: "HERE COMES DESCRIPTION IN DETAILS."},
-      { title: 'TITLE06', content: "HERE COMES DESCRIPTION IN DETAILS."}
+      { title: 'TITLE01', content: 'HERE COMES DESCRIPTION IN DETAILS.'},
+      { title: 'TITLE02', content: 'HERE COMES DESCRIPTION IN DETAILS.'},
+      { title: 'TITLE03', content: 'HERE COMES DESCRIPTION IN DETAILS.'},
+      { title: 'TITLE04', content: 'HERE COMES DESCRIPTION IN DETAILS.'},
+      { title: 'TITLE05', content: 'HERE COMES DESCRIPTION IN DETAILS.'},
+      { title: 'TITLE06', content: 'HERE COMES DESCRIPTION IN DETAILS.'}
     ]
 
     // 로컬 스토리지 데이터 불러오기
@@ -29,6 +29,8 @@ export default function Review() {
   const resetForm = () => {
     inputTitle.current.value = '';
     inputContent.current.value = '';
+    inputTitle.current.classList.remove('typed');
+    inputContent.current.classList.remove('typed');
   };
 
   const createPost = () => {
@@ -38,7 +40,7 @@ export default function Review() {
     if (!title || !content) return;
 
     setPosts([
-      {"title": title, "content": content},
+      {'title': title, 'content': content},
       ...posts
     ])
 
@@ -101,18 +103,20 @@ export default function Review() {
     <Layout name='review'>
     <div className='form'>
       <p className='title'>
-        <input type='text' id='title' pattern=".*\S.*" ref={inputTitle} onInput={checkTyped} />
+        <input type='text' id='title' pattern='.*\S.*' ref={inputTitle} onInput={checkTyped} />
         <label htmlFor='title'>Title</label>
       </p>
       <p className='content'>
-        <input type='text' id='content' pattern=".*\S.*" ref={inputContent} onInput={checkTyped} />
+        <input type='text' id='content' pattern='.*\S.*' ref={inputContent} onInput={checkTyped} />
         <label htmlFor='content'>Content</label>
       </p>
-      <button className='btnReset' onClick={resetForm}>Reset</button>
-      <button className='btnSubmit' onClick={createPost}>Submit</button>
+      <div className="btns">
+        <button className='btnReset' onClick={resetForm}>Reset</button>
+        <button className='btnSubmit' onClick={createPost}>Submit</button>
+      </div>
     </div>
 
-    <div className="listBox">
+    <div className='listBox'>
       {posts.length && posts.map((data, i)=>{
         return (
           <article key={i}>
@@ -121,17 +125,17 @@ export default function Review() {
               <ul>
                 <li className='txt edit'>
                   <input
-                  type="text"
+                  type='text'
                   defaultValue={data.title} 
                   ref={editTitle}  onInput={checkTyped}
                   />
                   <input
-                  type="text"
+                  type='text'
                   defaultValue={data.content} 
                   ref={editContent}  onInput={checkTyped}
                   />
                 </li>
-                <li className='btns'>
+                <li className='btns edit'>
                   <button className='btnCancle' onClick={()=>{disableUpdate(i)}}>Calcle</button>
                   <button className='btnUpdate' onClick={()=>{editPost(i)}}>Update</button>
                 </li>
