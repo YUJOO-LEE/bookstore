@@ -60,6 +60,8 @@ $screen-size-mobile: 539px;
 @import './common/header';
 @import './common/footer';
 @import './common/layout';
+@import './common/comment_list';
+@import './common/comment_post';
 
 // main
 @import './main/main';

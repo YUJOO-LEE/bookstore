@@ -11,6 +11,7 @@ import Main from './components/main/Main';
 // sub
 import About from './components/sub/About';
 import Book from './components/sub/Book';
+import Content from './components/sub/Content';
 import Photo from './components/sub/Photo';
 import Review from './components/sub/Review';
 import Store from './components/sub/Store';
@@ -26,6 +27,7 @@ function App() {
 			</Switch>
 
 			<Route path='/book' component={Book}></Route>
+			<Route path='/content/:bookId' component={Content}></Route>
 			<Route path='/review' component={Review}></Route>
 			<Route path='/photo' component={Photo}></Route>
 			<Route path='/video' component={Video}></Route>

@@ -1,12 +1,15 @@
 .book{
   .inner{
 
-    .category{
+    .searchBox{
       width: 100%;
+      height: auto;
       padding-top: 20px;
       margin-bottom: 40px;
 
       ul{
+        width: 100%;
+        height: auto;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
@@ -150,7 +153,7 @@
 @media screen and (max-width: $screen-size-tablet) {
   .book{
     .inner{
-      .category{
+      .searchBox{
         ul{
           gap: 10px;
         }
@@ -171,6 +174,7 @@
           .imgBox{
             height: calc((100vw - 20px * 2) / 2);
             a{
+              .bg{ display: none; }
               .title{
                 text-shadow: 0 0 3px rgba($color: $color-white, $alpha: 1.0);
               }

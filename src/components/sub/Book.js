@@ -7,7 +7,7 @@ export default function Book() {
 
   //f3b4c5064be29701921427a3d6702642
   //query: keyword, size: num, page: startNum
-  const categories = ['책', '테크', '브랜딩', '사회', '소설'];
+  const categories = ['책', '테크', '브랜딩', '인문학'];
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState(categories[0]);
   
@@ -48,7 +48,8 @@ export default function Book() {
 
   return (
     <Layout name='book'>
-      <div className="category">
+    <div className="inner">
+      <div className="searchBox">
         <ul>
           {categories.map((cate, idx)=>{
             return (
@@ -66,7 +67,7 @@ export default function Book() {
           return(
           <article key={idx}>
             <div className="imgBox">
-            <a href={item.url} target='_blank'>
+            <Link to={`/content/${item.isbn.split(' ')[0]}`}>
               <div className="bg">
                 <img src={item.thumbnail} alt={item.title} />
               </div>
@@ -77,7 +78,7 @@ export default function Book() {
               <div className="pic">
                 <img src={item.thumbnail} alt={item.title} />
               </div>
-            </a>
+            </Link>
             </div>
             {item.status === '정상판매' ? <p className="onSale on">구매가능</p> : <p className="onSale">구매불가</p>}
             <div className="txtBox">
@@ -92,6 +93,7 @@ export default function Book() {
           </article>
         )})}
       </div>
+    </div>
     </Layout>
   );
 }

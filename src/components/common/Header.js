@@ -37,19 +37,24 @@ export default function Header(props) {
 
   // 헤더 스크롤 이벤트
   const handleScroll = ()=>{
-    const moving = window.scrollY; 
+    const moving = window.scrollY || window.pageYOffset; 
     setScrollTop(moving < 100);
-    setHeaderOn(scrollPosition > moving);
-    setScrollPosition(moving);
+    if (moving > 100) {
+      setHeaderOn(scrollPosition > moving);
+      setScrollPosition(moving);
+    }
   }
 
+  // 스크롤 이벤트 부여
   useEffect(()=>{
-    window.addEventListener('scroll', handleScroll)
+    window.addEventListener('scroll', handleScroll);
     return (()=>{
-      window.removeEventListener('scroll', handleScroll)
+      window.removeEventListener('scroll', handleScroll);
     });
   }, [scrollPosition]);
 
+
+  // 페이지 이동 시 모바일 메뉴 비활성화
   useEffect(()=>{
     return (()=>{
       setMobileNav(false);
