@@ -3,7 +3,7 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Visual() {
   return (
-    <figure className='mainSlider'>
+    <figure className='mainSlider myScroll'>
       <div className='slide'>
         <ul>
           <li>
