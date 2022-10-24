@@ -2,10 +2,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faX, faPenNib, faAt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 
 export default function Header(props) {
+  const { pathname } = useLocation();
 
   // 메뉴 출력
   const Header = useRef(null);
@@ -48,6 +49,12 @@ export default function Header(props) {
       window.removeEventListener('scroll', handleScroll)
     });
   }, [scrollPosition]);
+
+  useEffect(()=>{
+    return (()=>{
+      setMobileNav(false);
+    });
+  }, [pathname]);
 
   return (
     <header id='header' className={`${props.type} ${isHeaderOn && 'on'} ${isScrollTop && 'top'}`} ref={Header}>
