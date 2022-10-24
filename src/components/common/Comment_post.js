@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Search from '../common/Search';
 
-export default function Post({posts, setPosts}){
+export default function Post({posts, setPosts, bookId}){
 
   const bookList = useRef(null);
   const inputBookId = useRef(null);
@@ -65,7 +65,7 @@ export default function Post({posts, setPosts}){
   return (
     <div className='commentForm'>
       <p className='bookId'>
-        <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} />
+        <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
         <label htmlFor='bookId'>Search book</label>
         {bookData?.length > 0 && 
           <span className='bookList' ref={bookList}>

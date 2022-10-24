@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import Search from '../common/Search';
 
-export default function Comments({posts, setPosts}) {
-
+export default function Comments({posts, setPosts, bookId}) {
+  const curPosts = bookId ?
+  posts.filter(data => data.bookId === bookId) : posts;
   const editBookList = useRef(null);
   const editBookId = useRef(null);
   const editTitle = useRef(null);
@@ -70,11 +71,11 @@ export default function Comments({posts, setPosts}) {
   // post 로컬 스토리지에 저장
   useEffect(()=>{
     localStorage.setItem('post', JSON.stringify(posts));
-  }, [posts])
+  }, [posts]);
 
   return (
     <div className='commentList'>
-      {posts.length && posts.map((data, i)=>{
+      {curPosts.length > 0 ? curPosts.map((data, i)=>{
         return (
           <article key={i}>
             {data.enableUpdate
@@ -129,7 +130,9 @@ export default function Comments({posts, setPosts}) {
               }
           </article>
         );
-      })}
+        })
+      : <p className='noData'>작성된 리뷰가 없습니다.</p>
+      }
     </div>
   );
 }

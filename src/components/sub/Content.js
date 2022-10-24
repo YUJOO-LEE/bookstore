@@ -1,4 +1,6 @@
 import Layout from '../common/Layout';
+import Comments from '../common/Comment_list';
+import Post from '../common/Comment_post';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -30,21 +32,22 @@ export default function Content() {
     console.log(data);
   };
 
-  // // review 핸들러
-  // const reviewHandler = (bookid)=>{
-  //   const data = localStorage.getItem('post');
-  // };
+  // review 핸들러
+  const reviewHandler = ()=>{
+    let data = localStorage.getItem('post');
+    return JSON.parse(data);
+  };
 
   // 책 정보 출력
   useEffect(()=>{
     bookSearchHttpHandler(pageParams.bookId);
-    //reviewHandler(pageParams.bookId);
   }, [pageParams]);
+  
+  const [ comments, setComments ] = useState(reviewHandler());
 
   return (
     <Layout name='content'>
       {content.length && 
-      <>
       <div className='inner'>
         <div className='title'>
           <h1>{content[0].title}</h1>
@@ -53,13 +56,14 @@ export default function Content() {
         </div>
         <div className='content'>{content[0].contents}</div>
       </div>
+      }
 
       <hr />
 
       <div className='inner'>
-
+        <Post posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Post>
+        <Comments posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Comments>
       </div>
-      </>}
     </Layout>
   );
 }
