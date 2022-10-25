@@ -28,6 +28,7 @@ export default function Post({posts, setPosts, bookId}){
 
   // 신규 post 추가
   const createPost = () => {
+    const id = posts[0].id + 1;
     const bookId = inputBookId.current.value.trim();
     const title = inputTitle.current.value.trim();
     const content = inputContent.current.value.trim();
@@ -35,7 +36,7 @@ export default function Post({posts, setPosts, bookId}){
     if (!bookId || !title || !content) return;
 
     setPosts([
-      {'bookId': bookId, 'title': title, 'content': content},
+      { 'id': id, 'title': title, 'content': content, 'bookId': bookId},
       ...posts
     ])
 
@@ -76,25 +77,29 @@ export default function Post({posts, setPosts, bookId}){
 
   return (
     <div className='commentForm'>
-      <p className='bookId'>
-        <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
-        <label htmlFor='bookId'>Search book</label>
-        {bookData?.length > 0 && 
-          <span className='bookList' ref={bookList}>
-          {bookData.map((book, idx)=>{
-            return (
-              <span key={idx} onClick={()=>{
-                inputBookId.current.value = book.isbn.split(' ')[0];
-                bookList.current.classList.add('off');
-              }}>
-                <span>{book.title}</span>
-                <span>{book.authors[0]}</span>
-              </span>
-            );
-          })}
-          </span>
-        }
-      </p>
+      {bookId 
+      ? <input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
+      : <p className='bookId'>
+          <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
+          <label htmlFor='bookId'>Search book</label>
+          {bookData?.length > 0 && 
+            <span className='bookList' ref={bookList}>
+            {bookData.map((book, idx)=>{
+              return (
+                <span key={idx} onClick={()=>{
+                  inputBookId.current.value = book.isbn.split(' ')[0];
+                  bookList.current.classList.add('off');
+                }}>
+                  <span>{book.title}</span>
+                  <span>{book.authors[0]}</span>
+                </span>
+              );
+            })}
+            </span>
+          }
+        </p>
+      }
+      
       <p className='title'>
         <input type='text' id='title' pattern='.*\S.*' ref={inputTitle} onInput={checkTyped} />
         <label htmlFor='title'>Title</label>

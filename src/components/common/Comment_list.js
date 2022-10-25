@@ -18,8 +18,8 @@ export default function Comments({posts, setPosts, bookId}) {
 
     if (!bookId || !title || !content) return;
 
-    setPosts(posts.map((data, i)=>{
-      if (i === index) {
+    setPosts(posts.map((data)=>{
+      if (data.id === index) {
         data.bookId = bookId;
         data.title = title;
         data.content = content;
@@ -31,8 +31,8 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // 수정 input 활성화
   const enableUpdate = (index) => {
-    setPosts(posts.map((data, i)=>{
-        if (i === index) {
+    setPosts(posts.map((data)=>{
+        if (data.id === index) {
           data.enableUpdate = true;
         } else {
           data.enableUpdate = false;
@@ -44,8 +44,8 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // 수정 input 비활성화
   const disableUpdate = (index) => {
-    setPosts(posts.map((data, i)=>{
-        if (i === index) data.enableUpdate = false;
+    setPosts(posts.map((data)=>{
+        if (data.id === index) data.enableUpdate = false;
         return data;
       })
     );
@@ -53,7 +53,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // post 삭제
   const deletePost = (index) => {
-    setPosts(posts.filter((_, i)=> i !== (index)));
+    setPosts(posts.filter((data)=> data.id !== (index)));
   };
 
   // 책 정보 검색
@@ -62,7 +62,6 @@ export default function Comments({posts, setPosts, bookId}) {
     const keyword = e.target.value.trim();
     const search = async ()=>{
       setEditBookData( await Search(keyword));
-      console.log(editBookList);
     }
     search();
   }
@@ -80,16 +79,7 @@ export default function Comments({posts, setPosts, bookId}) {
     }
   }, [posts]);
 
-  useEffect(()=>{
-    // 언마운트시 수정 input 비활성화
-    return (()=>{
-      setPosts(posts.map(data=>{
-        data.enableUpdate = false;
-        return data;
-      }));
-      localStorage.setItem('post', JSON.stringify(posts));
-    });
-  }, []);
+
 
   return (
     <div className='commentList'>
@@ -100,6 +90,7 @@ export default function Comments({posts, setPosts, bookId}) {
               ? <>
               <ul>
                 <li className='txt edit'>
+                  <input type='text' value={data.id} readOnly />
                   <input type='text' className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
                   {editBookData?.length > 0 && 
                     <span className='bookList' ref={editBookList}>
@@ -128,8 +119,8 @@ export default function Comments({posts, setPosts, bookId}) {
                   />
                 </li>
                 <li className='btns edit'>
-                  <button className='btnCancle' onClick={()=>{disableUpdate(i)}}>Calcle</button>
-                  <button className='btnUpdate' onClick={()=>{editPost(i)}}>Update</button>
+                  <button className='btnCancle' onClick={()=>{disableUpdate(data.id)}}>Calcle</button>
+                  <button className='btnUpdate' onClick={()=>{editPost(data.id)}}>Update</button>
                 </li>
               </ul>
               </>
@@ -140,8 +131,8 @@ export default function Comments({posts, setPosts, bookId}) {
                   <p>{data.content}</p>
                 </li>
                 <li className='btns'>
-                  <button className='btnEdit' onClick={()=>{enableUpdate(i)}}>Edit</button>
-                  <button className='btnDelete' onClick={()=>{deletePost(i)}}>Delete</button>
+                  <button className='btnEdit' onClick={()=>{enableUpdate(data.id)}}>Edit</button>
+                  <button className='btnDelete' onClick={()=>{deletePost(data.id)}}>Delete</button>
                 </li>
               </ul>
               </>
