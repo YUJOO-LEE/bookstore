@@ -66,7 +66,16 @@ export default function Comments({posts, setPosts, bookId}) {
     search();
   }
   
+  // 페이지 마운트 시 초기화
   useEffect(()=>{
+    setPosts(posts.map((data)=>{
+      data.enableUpdate = false;
+      return data;
+    }));
+  }, []);
+
+  useEffect(()=>{
+    editBookList.current?.classList.add('off');
     // post 로컬 스토리지에 저장
     localStorage.setItem('post', JSON.stringify(posts));
 
@@ -90,8 +99,8 @@ export default function Comments({posts, setPosts, bookId}) {
               ? <>
               <ul>
                 <li className='txt edit'>
-                  <input type='text' value={data.id} readOnly />
-                  <input type='text' className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
+                  <input type='hidden' value={data.id} readOnly />
+                  <input type={bookId ? 'hiddin' : 'text'} className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
                   {editBookData?.length > 0 && 
                     <span className='bookList' ref={editBookList}>
                     {editBookData.map((book, idx)=>{

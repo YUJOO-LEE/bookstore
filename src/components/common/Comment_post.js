@@ -24,6 +24,7 @@ export default function Post({posts, setPosts, bookId}){
       inputContent.current.value = '';
       inputContent.current.classList.remove('typed');
     }
+    bookList.current?.classList.add('off');
   };
 
   // 신규 post 추가
