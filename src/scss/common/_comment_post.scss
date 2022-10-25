@@ -1,7 +1,7 @@
 .commentForm{
   display: flex;
   justify-content: center;
-  
+
   p{
     position: relative;
 
@@ -47,7 +47,7 @@
           }
 
           span{
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             font-weight: 500;
             font-size: $font-size-small;
 
@@ -68,12 +68,12 @@
 
     label{
       position: absolute;
-      top: 5px;
+      top: 50%;
       left: 10px;
       z-index: -1;
       font-size: $font-size-regular;
-      line-height: 2;
       color: $color-medium-gray;
+      transform: translateY(-50%);
       transition: 0.5s;
     }
 
@@ -83,14 +83,14 @@
       border: 1px solid $color-light-gray;
       border-right: 0;
       background-color: transparent;
-      font-family: inherit;
+      font-family: 'Noto Sans KR', sans-serif;
       font-size: $font-size-regular;
       line-height: 2;
       resize: none;
 
       &:focus+label,&.typed+label{
         padding: 0 5px;
-        top: -10px;
+        top: -2px;
         z-index: 1;
         background-color: $color-white;
         font-size: $font-size-smallest;
@@ -108,7 +108,7 @@
       padding: 10px 20px;
       border: 0;
       outline: 0;
-      font-family: inherit;
+      font-family: 'Noto Sans KR', sans-serif;
       font-size: $font-size-regular;
       color: $color-white;
       cursor: pointer;
