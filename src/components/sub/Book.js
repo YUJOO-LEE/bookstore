@@ -8,8 +8,9 @@ export default function Book() {
   //f3b4c5064be29701921427a3d6702642
   //query: keyword, size: num, page: startNum
   const categories = ['책', '테크', '브랜딩', '인문학'];
-  const [books, setBooks] = useState([]);
-  const [query, setQuery] = useState(categories[0]);
+  const [ meta, setMeta ] = useState([]);
+  const [ books, setBooks ] = useState([]);
+  const [ query, setQuery ] = useState(categories[0]);
   
   // 책 검색
   const searchBook = (text) => {
@@ -18,13 +19,13 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    BookData([query, 20, setBooks]);
+    BookData([query, 20, setBooks, setMeta]);
   }, [query]);
 
   return (
     <Layout name='book'>
-    <div className="inner">
-      <div className="searchBox">
+    <div className='inner'>
+      <div className='searchBox'>
         <ul>
           {categories.map((cate, idx)=>{
             return (
@@ -35,28 +36,29 @@ export default function Book() {
             )
           })}
         </ul>
+        <p className='articleTotal'>총 {meta.total_count}개</p>
       </div>
 
-      <div className="frame">
+      <div className='frame'>
         {books.map((item, idx)=>{
           return(
           <article key={idx}>
-            <div className="imgBox">
+            <div className='imgBox'>
             <Link to={`/content/${item.isbn.split(' ')[0]}`}>
-              <div className="bg">
+              <div className='bg'>
                 <img src={item.thumbnail} alt={item.title} />
               </div>
-              <div className="title">
+              <div className='title'>
                 <p>{item.publisher}</p>
                 <h3>{item.title}</h3>
               </div>
-              <div className="pic">
+              <div className='pic'>
                 <img src={item.thumbnail} alt={item.title} />
               </div>
             </Link>
             </div>
-            {item.status === '정상판매' ? <p className="onSale on">구매가능</p> : <p className="onSale">구매불가</p>}
-            <div className="txtBox">
+            {item.status === '정상판매' ? <p className='onSale on'>구매가능</p> : <p className='onSale'>구매불가</p>}
+            <div className='txtBox'>
               <p className='desc'>
                 {item.contents}
               </p>

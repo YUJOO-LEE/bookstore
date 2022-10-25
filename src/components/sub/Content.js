@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Layout from '../common/Layout';
 import Comments from '../common/Comment_list';
 import Post from '../common/Comment_post';
 import BookData from '../../asset/bookdata';
@@ -42,7 +41,8 @@ export default function Content() {
           <p className='authors'>{content[0].authors.join(', ')}</p>
         </div>
       </div>
-      <div className='contents'>{content[0].contents}... <a href={content[0].url} target='_blank' className='url'>더보기</a></div>
+      <div className='contents'>
+        {content[0].contents.length > 0 ? content[0].contents+'... ' : <span className='noData'>도서 정보가 없습니다. </span>}<a href={content[0].url} target='_blank' rel='noreferrer' className='url'>상세보기</a></div>
     </div>
     }
 

@@ -110,7 +110,7 @@ export default function Comments({posts, setPosts, bookId}) {
                           editBookList.current.classList.add('off');
                         }}>
                           <span>{book.title}</span>
-                          <span>{book.authors[0]}</span>
+                          <span className='authors'>{book.authors[0]}</span>
                         </span>
                       );
                     })}

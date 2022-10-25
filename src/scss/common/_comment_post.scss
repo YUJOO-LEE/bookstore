@@ -9,7 +9,8 @@
       width: 200px;
 
       .bookList{
-        width: auto;
+        width: max-content;
+        max-width: calc(100vw - 102px);
         padding: 20px 10px;
         position: absolute;
         top: 39px;
@@ -19,7 +20,6 @@
         flex-direction: column;
         background-color: $color-white;
         border: 1px solid $color-medium-gray;
-        white-space: nowrap;
 
         &.off{
           display: none;
@@ -51,7 +51,8 @@
             font-weight: 500;
             font-size: $font-size-small;
 
-            &:nth-of-type(2){
+            &.authors{
+              flex: 1;
               margin-left: 10px;
               color: $color-medium-gray;
             }
@@ -150,6 +151,17 @@
     p{
       &.bookId{
         width: 100%;
+        .bookList{
+          >span{
+            flex-direction: column;
+            span{
+              &.authors{
+                margin-top: 10px;
+                margin-left: 0;
+              }
+            }
+          }
+        }
       }
       &.title{
         width: 100%;

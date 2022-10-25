@@ -6,9 +6,11 @@
       height: auto;
       padding-top: 20px;
       margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
 
       ul{
-        width: 100%;
         height: auto;
         display: flex;
         justify-content: center;
@@ -22,6 +24,7 @@
           font-family: 'Noto Sans KR', sans-serif;
           font-size: $font-size-regular;
           font-weight: 400;
+          color: $color-dark-gray;
           cursor: pointer;
 
           &.on{
@@ -29,6 +32,12 @@
             color: $color-white;
           }
         }
+      }
+
+      .articleTotal{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: $font-size-small;
+        color: $color-dark-gray;
       }
     }
 
@@ -168,6 +177,17 @@
 @media screen and (max-width: $screen-size-mobile) {
   .book{
     .inner{
+      .searchBox{
+        flex-direction: column;
+        margin-bottom: 10px;
+        ul{
+          align-self: flex-start;
+          margin-bottom: 30px;
+          li{
+            padding: 10px;
+          }
+        }
+      }
       .frame{
         grid-template-columns: 1fr;
         article{

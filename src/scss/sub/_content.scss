@@ -102,9 +102,17 @@
         text-indent: 0;
         transform: translateY(-2px);
       }
+
+      .noData{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 300;
+        font-size: $font-size-medium;
+        color: $color-dark-gray;
+        text-indent: 0;
+      }
     }
 
-    h2{
+    >h2{
       margin-bottom: 50px;
       font-size: $font-size-largest;
       text-align: center;
@@ -139,4 +147,51 @@
     border-bottom: 1px solid $color-white-gray;
   }
 
+}
+
+@media screen and (max-width: $screen-size-tablet) {
+  .bookContent{
+    padding-top: 50px;
+
+    .inner{
+      padding-top: 50px;
+
+      >.contents{
+        padding: 0 20px;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile) {
+  .bookContent{
+    .inner{
+      padding-top: 100px;
+      .title{
+        flex-direction: column;
+        align-items: center;
+        .txt{
+          width: 100%;
+          height: auto;
+          margin-top: 50px;
+          h2{
+            margin-bottom: 30px;
+          }
+        }
+      }
+      >.contents{
+        padding: 0;
+        text-indent: 20px;
+      }
+
+      .commentForm{
+        padding: 30px 0;
+      }
+      .commentList{
+        .noData{
+          padding-left: 0;
+        }
+      }
+    }
+  }
 }

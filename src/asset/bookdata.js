@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default function BookData([query, size, setBooks]) {
+export default function BookData([query, size, setBooks, setMeta]) {
   // search book api
   const bookSearch = (params) => {
     return axios.get('https://dapi.kakao.com/v3/search/book', { params, headers: {
@@ -19,6 +19,9 @@ export default function BookData([query, size, setBooks]) {
 
     const { data } = await bookSearch(params); // api 호출
     setBooks(data.documents);
+    if (setMeta) {
+      setMeta(data.meta);
+    }
   };
 
   bookSearchHttpHandler(query, size);
