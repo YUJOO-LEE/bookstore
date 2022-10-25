@@ -2,13 +2,12 @@ import { useEffect, useRef, useState } from 'react';
 import Search from '../common/Search';
 
 export default function Comments({posts, setPosts, bookId}) {
-  const curPosts = bookId ?
-  posts.filter(data => data.bookId === bookId) : posts;
   const editBookList = useRef(null);
   const editBookId = useRef(null);
   const editTitle = useRef(null);
   const editContent = useRef(null);
   const [ editBookData, setEditBookData ] = useState(null);
+  const [ curPosts, setCurPosts ] = useState(posts);
 
 
   // post 수정
@@ -68,10 +67,29 @@ export default function Comments({posts, setPosts, bookId}) {
     search();
   }
   
-  // post 로컬 스토리지에 저장
   useEffect(()=>{
+    // post 로컬 스토리지에 저장
     localStorage.setItem('post', JSON.stringify(posts));
+
+    // posts 변동되면 curPosts도 따라 변경
+    if (bookId) {
+      // bookId 있으면 filter 지정
+      setCurPosts(posts.filter(data => data.bookId === bookId));
+    } else {
+      setCurPosts(posts);
+    }
   }, [posts]);
+
+  useEffect(()=>{
+    // 언마운트시 수정 input 비활성화
+    return (()=>{
+      setPosts(posts.map(data=>{
+        data.enableUpdate = false;
+        return data;
+      }));
+      localStorage.setItem('post', JSON.stringify(posts));
+    });
+  }, []);
 
   return (
     <div className='commentList'>

@@ -12,12 +12,18 @@ export default function Post({posts, setPosts, bookId}){
 
   // form 리셋
   const resetForm = () => {
-    inputBookId.current.value = '';
-    inputTitle.current.value = '';
-    inputContent.current.value = '';
-    inputBookId.current.classList.remove('typed');
-    inputTitle.current.classList.remove('typed');
-    inputContent.current.classList.remove('typed');
+    if (inputBookId.current !== null) {
+      inputBookId.current.value = '';
+      inputBookId.current.classList.remove('typed');
+    }
+    if (inputTitle.current !== null) {
+      inputTitle.current.value = '';
+      inputTitle.current.classList.remove('typed');
+    }
+    if (inputContent.current !== null) {
+      inputContent.current.value = '';
+      inputContent.current.classList.remove('typed');
+    }
   };
 
   // 신규 post 추가
@@ -61,6 +67,12 @@ export default function Post({posts, setPosts, bookId}){
   useEffect(()=>{
     localStorage.setItem('post', JSON.stringify(posts));
   }, [posts]);
+
+
+  // 언마운트 시 input 초기화
+  useEffect(()=>{
+    return (resetForm);
+  }, []);
 
   return (
     <div className='commentForm'>
