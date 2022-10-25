@@ -51,6 +51,7 @@ export default function Main() {
     
     return (()=>{
       window.removeEventListener('resize', getPos);
+      window.removeEventListener('scroll', activation);
     });
   }, [])
 
