@@ -1,7 +1,7 @@
 import Layout from '../common/Layout';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import BookData from '../../asset/bookdata';
 
 export default function Book() {
 
@@ -11,31 +11,6 @@ export default function Book() {
   const [books, setBooks] = useState([]);
   const [query, setQuery] = useState(categories[0]);
   
-  // search book api
-  const bookSearch = (params) => {
-    return axios.get('https://dapi.kakao.com/v3/search/book', { params, headers: {
-      Authorization: 'KakaoAK f3b4c5064be29701921427a3d6702642',
-    }});
-  };
-
-  // book search 핸들러
-  const bookSearchHttpHandler = async (query, reset) => {
-    const params = {
-      query: query,
-      sort: 'accuracy', // accuracy | recency 정확도 or 최신
-      page: 1, // 페이지번호
-      size: 20, // 한 페이지에 보여 질 문서의 개수
-    };
-
-    const { data } = await bookSearch(params); // api 호출
-
-    if (reset) {
-      setBooks(data.documents);
-    } else {
-      setBooks(books.concat(data.documents));
-    }
-  };
-
   // 책 검색
   const searchBook = (text) => {
     setQuery(text);
@@ -43,7 +18,7 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    bookSearchHttpHandler(query, true);
+    BookData([query, 20, setBooks]);
   }, [query]);
 
   return (

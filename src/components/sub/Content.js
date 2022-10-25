@@ -1,36 +1,14 @@
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import Layout from '../common/Layout';
 import Comments from '../common/Comment_list';
 import Post from '../common/Comment_post';
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import BookData from '../../asset/bookdata';
 
 export default function Content() {
 
 	const pageParams = useParams();
   const [ content, setContent ] = useState([]);
-
-  // search book api
-  const bookSearch = (params)=>{
-    return axios.get('https://dapi.kakao.com/v3/search/book', { params, headers: {
-      Authorization: 'KakaoAK f3b4c5064be29701921427a3d6702642',
-    }});
-  };
-
-  // book search 핸들러
-  const bookSearchHttpHandler = async (bookId)=>{
-    const params = {
-      query: bookId,
-      sort: 'accuracy',
-      page: 1, // 페이지번호
-      size: 1, // 한 페이지에 보여 질 문서의 개수
-    };
-
-    const { data } = await bookSearch(params); // api 호출
-    setContent(data.documents);
-
-    console.log(data);
-  };
 
   // review 핸들러
   const reviewHandler = ()=>{
@@ -40,7 +18,7 @@ export default function Content() {
 
   // 책 정보 출력
   useEffect(()=>{
-    bookSearchHttpHandler(pageParams.bookId);
+    BookData([pageParams.bookId, 1, setContent]);
   }, [pageParams]);
   
   const [ comments, setComments ] = useState(reviewHandler());
