@@ -45,6 +45,7 @@
           border-right: 0;
           background-color: transparent;
           font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 300;
           font-size: $font-size-regular;
           line-height: 2;
           resize: none;
@@ -135,7 +136,8 @@
           border: 0;
           outline: 0;
           font-family: 'Noto Sans KR', sans-serif;
-          font-size: $font-size-regular;
+          font-weight: 300;
+          font-size: $font-size-small;
           color: $color-white;
           cursor: pointer;
 
@@ -154,7 +156,7 @@
   }
 
   .noData{
-    font-family: 'Noto Sans KR', sans-serif;    font-weight: 400;
+    font-family: 'Noto Sans KR', sans-serif;    font-weight: 300;
     font-size: $font-size-regular;
     color: $color-medium-gray;
   }
