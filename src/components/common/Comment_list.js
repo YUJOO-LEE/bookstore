@@ -100,7 +100,7 @@ export default function Comments({posts, setPosts, bookId}) {
               <ul>
                 <li className='txt edit'>
                   <input type='hidden' value={data.id} readOnly />
-                  <input type={bookId ? 'hiddin' : 'text'} className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
+                  <input type={bookId ? 'hidden' : 'text'} className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
                   {editBookData?.length > 0 && 
                     <span className='bookList' ref={editBookList}>
                     {editBookData.map((book, idx)=>{

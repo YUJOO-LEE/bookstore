@@ -23,25 +23,36 @@ export default function Content() {
   
   const [ comments, setComments ] = useState(reviewHandler());
 
+  console.log(content);
+
   return (
-    <Layout name='content'>
-      {content.length && 
-      <div className='inner'>
-        <div className='title'>
-          <h1>{content[0].title}</h1>
-          <p>{content[0].authors.join(',')} ({content[0].translators.join(',')}) | {content[0].publisher}</p>
-          <p>{content[0].price}</p>
+  <div className='bookContent'>
+    {content.length && 
+    <div className='inner'>
+      <div className='title'>
+        <div className='img'>
+          <div className='bg'><img src={content[0].thumbnail} alt={content[0].title} /></div>
+          <img src={content[0].thumbnail} alt={content[0].title} />
         </div>
-        <div className='content'>{content[0].contents}</div>
+        <div className='txt'>
+          <p className='publisher'>{content[0].publisher}</p>
+          <h2>{content[0].title}</h2>
+          <p className='price'><strong>WON</strong> {content[0].price}</p>
+          <p className='translators'>{content[0].translators.join(', ')}</p>
+          <p className='authors'>{content[0].authors.join(', ')}</p>
+        </div>
       </div>
-      }
+      <div className='contents'>{content[0].contents}... <a href={content[0].url} target='_blank' className='url'>더보기</a></div>
+    </div>
+    }
 
-      <hr />
+    <hr />
 
-      <div className='inner'>
-        <Post posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Post>
-        <Comments posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Comments>
-      </div>
-    </Layout>
+    <div className='inner comment'>
+      <h2>Review</h2>
+      <Post posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Post>
+      <Comments posts={comments} setPosts={setComments} bookId={pageParams.bookId}></Comments>
+    </div>
+  </div>
   );
 }
