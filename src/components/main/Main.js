@@ -13,7 +13,7 @@ export default function Main() {
   const main = useRef(null);
   const pos = useRef([]);
   const [ Index, setIndex ] = useState(null);
-  const [ Scrolled, setScrolled ] = useState(0);
+  //const [ Scrolled, setScrolled ] = useState(0);
 
 
   useEffect(()=>{
@@ -31,7 +31,7 @@ export default function Main() {
       const scroll = window.scrollY || window.pageYOffset;
       const btns = main.current.querySelectorAll('.scrollNavi li');
 
-      setScrolled(scroll);
+      //setScrolled(scroll);
       
       pos.current.map((top, i)=>{
         if (scroll >= top + base) {
