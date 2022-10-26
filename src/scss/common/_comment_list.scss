@@ -16,6 +16,28 @@
       display: flex;
       align-items: stretch;
 
+      &.listAll{
+        align-items: center;
+
+        li{
+          &.btns.listAll{
+            align-self: flex-end;
+          }
+        }
+      }
+
+      .img{
+        margin-right: 20px;
+        width: 70px;
+        border: 1px solid $color-light-gray;
+
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+      
       .txt{
         flex: 1;
         width: 100%;
@@ -130,6 +152,7 @@
         &.edit{
           align-items: stretch;
         }
+        
 
         button{
           padding: 10px 20px;
@@ -195,6 +218,9 @@
     article{
       ul{
         flex-direction: column;
+        .img{
+          margin-bottom: 20px;
+        }
         .txt{
 
           p{

@@ -5,10 +5,10 @@ export default function Post({posts, setPosts, bookId}){
 
   const bookList = useRef(null);
   const inputBookId = useRef(null);
-  const inputThumbnail = useRef(null);
   const inputTitle = useRef(null);
   const inputContent = useRef(null);
   const [ bookData, setBookData ] = useState(null);
+  //const [ bookThumbnail, setBookThumbnail ] = useState(null);
 
 
   // form 리셋
@@ -35,12 +35,18 @@ export default function Post({posts, setPosts, bookId}){
     const title = inputTitle.current.value.trim();
     const content = inputContent.current.value.trim();
 
+    const search = async ()=>{
+      const bookThumbnail = await Search(bookId, 1);
+      
+      setPosts([
+        { 'id': id, 'title': title, 'content': content, 'bookId': bookId, 'thumbnail': bookThumbnail[0].thumbnail},
+        ...posts
+      ])
+    }
+    search();
+
     if (!bookId || !title || !content) return;
 
-    setPosts([
-      { 'id': id, 'title': title, 'content': content, 'bookId': bookId},
-      ...posts
-    ])
 
     resetForm();
   };
@@ -51,10 +57,9 @@ export default function Post({posts, setPosts, bookId}){
     bookList.current?.classList.remove('off');
     const keyword = inputBookId.current.value.trim();
     const search = async ()=>{
-      setBookData( await Search(keyword));
+      setBookData( await Search(keyword, 3));
     }
-    search()
-    console.log(bookData);
+    search();
   }
 
   // input 입력 여부 확인
@@ -80,8 +85,7 @@ export default function Post({posts, setPosts, bookId}){
   return (
     <div className='commentForm'>
       {bookId 
-      ? <><input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
-      <input type='hidden' id='thumbnail' ref={inputThumbnail} value={book.thumbnail} readOnly /></>
+      ? <input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
 
       : <p className='bookId'>
           <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />

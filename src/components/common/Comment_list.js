@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import Search from '../common/Search';
-import BookData from '../../asset/bookdata';
-import { render } from 'react-dom';
 
 export default function Comments({posts, setPosts, bookId}) {
 
@@ -12,7 +11,6 @@ export default function Comments({posts, setPosts, bookId}) {
   const editContent = useRef(null);
   const [ editBookData, setEditBookData ] = useState(null);
   const [ curPosts, setCurPosts ] = useState(posts);
-  const [ bookImgData, setBookImgData ] = useState([]);
 
 
   // post 수정
@@ -20,12 +18,14 @@ export default function Comments({posts, setPosts, bookId}) {
     const bookId = editBookId.current.value.trim();
     const title = editTitle.current.value.trim();
     const content = editContent.current.value.trim();
+    const thumbnail = editThumbnail.current.value.trim();
 
     if (!bookId || !title || !content) return;
 
     setPosts(posts.map((data)=>{
       if (data.id === index) {
         data.bookId = bookId;
+        data.thumbnail = thumbnail;
         data.title = title;
         data.content = content;
         data.enableUpdate = false;
@@ -140,15 +140,19 @@ export default function Comments({posts, setPosts, bookId}) {
               </ul>
               </>
               : <>
-              <ul>
-                <li className='img'>
-                  <img src={data.thumbnail} /> 
-                </li>
+              <ul className={!bookId && 'listAll'}>
+                {!bookId && 
+                  <li className='img'>
+                    <Link to={`/content/${data.bookId}`}>
+                      <img src={data.thumbnail} />
+                    </Link>
+                  </li>
+                }
                 <li className='txt'>
                   <h3>{data.title}</h3>
                   <p>{data.content}</p>
                 </li>
-                <li className='btns'>
+                <li className={`btns ${!bookId && 'listAll'}`}>
                   <button className='btnEdit' onClick={()=>{enableUpdate(data.id)}}>Edit</button>
                   <button className='btnDelete' onClick={()=>{deletePost(data.id)}}>Delete</button>
                 </li>
