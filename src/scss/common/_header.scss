@@ -7,7 +7,7 @@
   background-color: $color-white;
   transition: 0.3s;
 
-  &.top{
+  &.top,&.on{
     top: 0;
   }
 
