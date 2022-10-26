@@ -20,7 +20,7 @@ export default function Photo() {
     const methodInterest = 'flickr.interestingness.getList';
     const methodSearch = 'flickr.photos.search';
     const methodUser = 'flickr.people.getPhotos';
-    const num = 50;
+    const num = 48;
 
     let url = '';
     if (option.type === 'interest') {
