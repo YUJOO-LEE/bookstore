@@ -24,8 +24,6 @@ export default function Content() {
   
   const [ comments, setComments ] = useState(reviewHandler());
 
-  console.log(content);
-
   return (
   <div className='bookContent'>
     {content.length && 

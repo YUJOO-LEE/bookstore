@@ -140,7 +140,7 @@ export default function Comments({posts, setPosts, bookId}) {
               </ul>
               </>
               : <>
-              <ul className={!bookId && 'listAll'}>
+              <ul className={!bookId ? 'listAll': null}>
                 {!bookId && 
                   <li className='img'>
                     <Link to={`/content/${data.bookId}`}>
