@@ -19,7 +19,10 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    BookData([query, 20, setBooks, setMeta]);
+    BookData({query: query, 
+      size: 20,
+      setMeta: setMeta,
+      setBooks: setBooks});
   }, [query]);
 
   return (

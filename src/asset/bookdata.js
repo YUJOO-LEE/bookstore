@@ -1,10 +1,11 @@
 import axios from 'axios';
 
-export default function BookData([query, size, setBooks, setMeta]) {
+export default function BookData({query, size, setBooks, setMeta}) {
+  
   // search book api
   const bookSearch = (params) => {
     return axios.get('https://dapi.kakao.com/v3/search/book', { params, headers: {
-      Authorization: 'KakaoAK f3b4c5064be29701921427a3d6702642',
+      Authorization: 'KakaoAK 6b8729bb58867da38dbe3e4ee0c072b0',
     }});
   };
 
@@ -18,12 +19,15 @@ export default function BookData([query, size, setBooks, setMeta]) {
     };
 
     const { data } = await bookSearch(params); // api 호출
-    setBooks(data.documents);
+
     if (setMeta) {
       setMeta(data.meta);
+    }
+
+    if (setBooks) {
+      setBooks(data.documents);
     }
   };
 
   bookSearchHttpHandler(query, size);
-
 }

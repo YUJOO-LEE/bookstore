@@ -17,7 +17,9 @@ export default function Content() {
 
   // 책 정보 출력
   useEffect(()=>{
-    BookData([pageParams.bookId, 1, setContent]);
+    BookData({query: pageParams.bookId, 
+      size: 1,
+      setBooks: setContent});
   }, [pageParams]);
   
   const [ comments, setComments ] = useState(reviewHandler());

@@ -5,6 +5,7 @@ export default function Post({posts, setPosts, bookId}){
 
   const bookList = useRef(null);
   const inputBookId = useRef(null);
+  const inputThumbnail = useRef(null);
   const inputTitle = useRef(null);
   const inputContent = useRef(null);
   const [ bookData, setBookData ] = useState(null);
@@ -79,7 +80,9 @@ export default function Post({posts, setPosts, bookId}){
   return (
     <div className='commentForm'>
       {bookId 
-      ? <input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
+      ? <><input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
+      <input type='hidden' id='thumbnail' ref={inputThumbnail} value={book.thumbnail} readOnly /></>
+
       : <p className='bookId'>
           <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
           <label htmlFor='bookId'>Search book</label>

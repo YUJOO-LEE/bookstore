@@ -1,13 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
 import Search from '../common/Search';
+import BookData from '../../asset/bookdata';
+import { render } from 'react-dom';
 
 export default function Comments({posts, setPosts, bookId}) {
+
   const editBookList = useRef(null);
   const editBookId = useRef(null);
+  const editThumbnail = useRef(null);
   const editTitle = useRef(null);
   const editContent = useRef(null);
   const [ editBookData, setEditBookData ] = useState(null);
   const [ curPosts, setCurPosts ] = useState(posts);
+  const [ bookImgData, setBookImgData ] = useState([]);
 
 
   // post 수정
@@ -60,12 +65,13 @@ export default function Comments({posts, setPosts, bookId}) {
   const searchBook = (e)=>{
     editBookList.current?.classList.remove('off');
     const keyword = e.target.value.trim();
+    if (!keyword) return;
     const search = async ()=>{
-      setEditBookData( await Search(keyword));
+      setEditBookData(await Search(keyword, 3));
     }
     search();
   }
-  
+
   // 페이지 마운트 시 초기화
   useEffect(()=>{
     setPosts(posts.map((data)=>{
@@ -88,8 +94,6 @@ export default function Comments({posts, setPosts, bookId}) {
     }
   }, [posts]);
 
-
-
   return (
     <div className='commentList'>
       {curPosts.length > 0 ? curPosts.map((data, i)=>{
@@ -100,12 +104,14 @@ export default function Comments({posts, setPosts, bookId}) {
               <ul>
                 <li className='txt edit'>
                   <input type='hidden' value={data.id} readOnly />
+                  <input type='hidden' defaultValue={data.thumbnail} ref={editThumbnail}/>
                   <input type={bookId ? 'hidden' : 'text'} className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
                   {editBookData?.length > 0 && 
                     <span className='bookList' ref={editBookList}>
                     {editBookData.map((book, idx)=>{
                       return (
                         <span key={idx} onClick={()=>{
+                          editThumbnail.current.value = book.thumbnail;
                           editBookId.current.value = book.isbn.split(' ')[0];
                           editBookList.current.classList.add('off');
                         }}>
@@ -135,6 +141,9 @@ export default function Comments({posts, setPosts, bookId}) {
               </>
               : <>
               <ul>
+                <li className='img'>
+                  <img src={data.thumbnail} /> 
+                </li>
                 <li className='txt'>
                   <h3>{data.title}</h3>
                   <p>{data.content}</p>
