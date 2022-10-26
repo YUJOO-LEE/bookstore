@@ -1,132 +1,175 @@
 .photo{
-  .loading{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 3;
-    transform: translate(-50%, -50%);
-  }
-
-  .frame{
-    opacity: 0;
-    transform: translateY(200px);
-    transition: 0.5s;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 50px;
-
-    &.on{
-      opacity: 1;
-      transform: translateY(0);
+  .inner{
+    .loading{
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 3;
+      transform: translate(-50%, -50%);
     }
-
-    article{
-      width: 100%;
-
-      .pic{
+  
+    .frame{
+      opacity: 0;
+      transform: translateY(200px);
+      transition: 0.5s;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 50px;
+  
+      &.on{
+        opacity: 1;
+        transform: translateY(0);
+      }
+  
+      article{
         width: 100%;
-        height: calc((1180px - 20px * 3) / 4);
-        margin-bottom: 30px;
-        overflow: hidden;
-        filter: grayscale(0.5);
-        transition: 0.5s;
-
-        img{
+  
+        .pic{
           width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        &:hover{
-          filter: grayscale(0);
-        }
-      }
-
-      h2{
-        width: 100%;
-        font-size: $font-size-regular;
-        font-weight: 500;
-        color: $color-dark-gray;
-        word-break: break-all;
-        margin-bottom: 20px;
-      }
-
-      .profile{
-        display: flex;
-        align-items: center;
-        margin-bottom: 50px;
-
-        img{
-          width: 20px;
-          border-radius: 50%;
-          margin-right: 10px;
-        }
-
-        span{
-          font-family: 'Noto Sans KR', sans-serif;
-          font-size: $font-size-regular;
-          font-weight: 100;
-          color: $color-dark-gray;
-          cursor: pointer;
+          height: calc((1180px - 20px * 3) / 4);
+          margin-bottom: 30px;
+          overflow: hidden;
+          filter: grayscale(0.5);
           transition: 0.5s;
-          word-wrap: break-word;
-
+          cursor: pointer;
+  
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+  
           &:hover{
-            text-decoration: underline;
+            filter: grayscale(0);
+          }
+        }
+  
+        h2{
+          width: 100%;
+          font-size: $font-size-regular;
+          font-weight: 500;
+          color: $color-dark-gray;
+          word-break: break-all;
+          margin-bottom: 20px;
+        }
+  
+        .profile{
+          display: flex;
+          align-items: center;
+          margin-bottom: 50px;
+  
+          img{
+            width: 20px;
+            border-radius: 50%;
+            margin-right: 10px;
+          }
+  
+          span{
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: $font-size-regular;
+            font-weight: 100;
+            color: $color-dark-gray;
+            cursor: pointer;
+            transition: 0.5s;
+            word-wrap: break-word;
+  
+            &:hover{
+              text-decoration: underline;
+            }
           }
         }
       }
-    }
-
-    .noData{
-      width: 100%;
-      height: 200px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-  }
-
-
-  .searchBox{
-    width: 100%;
-    height: auto;
-    padding-top: 20px;
-    margin-bottom: 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-
-    ul{
-      height: auto;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 20px;
-
-      li{
-        padding: 10px 20px;
-        background-color: $color-white-gray;
-        border-radius: 10px;
+  
+      .noData{
+        width: 100%;
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-family: 'Noto Sans KR', sans-serif;
-        font-size: $font-size-regular;
-        font-weight: 400;
-        color: $color-dark-gray;
-        cursor: pointer;
-
-        &.on{
-          background-color: $color-theme-2;
-          color: $color-white;
-        }
       }
     }
+  
+    .searchBox{
+      width: 100%;
+      height: auto;
+      padding-top: 20px;
+      margin-bottom: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+  
+      ul{
+        height: auto;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+  
+        li{
+          padding: 10px 20px;
+          background-color: $color-white-gray;
+          border-radius: 10px;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-size: $font-size-regular;
+          font-weight: 400;
+          color: $color-dark-gray;
+          cursor: pointer;
+  
+          &.on{
+            background-color: $color-theme-2;
+            color: $color-white;
+          }
+        }
+      }
+  
+      .articleTotal{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-size: $font-size-small;
+        color: $color-dark-gray;
+      }
+    }
+  }
+}
 
-    .articleTotal{
-      font-family: 'Noto Sans KR', sans-serif;
-      font-size: $font-size-small;
-      color: $color-dark-gray;
+@media screen and (max-width: $screen-size-tablet) {
+  .photo{
+    .inner{
+      .searchBox{
+        ul{
+          gap: 10px;
+        }
+      }
+      .frame{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile) {
+  .photo{
+    .inner{
+      .searchBox{
+        flex-direction: column;
+        margin-bottom: 10px;
+        ul{
+          align-self: flex-start;
+          margin-bottom: 30px;
+          li{
+            padding: 10px;
+          }
+        }
+      }
+      .frame{
+        grid-template-columns: 1fr;
+        article{
+          .pic{
+            height: calc((100vw - 20px * 2) / 2);
+          }
+        }
+      }
     }
   }
 }
