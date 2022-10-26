@@ -7,6 +7,7 @@ export default function Visual() {
 
   const frame = useRef(null);
   const [ clickable, setClickable ] = useState(true);
+  const [ autoplay, setAutoplay ] = useState(true);
 
   // 초기화
   useEffect(()=>{
@@ -29,6 +30,7 @@ export default function Visual() {
   // 클릭 시 이벤트
   const handleSlider = (event)=>{
     if (!clickable) return;
+    setAutoplay(false);
     setClickable(false);
     sliding(event);
   };
@@ -49,9 +51,26 @@ export default function Visual() {
         }
         frame.current.style.left = "-100%";
         setClickable(true);
+        setAutoplay(true);
       }
     })
   }
+
+
+  // 슬라이드 자동 재생
+  useEffect(()=>{
+    let play;
+    if (autoplay) {
+      play = setTimeout(()=>{
+        handleSlider('next');
+      }, 3000)
+    } else {
+      clearTimeout(play);
+    }
+    return (()=>{
+      clearTimeout(play);
+    });
+  }, [autoplay])
 
 
   return (
