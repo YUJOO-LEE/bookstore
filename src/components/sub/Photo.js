@@ -84,7 +84,7 @@ export default function Photo() {
                   pop.current.setOpen();
                   setIndex(idx);
                   }}>
-                  <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_m.jpg`} alt={item.title} />
+                  <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_w.jpg`} alt={item.title} />
                 </div>
                 <h2>{item.title}</h2>
                 <div className="profile">
