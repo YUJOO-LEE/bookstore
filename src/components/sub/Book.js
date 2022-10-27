@@ -5,8 +5,6 @@ import Search from '../../asset/search';
 
 export default function Book() {
 
-  //f3b4c5064be29701921427a3d6702642
-  //query: keyword, size: num, page: startNum
   const categories = ['책', '테크', '브랜딩', '인문학'];
   const [ meta, setMeta ] = useState([]);
   const [ books, setBooks ] = useState([]);

@@ -4,7 +4,7 @@ import Popup from '../common/Popup';
 
 export default function Photo() {
 
-  const categories = ['책', '하늘', '바다'];
+  const categories = ['책', '하늘', '동물'];
   const [ items, setItems ] = useState([]);
   const [ Loading, setLoading ] = useState(true);
   const [ isClickable, setClickable ] = useState(true);
@@ -14,7 +14,7 @@ export default function Photo() {
   const frame = useRef(null);
   const pop = useRef(null);
 
-  // search flickr api
+  // api 호출
   const getFlickr = (params)=>{
     return axios.get('https://www.flickr.com/services/rest/', { params });
   };
@@ -49,10 +49,18 @@ export default function Photo() {
 
     setTimeout(() => {
       setLoading(false);
-      frame.current.classList.add('on');
       setClickable(true);
     }, 0);
   }
+
+  // 로딩 이미지 노출에 대한 frame 효과 처리
+  useEffect(()=>{
+    if (Loading) {
+      frame.current?.classList.remove('on');
+    } else {
+      frame.current?.classList.add('on');
+    }
+  }, [Loading])
 
   // 기본 데이터 interest로 뿌려주기
   useEffect(()=>{

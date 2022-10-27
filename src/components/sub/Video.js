@@ -13,11 +13,12 @@ export default function Video() {
   const pop = useRef(null);
   const frame = useRef(null);
 
-  // search youtube api
+  // api 호출
   const getYoutube = (params)=>{
     return axios.get('https://www.googleapis.com/youtube/v3/search', { params });
   };
 
+  // 검색 핸들러
   const youtubeSearchHttpHandler = async (query=categories[0], size=24)=>{
 
     const params = {
@@ -46,10 +47,12 @@ export default function Video() {
     setQuery(text);
   };
 
+  // query값 바뀔때마다 검색 함수 작동
   useEffect(() => {
     youtubeSearchHttpHandler(query);
   }, [query])
 
+  // 로딩 이미지 노출에 대한 frame 효과 처리
   useEffect(()=>{
     if (Loading) {
       frame.current?.classList.remove('on');
