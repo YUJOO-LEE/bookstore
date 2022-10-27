@@ -1,7 +1,7 @@
 import Layout from '../common/Layout';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Search from '../../asset/Search';
+import Search from '../../asset/search';
 
 export default function Book() {
 

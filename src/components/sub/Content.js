@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Comments from '../common/Comment_list';
 import Post from '../common/Comment_post';
-import Search from '../../asset/Search';
+import Search from '../../asset/search';
 
 export default function Content() {
 

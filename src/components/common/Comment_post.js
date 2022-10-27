@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import Search from '../../asset/Search';
+import Search from '../../asset/search';
 
 export default function Post({posts, setPosts, bookId}){
 
