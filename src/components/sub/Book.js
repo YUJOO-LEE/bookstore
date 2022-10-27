@@ -41,10 +41,12 @@ export default function Book() {
         </ul>
         <p className='articleTotal'>
           <span>총 {meta.total_count}개</span>
-          <a href='https://developers.kakao.com/' target='_blank' rel='noopener noreferrer'>
-            <span>Provided by</span>
-            <img src={process.env.PUBLIC_URL + '/img/kakao.png'} alt='kakao' />
-          </a>
+          <p className="provided">
+            <span>provided by</span>
+            <a href='https://developers.kakao.com/' target='_blank' rel='noopener noreferrer'>
+              <img src={process.env.PUBLIC_URL + '/img/kakao.png'} alt='kakao' />
+            </a>
+          </p>
         </p>
       </div>
 

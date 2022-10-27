@@ -75,10 +75,12 @@ export default function Photo() {
           </ul>
           <p className='articleTotal'>
             <span>총 {totalCount}개</span>
-            <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
-              <span>Provided by</span>
-              <img src={process.env.PUBLIC_URL + '/img/flickr.png'} alt='flickr' />
-            </a>
+            <p className="provided">
+              <span>provided by</span>
+              <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
+                <img src={process.env.PUBLIC_URL + '/img/flickr.png'} alt='flickr' />
+              </a>
+            </p>
           </p>
         </div>
         

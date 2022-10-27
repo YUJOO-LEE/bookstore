@@ -78,15 +78,17 @@ export default function Video() {
             </ul>
             <p className='articleTotal'>
               <span>총 {totalCount}개</span>
-              <a href='https://developers.google.com/youtube?hl=ko' target='_blank' rel='noopener noreferrer'>
-                <span>Provided by</span>
-                <img src={process.env.PUBLIC_URL + '/img/youtube.png'} alt='youtube' />
-              </a>
+              <p className="provided">
+                <span>provided by</span>
+                <a href='https://developers.google.com/youtube?hl=ko' target='_blank' rel='noopener noreferrer'>
+                  <img src={process.env.PUBLIC_URL + '/img/youtube.png'} alt='youtube' />
+                </a>
+              </p>
             </p>
           </div>
           
           <div className='frame' ref={frame}>
-          {vids.length > 0 && vids.map((data, index)=>{
+          {vids.length > 0 ? vids.map((data, index)=>{
             let title = data.snippet.title;
             let description = data.snippet.description;
             let date = data.snippet.publishedAt;
@@ -116,7 +118,9 @@ export default function Video() {
 
               </article>
             );
-          })}
+          })
+          : <div className='noData'>검색된 데이터가 없습니다.</div>
+          }
           </div>
         </div>
       </Layout>
