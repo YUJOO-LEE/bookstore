@@ -85,7 +85,7 @@ export default function Visual() {
           </li>
           <li data-index='2'>
             <div className='inner'>
-              <h2>A reader lives a <span>thousand</span> lives before he dies</h2>
+              <h2>A book that is shut is but a <span>block</span></h2>
               <p>The first floor houses clothing, gifts, school and office supplies, stationary, and more. You’ll find textbooks and course materials on the second floor.</p>
             </div>
           </li>
