@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Comments from '../common/Comment_list';
 import Post from '../common/Comment_post';
-import BookData from '../../asset/bookdata';
+import Search from '../../asset/Search';
 
 export default function Content() {
 
@@ -17,7 +17,7 @@ export default function Content() {
 
   // 책 정보 출력
   useEffect(()=>{
-    BookData({query: pageParams.bookId, 
+    Search({query: pageParams.bookId, 
       size: 1,
       setBooks: setContent});
   }, [pageParams]);

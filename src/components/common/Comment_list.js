@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Search from '../common/Search';
+import Search from '../../asset/Search';
 
 export default function Comments({posts, setPosts, bookId}) {
 
@@ -67,7 +67,7 @@ export default function Comments({posts, setPosts, bookId}) {
     const keyword = e.target.value.trim();
     if (!keyword) return;
     const search = async ()=>{
-      setEditBookData(await Search(keyword, 3));
+      setEditBookData(await Search({query: keyword, size: 3}));
     }
     search();
   }

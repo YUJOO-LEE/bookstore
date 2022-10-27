@@ -1,7 +1,7 @@
 import Layout from '../common/Layout';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import BookData from '../../asset/bookdata';
+import Search from '../../asset/Search';
 
 export default function Book() {
 
@@ -19,7 +19,7 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    BookData({query: query, 
+    Search({query: query, 
       size: 20,
       setMeta: setMeta,
       setBooks: setBooks});

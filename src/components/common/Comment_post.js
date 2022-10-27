@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import Search from '../common/Search';
+import Search from '../../asset/Search';
 
 export default function Post({posts, setPosts, bookId}){
 
@@ -36,7 +36,7 @@ export default function Post({posts, setPosts, bookId}){
     const content = inputContent.current.value.trim();
 
     const search = async ()=>{
-      const bookThumbnail = await Search(bookId, 1);
+      const bookThumbnail = await Search({query: bookId, size:1});
       
       setPosts([
         { 'id': id, 'title': title, 'content': content, 'bookId': bookId, 'thumbnail': bookThumbnail[0].thumbnail},
