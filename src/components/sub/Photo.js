@@ -42,7 +42,7 @@ export default function Photo() {
       setLoading(false);
       frame.current.classList.add('on');
       setClickable(true);
-    }, 500);
+    }, 0);
   }
 
   // 태그 별 검색 처리
@@ -58,11 +58,11 @@ export default function Photo() {
   return (
     <>
     <Layout name='photo'>
-      <div className="inner">
+      <div className='inner'>
         {Loading && 
           <img src={`${process.env.PUBLIC_URL}/img/spinner.gif`} className='loading' alt='' />
         }
-        <div className="searchBox">
+        <div className='searchBox'>
           <ul>
             <li onClick={()=>{getFlickr({type: 'interest'})}}>#추천</li>
             {categories.map((cate, idx)=>{
@@ -73,7 +73,13 @@ export default function Photo() {
               )
             })}
           </ul>
-          <p className='articleTotal'>총 {totalCount}개</p>
+          <p className='articleTotal'>
+            <span>총 {totalCount}개</span>
+            <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
+              <span>Provided by</span>
+              <img src={process.env.PUBLIC_URL + '/img/flickr.png'} alt='flickr' />
+            </a>
+          </p>
         </div>
         
         <div className='frame' ref={frame}>
@@ -81,13 +87,13 @@ export default function Photo() {
             return (
               <article key={idx}>
                 <div className='pic' onClick={()=>{
-                  pop.current.setOpen();
+                  pop.current.setOpen(true);
                   setIndex(idx);
                   }}>
                   <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_w.jpg`} alt={item.title} />
                 </div>
                 <h2>{item.title}</h2>
-                <div className="profile">
+                <div className='profile'>
                   <img src={`http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`} alt={item.owner} onError={(e)=>{
                     e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
                   }} />
