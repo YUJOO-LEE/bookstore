@@ -14,29 +14,38 @@ export default function Photo() {
   const frame = useRef(null);
   const pop = useRef(null);
 
-  // 데이터 받아오기
-  const getFlickr = async (option)=>{
-    const key = '67f7c54ac9fe4dd292e245fbb1302b24';
-    const methodInterest = 'flickr.interestingness.getList';
-    const methodSearch = 'flickr.photos.search';
-    const methodUser = 'flickr.people.getPhotos';
-    const num = 24;
+  // search flickr api
+  const getFlickr = (params)=>{
+    return axios.get('https://www.flickr.com/services/rest/', { params });
+  };
 
-    let url = '';
-    if (option.type === 'interest') {
-      url = `https://www.flickr.com/services/rest/?method=${methodInterest}&per_page=${num}&api_key=${key}&format=json&nojsoncallback=1`;
-    } else if (option.type === 'search') {
-      url = `https://www.flickr.com/services/rest/?method=${methodSearch}&per_page=${num}&api_key=${key}&format=json&nojsoncallback=1&tags=${option.tags}`;
-    } else if (option.type === 'user') {
-      url = `https://www.flickr.com/services/rest/?method=${methodUser}&per_page=${num}&api_key=${key}&format=json&nojsoncallback=1&user_id=${option.userid}`;
+  // 검색 핸들러
+  const flickrSearchHttpHandler = async ({type='interest', query=categories[0], size=24, userid})=>{
+
+    const params = {
+      api_key: '67f7c54ac9fe4dd292e245fbb1302b24',
+      per_page: size, // 출력갯수
+      format: 'json', // 데이터 타입
+      nojsoncallback: 1, // json외 데이터 제외
+    };
+
+    // type 별 쿼리 지정
+    if (type === 'interest') {
+      params.method = 'flickr.interestingness.getList';
+    } else if (type === 'search') {
+      params.method = 'flickr.photos.search';
+      params.tags = query;
+    } else if (type === 'user') {
+      params.method = 'flickr.people.getPhotos';
+      params.user_id = userid;
     }
-    
+
     if (!isClickable) return;
     setClickable(false);
     setLoading(true);
-    const result = await axios.get(url);
-    setItems(result.data.photos.photo);
-    setTotalCount(result.data.photos.total);
+    const { data } = await getFlickr(params); // api 호출
+    setItems(data.photos.photo);
+    setTotalCount(data.photos.total);
 
     setTimeout(() => {
       setLoading(false);
@@ -45,14 +54,9 @@ export default function Photo() {
     }, 0);
   }
 
-  // 태그 별 검색 처리
-  const showSearch = (keyword)=>{
-    getFlickr({type: 'search', tags: keyword});
-  };
-
   // 기본 데이터 interest로 뿌려주기
   useEffect(()=>{
-    getFlickr({type: 'interest'});
+    flickrSearchHttpHandler({type: 'interest'});
   }, []);
 
   return (
@@ -64,23 +68,23 @@ export default function Photo() {
         }
         <div className='searchBox'>
           <ul>
-            <li onClick={()=>{getFlickr({type: 'interest'})}}>#추천</li>
+            <li onClick={()=>{flickrSearchHttpHandler({type: 'interest'})}}>#추천</li>
             {categories.map((cate, idx)=>{
               return (
                 <li key={idx}
-                  onClick={()=>{showSearch(cate)}}
+                  onClick={()=>{flickrSearchHttpHandler({type: 'search', query: cate})}}
                 >#{cate}</li>
               )
             })}
           </ul>
           <p className='articleTotal'>
             <span>총 {totalCount}개</span>
-            <p className="provided">
+            <span className="provided">
               <span>provided by</span>
               <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
                 <img src={process.env.PUBLIC_URL + '/img/flickr.png'} alt='flickr' />
               </a>
-            </p>
+            </span>
           </p>
         </div>
         
@@ -101,7 +105,7 @@ export default function Photo() {
                   }} />
                   <span onClick={()=>{
                     frame.current.classList.remove('on');
-                    getFlickr({type: 'user', userid: item.owner});
+                    flickrSearchHttpHandler({type: 'user', userid: item.owner});
                   }}>{item.owner}</span>
                 </div>
               </article>

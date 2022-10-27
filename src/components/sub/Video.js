@@ -5,13 +5,20 @@ import axios from 'axios';
 
 export default function Video() {
   const categories = ['재즈', '테크', '인문학', '피아노'];
+  const [ vids, setVids ] = useState({})
+  const [ index, setIndex ] = useState(0);
+  const [ query, setQuery ] = useState(categories[0]);
+  const [ totalCount, setTotalCount ] = useState(0);
+  const [ Loading, setLoading ] = useState(true);
+  const pop = useRef(null);
+  const frame = useRef(null);
 
   // search youtube api
   const getYoutube = (params)=>{
     return axios.get('https://www.googleapis.com/youtube/v3/search', { params });
   };
 
-  const youtubeSearchHttpHandler = async (query='jazz', size=24)=>{
+  const youtubeSearchHttpHandler = async (query=categories[0], size=24)=>{
 
     const params = {
       key: 'AIzaSyBiOlx-OiCnABYBdphO59DYaid3MDzX9H8',
@@ -33,14 +40,6 @@ export default function Video() {
     }, 0);
 
   }
-
-  const [vids, setVids] = useState({})
-  const [index, setIndex] = useState(0);
-  const [ query, setQuery ] = useState(categories[0]);
-  const [ totalCount, setTotalCount ] = useState(0);
-  const [ Loading, setLoading ] = useState(true);
-  const pop = useRef(null);
-  const frame = useRef(null);
  
   // 책 검색
   const searchYoubute = (text) => {
@@ -78,12 +77,12 @@ export default function Video() {
             </ul>
             <p className='articleTotal'>
               <span>총 {totalCount}개</span>
-              <p className="provided">
+              <span className="provided">
                 <span>provided by</span>
                 <a href='https://developers.google.com/youtube?hl=ko' target='_blank' rel='noopener noreferrer'>
                   <img src={process.env.PUBLIC_URL + '/img/youtube.png'} alt='youtube' />
                 </a>
-              </p>
+              </span>
             </p>
           </div>
           
