@@ -57,7 +57,7 @@ export default function Post({posts, setPosts, bookId}){
     bookList.current?.classList.remove('off');
     const keyword = inputBookId.current.value.trim();
     const search = async ()=>{
-      setBookData( await Search(keyword, 3));
+      setBookData( await Search({query: keyword, size: 3}));
     }
     search();
   }
