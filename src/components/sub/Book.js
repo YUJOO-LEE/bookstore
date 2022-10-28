@@ -6,9 +6,9 @@ import Search from '../../asset/search';
 export default function Book() {
 
   const categories = ['책', '테크', '브랜딩', '인문학'];
-  const [ meta, setMeta ] = useState([]);
-  const [ books, setBooks ] = useState([]);
-  const [ query, setQuery ] = useState(categories[0]);
+  const [ Meta, setMeta ] = useState([]);
+  const [ Books, setBooks ] = useState([]);
+  const [ Query, setQuery ] = useState(categories[0]);
   
   // 책 검색
   const searchBook = (text) => {
@@ -17,11 +17,11 @@ export default function Book() {
   
   // 리스트 출력
   useEffect(() => {
-    Search({query: query, 
+    Search({query: Query, 
       size: 20,
       setMeta: setMeta,
       setBooks: setBooks});
-  }, [query]);
+  }, [Query]);
 
   return (
     <Layout name='book'>
@@ -32,13 +32,13 @@ export default function Book() {
             return (
               <li key={idx}
                 onClick={()=>{searchBook(cate)}}
-                className={query === cate ? 'on' : null}
+                className={Query === cate ? 'on' : null}
               >#{cate}</li>
             )
           })}
         </ul>
         <p className='articleTotal'>
-          <span>총 {meta.total_count}개</span>
+          <span>총 {Meta.total_count}개</span>
           <span className="provided">
             <span>provided by</span>
             <a href='https://developers.kakao.com/' target='_blank' rel='noopener noreferrer'>
@@ -49,7 +49,7 @@ export default function Book() {
       </div>
 
       <div className='frame'>
-        {books.map((item, idx)=>{
+        {Books.map((item, idx)=>{
           return(
           <article key={idx}>
             <div className='imgBox'>
