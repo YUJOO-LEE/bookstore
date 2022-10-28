@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faX } from '@fortawesome/free-solid-svg-icons';
 
 const Popup = forwardRef((props, ref)=>{
-  const [open, setOpen] = useState(false);
+  const [Open, setOpen] = useState(false);
 
   useImperativeHandle(
     ref,
@@ -16,16 +16,16 @@ const Popup = forwardRef((props, ref)=>{
   )
 
   useEffect(() => {
-    if (open) {
+    if (Open) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'auto';
     }
-  }, [open]);
+  }, [Open]);
   
   return (
     <>
-    {open && 
+    {Open && 
       <aside className='pop'>
         <div className='con'>{props.children}</div>
         <span className='close' onClick={()=>{setOpen(false)}} >

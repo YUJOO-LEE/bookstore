@@ -5,12 +5,11 @@ import Popup from '../common/Popup';
 export default function Photo() {
 
   const categories = ['책', '하늘', '동물'];
-  const [ items, setItems ] = useState([]);
+  const [ Items, setItems ] = useState([]);
   const [ Loading, setLoading ] = useState(true);
-  const [ isClickable, setClickable ] = useState(true);
-  const [ index, setIndex ] = useState(0);
-  const [ totalCount, setTotalCount ] = useState(0);
-
+  const [ IsClickable, setClickable ] = useState(true);
+  const [ Index, setIndex ] = useState(0);
+  const [ TotalCount, setTotalCount ] = useState(0);
   const frame = useRef(null);
   const pop = useRef(null);
 
@@ -40,7 +39,7 @@ export default function Photo() {
       params.user_id = userid;
     }
 
-    if (!isClickable) return;
+    if (!IsClickable) return;
     setClickable(false);
     setLoading(true);
     const { data } = await getFlickr(params); // api 호출
@@ -86,7 +85,7 @@ export default function Photo() {
             })}
           </ul>
           <p className='articleTotal'>
-            <span>총 {totalCount}개</span>
+            <span>총 {TotalCount}개</span>
             <span className="provided">
               <span>provided by</span>
               <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
@@ -97,7 +96,7 @@ export default function Photo() {
         </div>
         
         <div className='frame' ref={frame}>
-          {items.length ? items.map((item, idx)=>{
+          {Items.length ? Items.map((item, idx)=>{
             return (
               <article key={idx}>
                 <div className='pic' onClick={()=>{
@@ -126,8 +125,8 @@ export default function Photo() {
     </Layout>
 
     <Popup ref={pop}>
-      {items.length > 0 &&
-        <img src={`https://live.staticflickr.com/${items[index].server}/${items[index].id}_${items[index].secret}_b.jpg`} alt={items[index].title} />
+      {Items.length > 0 &&
+        <img src={`https://live.staticflickr.com/${Items[Index].server}/${Items[Index].id}_${Items[Index].secret}_b.jpg`} alt={Items[Index].title} />
       }
     </Popup>
   </>

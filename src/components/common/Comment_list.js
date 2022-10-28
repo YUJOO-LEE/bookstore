@@ -2,16 +2,15 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Search from '../../asset/search';
 
-export default function Comments({posts, setPosts, bookId}) {
+export default function CommentsList({Posts, setPosts, bookId}) {
 
+  const [ EditBookData, setEditBookData ] = useState(null);
+  const [ CurPosts, setCurPosts ] = useState(Posts);
   const editBookList = useRef(null);
   const editBookId = useRef(null);
   const editThumbnail = useRef(null);
   const editTitle = useRef(null);
   const editContent = useRef(null);
-  const [ editBookData, setEditBookData ] = useState(null);
-  const [ curPosts, setCurPosts ] = useState(posts);
-
 
   // post 수정
   const editPost = (index) => {
@@ -22,7 +21,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
     if (!bookId || !title || !content) return;
 
-    setPosts(posts.map((data)=>{
+    setPosts(Posts.map((data)=>{
       if (data.id === index) {
         data.bookId = bookId;
         data.thumbnail = thumbnail;
@@ -36,7 +35,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // 수정 input 활성화
   const enableUpdate = (index) => {
-    setPosts(posts.map((data)=>{
+    setPosts(Posts.map((data)=>{
         if (data.id === index) {
           data.enableUpdate = true;
         } else {
@@ -49,7 +48,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // 수정 input 비활성화
   const disableUpdate = (index) => {
-    setPosts(posts.map((data)=>{
+    setPosts(Posts.map((data)=>{
         if (data.id === index) data.enableUpdate = false;
         return data;
       })
@@ -58,7 +57,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // post 삭제
   const deletePost = (index) => {
-    setPosts(posts.filter((data)=> data.id !== (index)));
+    setPosts(Posts.filter((data)=> data.id !== (index)));
   };
 
   // 책 정보 검색
@@ -74,7 +73,7 @@ export default function Comments({posts, setPosts, bookId}) {
 
   // 페이지 마운트 시 초기화
   useEffect(()=>{
-    setPosts(posts.map((data)=>{
+    setPosts(Posts?.map((data)=>{
       data.enableUpdate = false;
       return data;
     }));
@@ -83,20 +82,20 @@ export default function Comments({posts, setPosts, bookId}) {
   useEffect(()=>{
     editBookList.current?.classList.add('off');
     // post 로컬 스토리지에 저장
-    localStorage.setItem('post', JSON.stringify(posts));
+    localStorage.setItem('post', JSON.stringify(Posts));
 
-    // posts 변동되면 curPosts도 따라 변경
+    // Posts 변동되면 CurPosts도 따라 변경
     if (bookId) {
       // bookId 있으면 filter 지정
-      setCurPosts(posts.filter(data => data.bookId === bookId));
+      setCurPosts(Posts?.filter(data => data.bookId === bookId));
     } else {
-      setCurPosts(posts);
+      setCurPosts(Posts);
     }
-  }, [posts]);
+  }, [Posts]);
 
   return (
     <div className='commentList'>
-      {curPosts.length > 0 ? curPosts.map((data, i)=>{
+      {CurPosts?.length ? CurPosts.map((data, i)=>{
         return (
           <article key={i}>
             {data.enableUpdate
@@ -106,9 +105,9 @@ export default function Comments({posts, setPosts, bookId}) {
                   <input type='hidden' value={data.id} readOnly />
                   <input type='hidden' defaultValue={data.thumbnail} ref={editThumbnail}/>
                   <input type={bookId ? 'hidden' : 'text'} className='bookId' defaultValue={data.bookId} ref={editBookId} onInput={searchBook} />
-                  {editBookData?.length > 0 && 
+                  {EditBookData?.length > 0 && 
                     <span className='bookList' ref={editBookList}>
-                    {editBookData.map((book, idx)=>{
+                    {EditBookData.map((book, idx)=>{
                       return (
                         <span key={idx} onClick={()=>{
                           editThumbnail.current.value = book.thumbnail;

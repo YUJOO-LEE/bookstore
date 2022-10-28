@@ -1,6 +1,6 @@
 import Layout from '../common/Layout';
-import Comments from '../common/Comment_list';
-import Post from '../common/Comment_post';
+import CommentsList from '../common/Comment_list';
+import CommentPost from '../common/Comment_post';
 import { useState } from 'react';
 
 
@@ -23,14 +23,14 @@ export default function Review() {
     return data;
   }
 
-  const [ posts, setPosts ] = useState(getLocalData());
-
+  const [ Posts, setPosts ] = useState(getLocalData());
+  
   return (
     <Layout name='review'>
-    <div className='inner'>
-      <Post posts={posts} setPosts={setPosts}></Post>
-      <Comments posts={posts} setPosts={setPosts}></Comments>
-    </div>
+      <div className='inner'>
+        <CommentPost Posts={Posts} setPosts={setPosts}></CommentPost>
+        <CommentsList Posts={Posts} setPosts={setPosts}></CommentsList>
+      </div>
     </Layout>
   );
 }

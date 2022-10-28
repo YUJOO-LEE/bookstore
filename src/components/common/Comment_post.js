@@ -1,13 +1,13 @@
 import { useEffect, useRef, useState } from 'react';
 import Search from '../../asset/search';
 
-export default function Post({posts, setPosts, bookId}){
+export default function CommentPost({Posts, setPosts, bookId}){
 
   const bookList = useRef(null);
   const inputBookId = useRef(null);
   const inputTitle = useRef(null);
   const inputContent = useRef(null);
-  const [ bookData, setBookData ] = useState(null);
+  const [ BookData, setBookData ] = useState(null);
   //const [ bookThumbnail, setBookThumbnail ] = useState(null);
 
 
@@ -30,7 +30,7 @@ export default function Post({posts, setPosts, bookId}){
 
   // 신규 post 추가
   const createPost = () => {
-    const id = posts[0].id + 1;
+    const id = Posts[0].id + 1;
     const bookId = inputBookId.current.value.trim();
     const title = inputTitle.current.value.trim();
     const content = inputContent.current.value.trim();
@@ -40,7 +40,7 @@ export default function Post({posts, setPosts, bookId}){
       
       setPosts([
         { 'id': id, 'title': title, 'content': content, 'bookId': bookId, 'thumbnail': bookThumbnail[0].thumbnail},
-        ...posts
+        ...Posts
       ])
     }
     search();
@@ -73,8 +73,8 @@ export default function Post({posts, setPosts, bookId}){
 
   // post 로컬 스토리지에 저장
   useEffect(()=>{
-    localStorage.setItem('post', JSON.stringify(posts));
-  }, [posts]);
+    localStorage.setItem('post', JSON.stringify(Posts));
+  }, [Posts]);
 
 
   // 언마운트 시 input 초기화
@@ -90,9 +90,9 @@ export default function Post({posts, setPosts, bookId}){
       : <p className='bookId'>
           <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
           <label htmlFor='bookId'>Search book</label>
-          {bookData?.length > 0 && 
+          {BookData?.length > 0 && 
             <span className='bookList' ref={bookList}>
-            {bookData.map((book, idx)=>{
+            {BookData.map((book, idx)=>{
               return (
                 <span key={idx} onClick={()=>{
                   inputBookId.current.value = book.isbn.split(' ')[0];

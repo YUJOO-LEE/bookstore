@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from 'react';
 export default function Visual() {
 
   const frame = useRef(null);
-  const [ clickable, setClickable ] = useState(true);
-  const [ autoplay, setAutoplay ] = useState(true);
+  const [ Clickable, setClickable ] = useState(true);
+  const [ Autoplay, setAutoplay ] = useState(true);
 
   // 초기화
   useEffect(()=>{
@@ -29,7 +29,7 @@ export default function Visual() {
 
   // 클릭 시 이벤트
   const handleSlider = (event)=>{
-    if (!clickable) return;
+    if (!Clickable) return;
     setAutoplay(false);
     setClickable(false);
     sliding(event);
@@ -60,7 +60,7 @@ export default function Visual() {
   // 슬라이드 자동 재생
   useEffect(()=>{
     let play;
-    if (autoplay) {
+    if (Autoplay) {
       play = setTimeout(()=>{
         handleSlider('next');
       }, 3000)
@@ -70,7 +70,7 @@ export default function Visual() {
     return (()=>{
       clearTimeout(play);
     });
-  }, [autoplay])
+  }, [Autoplay])
 
 
   return (
