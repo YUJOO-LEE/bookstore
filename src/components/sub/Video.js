@@ -5,11 +5,11 @@ import axios from 'axios';
 
 export default function Video() {
   const categories = ['재즈', '테크', '인문학', '피아노'];
-  const [ vids, setVids ] = useState({})
-  const [ index, setIndex ] = useState(0);
-  const [ query, setQuery ] = useState(categories[0]);
-  const [ totalCount, setTotalCount ] = useState(0);
+  const [ Vids, setVids ] = useState({})
+  const [ Index, setIndex ] = useState(0);
+  const [ Query, setQuery ] = useState(categories[0]);
   const [ Loading, setLoading ] = useState(true);
+  const [ TotalCount, setTotalCount ] = useState(0);
   const pop = useRef(null);
   const frame = useRef(null);
 
@@ -47,10 +47,10 @@ export default function Video() {
     setQuery(text);
   };
 
-  // query값 바뀔때마다 검색 함수 작동
+  // Query값 바뀔때마다 검색 함수 작동
   useEffect(() => {
-    youtubeSearchHttpHandler(query);
-  }, [query])
+    youtubeSearchHttpHandler(Query);
+  }, [Query])
 
   // 로딩 이미지 노출에 대한 frame 효과 처리
   useEffect(()=>{
@@ -79,7 +79,7 @@ export default function Video() {
               })}
             </ul>
             <p className='articleTotal'>
-              <span>총 {totalCount}개</span>
+              <span>총 {TotalCount}개</span>
               <span className="provided">
                 <span>provided by</span>
                 <a href='https://developers.google.com/youtube?hl=ko' target='_blank' rel='noopener noreferrer'>
@@ -90,7 +90,7 @@ export default function Video() {
           </div>
           
           <div className='frame' ref={frame}>
-          {vids.length > 0 ? vids.map((data, index)=>{
+          {Vids.length > 0 ? Vids.map((data, idx)=>{
             let title = data.snippet.title;
             let description = data.snippet.description;
             let date = data.snippet.publishedAt;
@@ -99,8 +99,8 @@ export default function Video() {
             date = date.split('T')[0];
 
             return (
-              <article key={index}>
-                <div className='imgBox' onClick={()=>{ pop.current.setOpen(true); setIndex(index)}}>
+              <article key={idx}>
+                <div className='imgBox' onClick={()=>{ pop.current.setOpen(true); setIndex(idx)}}>
                   <div className='title'>
                     <p>{}</p>
                     <h3>{title}</h3>
@@ -127,8 +127,8 @@ export default function Video() {
         </div>
       </Layout>
       <Popup ref={pop}>
-        {vids.length > 0 && 
-          <iframe title={vids[index].snippet.title} src={`https://www.youtube.com/embed/${vids[index].id.videoId}`} frameBorder='0'></iframe>
+        {Vids.length > 0 && 
+          <iframe title={Vids[Index].snippet.title} src={`https://www.youtube.com/embed/${Vids[Index].id.videoId}`} frameBorder='0'></iframe>
         }
       </Popup>
     </>
