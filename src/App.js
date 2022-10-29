@@ -1,5 +1,8 @@
 import './scss/style.scss';
 import { Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import * as types from './redux/actionType';
 
 // common
 import Header from './components/common/Header';
@@ -19,6 +22,20 @@ import Video from './components/sub/Video';
 import Login from './components/sub/Login';
 
 function App() {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch({
+      type: types.FLICKR.start,
+      Option: {type: 'interest', size: 24}
+    });
+    dispatch({
+      type: types.YOUTUBE.start,
+      Option: {query: '재즈', size: 24}
+    });
+  }, [])
+
 	return (
 		<>
 			<Switch>

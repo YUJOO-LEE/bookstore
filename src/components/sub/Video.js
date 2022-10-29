@@ -1,66 +1,61 @@
 import Layout from '../common/Layout';
 import { useEffect, useState, useRef } from 'react';
 import Popup from '../common/Popup';
-import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 export default function Video() {
+  const dispatch = useDispatch();
   const categories = ['재즈', '테크', '인문학', '피아노'];
-  const [ Vids, setVids ] = useState({})
+	const Vids = useSelector(store => store.youtubeReducer.youtube.items);
+	const TotalCount = useSelector(store => store.youtubeReducer.youtube.pageInfo?.totalResults);
   const [ Index, setIndex ] = useState(0);
-  const [ Query, setQuery ] = useState(categories[0]);
+  const [ Option, setOption ] = useState(categories[0]);
   const [ Loading, setLoading ] = useState(true);
-  const [ TotalCount, setTotalCount ] = useState(0);
+  const [ IsClickable, setClickable ] = useState(true);
   const pop = useRef(null);
   const frame = useRef(null);
 
-  // api 호출
-  const getYoutube = (params)=>{
-    return axios.get('https://www.googleapis.com/youtube/v3/search', { params });
-  };
-
-  // 검색 핸들러
-  const youtubeSearchHttpHandler = async (query=categories[0], size=24)=>{
-
-    const params = {
-      key: 'AIzaSyBiOlx-OiCnABYBdphO59DYaid3MDzX9H8',
-      part: 'snippet',  // 제목 등 정보 포함
-      q: query, // 검색어
-      maxResults: size, // 출력갯수
-      eventType: 'completed', // 완료된 방송만 출력
-      safeSearch: 'strict', // 제한된 콘텐츠 제외
-      type: 'video',  // 검색결과 video만 포함
-    };
-
-    setLoading(true);
-    const { data } = await getYoutube(params); // api 호출
-    setTotalCount(data.pageInfo.totalResults);
-    setVids(data.items);
-
-    setTimeout(() => {
-      setLoading(false);
-    }, 0);
-
-  }
  
-  // 책 검색
-  const searchYoubute = (text) => {
-    setQuery(text);
+  // 유튜브 옵션 변경
+  const showYoubute = (query) => {
+    if (!IsClickable) return;
+    setLoading(true);
+
+    setOption({query: query, size: 24});
   };
 
-  // Query값 바뀔때마다 검색 함수 작동
+  // Option 바뀔 때 마다 데이터 변경
   useEffect(() => {
-    youtubeSearchHttpHandler(Query);
-  }, [Query])
+    dispatch({
+      type: types.YOUTUBE.start,
+      Option: Option
+    })
+  }, [Option])
 
   // 로딩 이미지 노출에 대한 frame 효과 처리
   useEffect(()=>{
     if (Loading) {
+      setClickable(false);
       frame.current?.classList.remove('on');
     } else {
+      setClickable(true);
       frame.current?.classList.add('on');
     }
   }, [Loading])
   
+  // 데이터 변경 시 로딩 효과 전환
+  useEffect(()=>{
+    setTimeout(() => {
+      setLoading(false);
+    }, 500);
+  }, [Vids]);
+
+  // 기본 데이터 재즈로 뿌려주기
+  useEffect(()=>{
+    showYoubute('재즈');
+  }, []);
+
   return (
     <>
       <Layout name='video'>
@@ -73,7 +68,7 @@ export default function Video() {
               {categories.map((cate, idx)=>{
                 return (
                   <li key={idx}
-                    onClick={()=>{searchYoubute(cate)}}
+                    onClick={()=>{showYoubute(cate)}}
                   >#{cate}</li>
                 )
               })}
@@ -90,7 +85,7 @@ export default function Video() {
           </div>
           
           <div className='frame' ref={frame}>
-          {Vids.length > 0 ? Vids.map((data, idx)=>{
+          {Vids ? Vids.map((data, idx)=>{
             let title = data.snippet.title;
             let description = data.snippet.description;
             let date = data.snippet.publishedAt;
@@ -102,7 +97,6 @@ export default function Video() {
               <article key={idx}>
                 <div className='imgBox' onClick={()=>{ pop.current.setOpen(true); setIndex(idx)}}>
                   <div className='title'>
-                    <p>{}</p>
                     <h3>{title}</h3>
                   </div>
                   <div className='pic'>
@@ -127,7 +121,7 @@ export default function Video() {
         </div>
       </Layout>
       <Popup ref={pop}>
-        {Vids.length > 0 && 
+        {Vids && 
           <iframe title={Vids[Index].snippet.title} src={`https://www.youtube.com/embed/${Vids[Index].id.videoId}`} frameBorder='0'></iframe>
         }
       </Popup>
