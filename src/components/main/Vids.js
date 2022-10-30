@@ -1,7 +1,9 @@
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import * as types from './redux/actionType';
 
 export default function Vids() {
+  
   const dispatch = useDispatch();
 
   useEffect(() => {

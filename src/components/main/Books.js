@@ -1,12 +1,22 @@
-import React, { useRef } from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect, useRef } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import * as types from './redux/actionType';
 
 export default function Books() {
+
+  const dispatch = useDispatch();
 
   const Books = useSelector(store=> store.booksReducer.books.documents);
   const frame = useRef(null);
 
+  useEffect(() => {
+    dispatch({
+      type: types.BOOKS.start,
+      Option: {query: '책', size: 4}
+    });
+  }, [])
+  
   return (
     <section id='books' className='myScroll'>
       <div className='inner'>
