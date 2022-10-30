@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as types from './redux/actionType';
+import * as types from '../../redux/actionType';
 
 export default function Books() {
 
@@ -23,7 +23,7 @@ export default function Books() {
         <h1>Books</h1>
 
         <div className='frame' ref={frame}>
-        {Books?.length && Books.map((item, idx)=>{
+        {Books?.length ? Books.map((item, idx)=>{
           if (idx > 3) return;
           
           return(
@@ -53,7 +53,9 @@ export default function Books() {
               </p>
             </div>
           </article>
-        )})}
+        )})
+        : <div className='noData'>검색된 데이터가 없습니다.</div>
+        }
         </div>
       </div>
     </section>

@@ -8,7 +8,7 @@ export default function Photo() {
 
   const dispatch = useDispatch();
   const categories = ['책', '하늘', '동물'];
-	const Items = useSelector(store => store.flickrReducer.flickr.photo);
+	const Pics = useSelector(store => store.flickrReducer.flickr.photo);
 	const TotalCount = useSelector(store => store.flickrReducer.flickr.total);
   const [ Option, setOption ] = useState(true);
   const [ Loading, setLoading ] = useState(true);
@@ -61,7 +61,7 @@ export default function Photo() {
     setTimeout(() => {
       setLoading(false);
     }, 0);
-  }, [Items]);
+  }, [Pics]);
 
   // 기본 데이터 interest로 뿌려주기
   useEffect(()=>{
@@ -102,7 +102,7 @@ export default function Photo() {
         </div>
         
         <div className='frame' ref={frame}>
-          {Items?.map((item, idx)=>{
+          {Pics?.map((item, idx)=>{
             return (
               <article key={idx}>
                 <div className='pic' onClick={()=>{
@@ -128,8 +128,8 @@ export default function Photo() {
     </Layout>
 
     <Popup ref={pop}>
-      {Items &&
-        <img src={`https://live.staticflickr.com/${Items[Index].server}/${Items[Index].id}_${Items[Index].secret}_b.jpg`} alt={Items[Index].title} />
+      {Pics &&
+        <img src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`} alt={Pics[Index].title} />
       }
     </Popup>
   </>

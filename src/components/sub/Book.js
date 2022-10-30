@@ -85,7 +85,7 @@ export default function Book() {
       </div>
 
       <div className='frame' ref={frame}>
-        {Books && Books.map((item, idx)=>{
+        {Books ? Books.map((item, idx)=>{
           return(
           <article key={idx}>
             <div className='imgBox'>
@@ -113,7 +113,9 @@ export default function Book() {
               </p>
             </div>
           </article>
-        )})}
+        )})
+        : <div className='noData'>검색된 데이터가 없습니다.</div>
+        }
       </div>
     </div>
     </Layout>

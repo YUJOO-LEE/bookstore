@@ -1,10 +1,15 @@
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import * as types from './redux/actionType';
+import { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import * as types from '../../redux/actionType';
+import Popup from '../common/Popup';
 
 export default function Pics() {
 
   const dispatch = useDispatch();
+  const Pics = useSelector(store => store.flickrReducer.flickr.photo);
+  const [ Index, setIndex ] = useState(0);
+  const frame = useRef(null);
+  const pop = useRef(null);
 
   useEffect(() => {
     dispatch({
@@ -14,10 +19,42 @@ export default function Pics() {
   }, [])
 
   return (
-    <section className='myScroll'>
+    <section id='Pics' className='myScroll'>
       <div className='inner'>
         <h1>Pics</h1>
+
+        <div className='frame' ref={frame}>
+          {Pics ? Pics.map((item, idx)=>{
+            return (
+              <article key={idx}>
+                <div className='pic' onClick={()=>{
+                  pop.current.setOpen(true);
+                  setIndex(idx);
+                  }}>
+                  <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_w.jpg`} alt={item.title} />
+                </div>
+                <h2>{item.title}</h2>
+                <div className='profile'>
+                  <img src={`http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`} alt={item.owner} onError={(e)=>{
+                    e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+                  }} />
+                  <span onClick={()=>{
+                    //showFlickr('user', item.owner);
+                  }}>{item.owner}</span>
+                </div>
+              </article>
+            );
+          })
+          : <div className='noData'>검색된 데이터가 없습니다.</div>
+          }
+        </div>
       </div>
+
+      <Popup ref={pop}>
+        {Pics &&
+          <img src={`https://live.staticflickr.com/${Pics[Index].server}/${Pics[Index].id}_${Pics[Index].secret}_b.jpg`} alt={Pics[Index].title} />
+        }
+      </Popup>
     </section>
   );
 }
