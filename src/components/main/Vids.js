@@ -1,5 +1,7 @@
 import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
 import * as types from '../../redux/actionType';
 import Popup from '../common/Popup';
 
@@ -21,7 +23,7 @@ export default function Vids() {
   return (
     <section id='Vids' className='myScroll'>
       <div className='inner'>
-        <h1>Vids</h1>
+        <h2>Vids</h2>
 
         <div className='frame' ref={frame}>
         {Vids ? Vids.map((data, idx)=>{
@@ -35,22 +37,20 @@ export default function Vids() {
           return (
             <article key={idx}>
               <div className='imgBox' onClick={()=>{ pop.current.setOpen(true); setIndex(idx)}}>
-                <div className='title'>
-                  <h3>{title}</h3>
-                </div>
                 <div className='pic'>
                   <img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
+                  <FontAwesomeIcon icon={faYoutube}></FontAwesomeIcon>
                 </div>
               </div>
               <div className='txtBox'>
-              <p className='desc'>
-                {description}
-              </p>
-              <p className='author'>
-                {date}
-              </p>
-            </div>
-
+                <h3>{title}</h3>
+                <p className='desc'>
+                  {description}
+                </p>
+                <p className='author'>
+                  {date}
+                </p>
+              </div>
             </article>
           );
         })

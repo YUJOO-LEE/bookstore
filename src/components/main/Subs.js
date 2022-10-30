@@ -2,7 +2,7 @@ export default function Subs() {
   return (
     <section className='myScroll'>
       <div className='inner'>
-        <h1>Subs</h1>
+        <h2>Subs</h2>
       </div>
     </section>
   );

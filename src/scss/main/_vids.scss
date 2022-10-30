@@ -1,100 +1,100 @@
 section#Vids{
+
+  &.on{
+    .inner{
+      .frame{
+        article{
+          opacity: 1;
+
+          &:nth-of-type(odd){
+            transform: translateY(-50px);
+          }
+      
+          &:nth-of-type(even){
+            transform: translateY(50px);
+          }
+        }
+      }
+    }
+  }
+
   .inner{
-    height: auto;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    h2{
+      transform: translateY(-50px);
+    }
 
     .frame{
       width: 100%;
       display: grid;
       grid-template-columns: 1fr 1fr 1fr 1fr;
       gap: 20px;
-      margin-bottom: 50px;
-      opacity: 0;
-      transform: translateY(200px);
-      transition: 0.5s;
 
-      &.on{
-        opacity: 1;
-        transform: translateY(0);
-      }
-      
       article{
         position: relative;
-        margin-bottom: 50px;
+        border: 1px solid $color-light-gray;
+        opacity: 0;
+        transition: 0.5s;
 
         .imgBox{
-          height: calc((1180px - 20px * 3) / 4);
-          margin-bottom: 20px;
+          height: calc((1180px - 20px * 4) / 7);
           overflow: hidden;
           position: relative;
-          border: 1px solid $color-white-gray;
           cursor: pointer;
-
-          .title{
-            width: 100%;
-            padding: 20px;
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: 1;
-
-            p{
-              margin-bottom: 10px;
-              font-family: 'Noto Sans KR', sans-serif;
-              font-size: $font-size-small;
-              font-weight: 400;
-            }
-            h3{
-              font-size: $font-size-regular;
-              line-height: 1.3;
-              color: $color-white;
-              overflow: hidden;
-              text-overflow: ellipsis;
-              word-break: break-all;
-              display: -webkit-box;
-              -webkit-line-clamp: 2;
-              -webkit-box-orient: vertical;
-            }
-          }
   
           .pic{
             width: 100%;
             height: 100%;
             overflow: hidden;
+            position: relative;
             background-color: $color-black;
             filter: grayscale(0.6);
             transition: 0.5s;
 
             &:hover{
               filter: grayscale(0);
+
+              svg{
+                filter: drop-shadow(2px 2px 3px rgba($color: $color-black, $alpha: 0.5));
+              }
             }
 
             img{
               width: 100%;
               height: 100%;
-              object-fit: contain;
-              object-position: bottom;
+              object-fit: cover;
+              object-position: center;
+            }
+
+            svg{
+              width: 30px;
+              height: 30px;
+              position: absolute;
+              bottom: 10px;
+              left: 15px;
+              color: $color-white;
+              transition: 0.5s;
             }
           }
         }
 
-        .onSale{
-          position: absolute;
-          top: calc((1180px - 20px * 5) / 4);
-          right: 0;
-          padding: 5px;
-          background-color: $color-theme-1;
-          font-size: $font-size-small;
-          font-family: 'Noto Sans KR', sans-serif;
-          font-weight: 400;
-          color: $color-white;
-          transform: translate(-10px, -50%);
-        }
-
         .txtBox{
+          padding: 30px 20px 40px;
+
+          h3{
+            padding: 5px 10px;
+            background-color: $color-theme-1;
+            font-size: $font-size-medium;
+            line-height: 1.5;
+            color: $color-white;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-break: break-all;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            margin-bottom: 20px;
+            transform: translateX(-13%);
+          }
 
           .desc{
             width: 100%;
@@ -102,7 +102,7 @@ section#Vids{
             text-overflow: ellipsis;
             word-break: break-all;
             display: -webkit-box;
-            -webkit-line-clamp: 3;
+            -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             font-size: $font-size-small;
             line-height: 1.5;

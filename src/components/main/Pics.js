@@ -14,14 +14,14 @@ export default function Pics() {
   useEffect(() => {
     dispatch({
       type: types.FLICKR.start,
-      Option: {type: 'interest', size: 4}
+      Option: {type: 'interest', size: 5}
     });
   }, [])
 
   return (
     <section id='Pics' className='myScroll'>
       <div className='inner'>
-        <h1>Pics</h1>
+        <h2>Pics</h2>
 
         <div className='frame' ref={frame}>
           {Pics ? Pics.map((item, idx)=>{
@@ -33,14 +33,16 @@ export default function Pics() {
                   }}>
                   <img src={`https://live.staticflickr.com/${item.server}/${item.id}_${item.secret}_w.jpg`} alt={item.title} />
                 </div>
-                <h2>{item.title}</h2>
-                <div className='profile'>
-                  <img src={`http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`} alt={item.owner} onError={(e)=>{
-                    e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
-                  }} />
-                  <span onClick={()=>{
-                    //showFlickr('user', item.owner);
-                  }}>{item.owner}</span>
+                <div className="txt">
+                  <h3>{item.title}</h3>
+                  <div className='profile'>
+                    <img src={`http://farm${item.farm}.staticflickr.com/${item.server}/buddyicons/${item.owner}.jpg`} alt={item.owner} onError={(e)=>{
+                      e.target.setAttribute('src', 'https://www.flickr.com/images/buddyicon.gif');
+                    }} />
+                    <span onClick={()=>{
+                      //showFlickr('user', item.owner);
+                    }}>{item.owner}</span>
+                  </div>
                 </div>
               </article>
             );

@@ -20,7 +20,7 @@ export default function Books() {
   return (
     <section id='books' className='myScroll'>
       <div className='inner'>
-        <h1>Books</h1>
+        <h2>Books</h2>
 
         <div className='frame' ref={frame}>
         {Books?.length ? Books.map((item, idx)=>{
