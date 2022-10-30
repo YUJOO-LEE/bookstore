@@ -1,6 +1,7 @@
 main{
   figure,section{
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
     
     &:nth-child(even){
       background-color: $color-light-gray;

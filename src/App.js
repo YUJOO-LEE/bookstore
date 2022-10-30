@@ -27,12 +27,12 @@ function App() {
 
   useEffect(() => {
     dispatch({
-      type: types.FLICKR.start,
-      Option: {type: 'interest', size: 24}
+      type: types.BOOKS.start,
+      Option: {query: '책', size: 4}
     });
     dispatch({
-      type: types.YOUTUBE.start,
-      Option: {query: '재즈', size: 24}
+      type: types.FLICKR.start,
+      Option: {type: 'interest', size: 4}
     });
   }, [])
 

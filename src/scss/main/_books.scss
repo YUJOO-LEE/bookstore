@@ -1,0 +1,163 @@
+section#books{
+  .inner{
+    height: auto;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    .frame{
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 50px;
+
+      article{
+        position: relative;
+        margin-bottom: 50px;
+
+        .imgBox{
+          height: calc((1180px - 20px * 3) / 4);
+          padding: 20px;
+          padding-top: 30px;
+          margin-bottom: 20px;
+          overflow: hidden;
+          position: relative;
+
+          border: 1px solid $color-white-gray;
+          //border-radius: 10px;
+
+
+          a{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover{
+              .title{
+                h3{
+                  text-decoration: underline;
+                }
+              }
+            }
+
+            .bg{
+              width: 100%;
+              height: 100%;
+              position: absolute;
+              top: 0;
+              left: 0;
+              z-index: -1;
+              filter: blur(100px) brightness(1);
+              
+              img{
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+            }
+    
+            .title{
+              width: 100%;
+  
+              p{
+                margin-bottom: 10px;
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: $font-size-small;
+                font-weight: 400;
+              }
+              h3{
+                font-size: $font-size-regular;
+                line-height: 1.3;
+              }
+            }
+    
+            .pic{
+              align-self: flex-end;
+              position: absolute;
+              bottom: -30px;
+              z-index: -1;
+              border-radius: 10px;
+              overflow: hidden;
+            }
+          }
+        }
+
+        .onSale{
+          position: absolute;
+          top: calc((1180px - 20px * 3) / 4);
+          right: 0;
+          padding: 5px;
+          background-color: $color-theme-1;
+          font-size: $font-size-small;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 400;
+          color: $color-white;
+          transform: translate(-10px, -50%);
+        }
+
+        .txtBox{
+
+          .desc{
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;   word-break: normal;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            font-size: $font-size-small;
+            line-height: 1.5;
+            margin-bottom: 20px;
+          }
+
+          .author{
+            font-family: 'Noto Sans KR', sans-serif;
+            font-size: $font-size-regular;
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-tablet) {
+  section#books{
+    .inner{
+      .frame{
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile) {
+  section#books{
+    .inner{
+      .frame{
+        grid-template-columns: 1fr;
+        article{
+          .imgBox{
+            height: calc((100vw - 20px * 2) / 2);
+            a{
+              .bg{ display: none; }
+              .title{
+                text-shadow: 0 0 3px rgba($color: $color-white, $alpha: 1.0);
+              }
+              .pic{
+                bottom: -10px;
+              }
+            }
+          }
+          .onSale{
+            top: calc((100vw - 20px * 2) / 2);
+          }
+        }
+      }
+    }
+  }
+}

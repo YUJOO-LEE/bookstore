@@ -1,44 +1,80 @@
 import Layout from '../common/Layout';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import Search from '../../asset/search';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 export default function Book() {
 
+  const dispatch = useDispatch();
   const categories = ['책', '테크', '브랜딩', '인문학'];
-  const [ Meta, setMeta ] = useState([]);
-  const [ Books, setBooks ] = useState([]);
-  const [ Query, setQuery ] = useState(categories[0]);
-  
-  // 책 검색
-  const searchBook = (text) => {
-    setQuery(text);
+  const Books = useSelector(store => store.booksReducer.books.documents);
+	const TotalCount = useSelector(store => store.booksReducer.books.meta?.total_count);
+  const [ Option, setOption ] = useState(categories[0]);
+  const [ Loading, setLoading ] = useState(true);
+  const [ IsClickable, setClickable ] = useState(true);
+  const frame = useRef(null);
+
+  // 책 검색 옵션 변경
+  const searchBook = (query) => {
+    if (!IsClickable) return;
+    setLoading(true);
+
+    setOption({query: query, 
+      size: 24});
   };
   
   // 리스트 출력
   useEffect(() => {
-    Search({query: Query, 
-      size: 20,
-      setMeta: setMeta,
-      setBooks: setBooks});
-  }, [Query]);
+    if (!Option.query) return;
+    dispatch({
+      type: types.BOOKS.start,
+      Option: Option
+    });
+  }, [Option]);
+
+  // 로딩 이미지 노출에 대한 frame 효과 처리
+  useEffect(()=>{
+    if (Loading) {
+      setClickable(false);
+      frame.current?.classList.remove('on');
+    } else {
+      setClickable(true);
+      frame.current?.classList.add('on');
+    }
+  });
+
+  // 데이터 변경 시 로딩 효과 전환
+  useEffect(()=>{
+    setTimeout(() => {
+      setLoading(false);
+    }, 0);
+  }, [Books]);
+  
+  // 기본 데이터 뿌려주기
+  useEffect(()=>{
+    searchBook(categories[0]);
+  }, []);
 
   return (
     <Layout name='book'>
     <div className='inner'>
+      {Loading && 
+        <img src={`${process.env.PUBLIC_URL}/img/spinner.gif`} className='loading' alt='' />
+      }
       <div className='searchBox'>
         <ul>
           {categories.map((cate, idx)=>{
             return (
               <li key={idx}
                 onClick={()=>{searchBook(cate)}}
-                className={Query === cate ? 'on' : null}
+                className={Option.query === cate ? 'on' : null}
               >#{cate}</li>
             )
           })}
         </ul>
         <p className='articleTotal'>
-          <span>총 {Meta.total_count}개</span>
+          <span>총 {TotalCount}개</span>
           <span className="provided">
             <span>provided by</span>
             <a href='https://developers.kakao.com/' target='_blank' rel='noopener noreferrer'>
@@ -48,8 +84,8 @@ export default function Book() {
         </p>
       </div>
 
-      <div className='frame'>
-        {Books.map((item, idx)=>{
+      <div className='frame' ref={frame}>
+        {Books && Books.map((item, idx)=>{
           return(
           <article key={idx}>
             <div className='imgBox'>

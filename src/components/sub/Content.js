@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
 import CommentsList from '../common/Comment_list';
 import CommentPost from '../common/Comment_post';
-import Search from '../../asset/search';
 
 export default function Content() {
 
@@ -23,44 +24,42 @@ export default function Content() {
     return data;
   }
   
+  const dispatch = useDispatch();
 	const pageParams = useParams();
-  const [ ContentData, setContentData ] = useState([]);
-
-  // review 핸들러
-  // const reviewHandler = ()=>{
-  //   let data = localStorage.getItem('post');
-  //   return JSON.parse(data);
-  // };
-
+  const ContentData = useSelector(store => store.contentReducer.content[0]);
+  //const [ Option, setOption ] = useState({});
   const [ CommentsData, setCommentsData ] = useState(getLocalData());
-
+  
   // 책 정보 출력
   useEffect(()=>{
-    Search({query: pageParams.bookId, 
-      size: 1,
-      setBooks: setContentData});
-  }, [pageParams]);
-  
+    dispatch({
+      type: types.CONTENT.start,
+      Option: {
+        query: pageParams.bookId, 
+        size: 1
+      }
+    });
+  }, []);
 
   return (
   <div className='bookContent'>
-    {ContentData?.length && 
+    {ContentData && 
     <div className='inner'>
       <div className='title'>
         <div className='img'>
-          <div className='bg'><img src={ContentData[0].thumbnail} alt={ContentData[0].title} /></div>
-          <img src={ContentData[0].thumbnail} alt={ContentData[0].title} />
+          <div className='bg'><img src={ContentData.thumbnail} alt={ContentData.title} /></div>
+          <img src={ContentData.thumbnail} alt={ContentData.title} />
         </div>
         <div className='txt'>
-          <p className='publisher'>{ContentData[0].publisher}</p>
-          <h2>{ContentData[0].title}</h2>
-          <p className='price'><strong>WON</strong> {ContentData[0].price}</p>
-          <p className='translators'>{ContentData[0].translators.join(', ')}</p>
-          <p className='authors'>{ContentData[0].authors.join(', ')}</p>
+          <p className='publisher'>{ContentData.publisher}</p>
+          <h2>{ContentData.title}</h2>
+          <p className='price'><strong>WON</strong> {ContentData.price}</p>
+          <p className='translators'>{ContentData.translators.join(', ')}</p>
+          <p className='authors'>{ContentData.authors.join(', ')}</p>
         </div>
       </div>
       <div className='contents'>
-        {ContentData[0].contents.length > 0 ? ContentData[0].contents+'... ' : <span className='noData'>도서 정보가 없습니다. </span>}<a href={ContentData[0].url} target='_blank' rel='noreferrer' className='url'>상세보기</a></div>
+        {ContentData.contents.length > 0 ? ContentData.contents+'... ' : <span className='noData'>도서 정보가 없습니다. </span>}<a href={ContentData.url} target='_blank' rel='noreferrer' className='url'>상세보기</a></div>
     </div>
     }
 

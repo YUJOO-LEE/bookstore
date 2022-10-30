@@ -55,12 +55,12 @@ export default function Photo() {
       frame.current?.classList.add('on');
     }
   }, [Loading])
-  
+
   // 데이터 변경 시 로딩 효과 전환
   useEffect(()=>{
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 0);
   }, [Items]);
 
   // 기본 데이터 interest로 뿌려주기
@@ -77,11 +77,15 @@ export default function Photo() {
         }
         <div className='searchBox'>
           <ul>
-            <li onClick={()=>{showFlickr('interest')}}>#추천</li>
+            <li 
+              onClick={()=>{showFlickr('interest')}}
+              className={Option.type === 'interest' ? 'on' : null}
+            >#추천</li>
             {categories.map((cate, idx)=>{
               return (
                 <li key={idx}
                   onClick={()=>{showFlickr('search', cate)}}
+                  className={Option.type === 'search' && Option.query === cate ? 'on' : null}
                 >#{cate}</li>
               )
             })}

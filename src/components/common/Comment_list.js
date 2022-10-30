@@ -1,10 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Search from '../../asset/search';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 export default function CommentsList({Posts, setPosts, bookId}) {
 
-  const [ EditBookData, setEditBookData ] = useState(null);
+  const dispatch = useDispatch();
+  const EditBookData = useSelector(store => store.bookSearchReducer.bookSearch);
+  const [ Option, setOption ] = useState({});
+
+  //const [ EditBookData, setEditBookData ] = useState(null);
   const [ CurPosts, setCurPosts ] = useState(Posts);
   const editBookList = useRef(null);
   const editBookId = useRef(null);
@@ -63,13 +68,22 @@ export default function CommentsList({Posts, setPosts, bookId}) {
   // 책 정보 검색
   const searchBook = (e)=>{
     editBookList.current?.classList.remove('off');
-    const keyword = e.target.value.trim();
-    if (!keyword) return;
-    const search = async ()=>{
-      setEditBookData(await Search({query: keyword, size: 3}));
-    }
-    search();
+    const query = e.target.value.trim();
+    if (!query) return;
+    
+    setOption({query: query, 
+      size: 3});
   }
+
+  // 도서 리스트 출력
+  useEffect(() => {
+    if (!Option.query) return;
+    dispatch({
+      type: types.BOOKSEARCH.start,
+      Option: Option
+    });
+  }, [Option]);
+  
 
   // 페이지 마운트 시 초기화
   useEffect(()=>{

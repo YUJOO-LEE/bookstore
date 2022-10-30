@@ -1,6 +1,74 @@
 import { combineReducers } from 'redux';
 import * as types from './actionType'; 
 
+// 도서리스트
+const booksReducer = (state = { books: [] }, action) => {
+	switch (action.type) {
+		case types.BOOKS.start:
+			return state;
+
+		case types.BOOKS.success:
+			return { ...state, books: action.payload }
+
+		case types.BOOKS.fail:
+			return { ...state, books: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+// 검색리스트
+const bookSearchReducer = (state = { bookSearch: [] }, action) => {
+	switch (action.type) {
+		case types.BOOKSEARCH.start:
+			return state;
+
+		case types.BOOKSEARCH.success:
+			return { ...state, bookSearch: action.payload }
+
+		case types.BOOKSEARCH.fail:
+			return { ...state, bookSearch: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+// 도서상세정보
+const contentReducer = (state = { content: [] }, action) => {
+	switch (action.type) {
+		case types.CONTENT.start:
+			return state;
+
+		case types.CONTENT.success:
+			return { ...state, content: action.payload }
+
+		case types.CONTENT.fail:
+			return { ...state, content: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+// 리뷰
+const reviewsReducer = (state = { reviews: [] }, action) => {
+	switch (action.type) {
+		case types.REVIEWS.start:
+			return state;
+
+		case types.REVIEWS.success:
+			return { ...state, reviews: action.payload }
+
+		case types.REVIEWS.fail:
+			return { ...state, reviews: action.payload }
+
+		default:
+			return state;
+	}
+}
+
 // 플리커
 const flickrReducer = (state = { flickr: [] }, action) => {
 	switch (action.type) {
@@ -35,6 +103,6 @@ const youtubeReducer = (state = { youtube: [] }, action) => {
 	}
 }
 
-const reducers = combineReducers({ flickrReducer, youtubeReducer });
+const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer });
 
 export default reducers;

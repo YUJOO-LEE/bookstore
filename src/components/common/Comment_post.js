@@ -1,14 +1,18 @@
 import { useEffect, useRef, useState } from 'react';
-import Search from '../../asset/search';
+import { useSelector, useDispatch } from 'react-redux';
+import * as types from '../../redux/actionType';
 
 export default function CommentPost({Posts, setPosts, bookId}){
+
+  const dispatch = useDispatch();
+  const BookSearchData = useSelector(store => store.bookSearchReducer.bookSearch);
+  const [ Option, setOption ] = useState({});
 
   const bookList = useRef(null);
   const inputBookId = useRef(null);
   const inputTitle = useRef(null);
   const inputContent = useRef(null);
-  const [ BookData, setBookData ] = useState(null);
-  //const [ bookThumbnail, setBookThumbnail ] = useState(null);
+  const inputThumbnail = useRef(null);
 
 
   // form 리셋
@@ -34,33 +38,28 @@ export default function CommentPost({Posts, setPosts, bookId}){
     const bookId = inputBookId.current.value.trim();
     const title = inputTitle.current.value.trim();
     const content = inputContent.current.value.trim();
-
-    const search = async ()=>{
-      const bookThumbnail = await Search({query: bookId, size:1});
-      
-      setPosts([
-        { 'id': id, 'title': title, 'content': content, 'bookId': bookId, 'thumbnail': bookThumbnail[0].thumbnail},
-        ...Posts
-      ])
-    }
-    search();
+    const thumbnail = inputThumbnail.current.value.trim();
 
     if (!bookId || !title || !content) return;
 
-
+    setPosts([
+      { 'id': id, 'title': title, 'content': content, 'bookId': bookId, 'thumbnail': thumbnail},
+      ...Posts
+    ])
+    
     resetForm();
   };
 
-  // 책 정보 검색
-  const searchBook = (e)=>{
+  // 책 검색 옵션 변경
+  const searchBook = (e) => {
     checkTyped(e);
     bookList.current?.classList.remove('off');
-    const keyword = inputBookId.current.value.trim();
-    const search = async ()=>{
-      setBookData( await Search({query: keyword, size: 3}));
-    }
-    search();
-  }
+    const query = e.target.value.trim();
+    if (!query) return;
+
+    setOption({query: query, 
+      size: 3});
+  };
 
   // input 입력 여부 확인
   const checkTyped = (e)=>{
@@ -76,6 +75,23 @@ export default function CommentPost({Posts, setPosts, bookId}){
     localStorage.setItem('post', JSON.stringify(Posts));
   }, [Posts]);
 
+  // 도서 리스트 출력
+  useEffect(() => {
+    if (!Option.query) return;
+    dispatch({
+      type: types.BOOKSEARCH.start,
+      Option: Option
+    });
+  }, [Option]);
+
+  // bookId 값 있으면 해당 정보 받아오기(content 페이지일때)
+  useEffect(() => {
+    if (!bookId) return;
+    dispatch({
+      type: types.BOOKSEARCH.start,
+      Option: {query: bookId, size: 1}
+    });
+  }, []);
 
   // 언마운트 시 input 초기화
   useEffect(()=>{
@@ -84,18 +100,20 @@ export default function CommentPost({Posts, setPosts, bookId}){
 
   return (
     <div className='commentForm'>
+      <input type='hidden' id='thumbnail' ref={inputThumbnail} defaultValue={BookSearchData[0]?.thumbnail} />
+
       {bookId 
       ? <input type='hidden' id='bookId' ref={inputBookId} value={bookId} readOnly />
-
       : <p className='bookId'>
           <input type='text' id='bookId' pattern='.*\S.*' ref={inputBookId} onInput={searchBook} value={bookId} className={bookId ? 'typed' : null} />
           <label htmlFor='bookId'>Search book</label>
-          {BookData?.length > 0 && 
+          {inputBookId.current?.value && 
             <span className='bookList' ref={bookList}>
-            {BookData.map((book, idx)=>{
+            {BookSearchData?.map((book, idx)=>{
               return (
                 <span key={idx} onClick={()=>{
                   inputBookId.current.value = book.isbn.split(' ')[0];
+                  inputThumbnail.current.value = book.thumbnail;
                   bookList.current.classList.add('off');
                 }}>
                   <span>{book.title}</span>

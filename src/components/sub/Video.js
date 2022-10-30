@@ -48,12 +48,12 @@ export default function Video() {
   useEffect(()=>{
     setTimeout(() => {
       setLoading(false);
-    }, 500);
+    }, 0);
   }, [Vids]);
 
   // 기본 데이터 재즈로 뿌려주기
   useEffect(()=>{
-    showYoubute('재즈');
+    showYoubute(categories[0]);
   }, []);
 
   return (
@@ -69,6 +69,7 @@ export default function Video() {
                 return (
                   <li key={idx}
                     onClick={()=>{showYoubute(cate)}}
+                    className={Option.query === cate ? 'on' : null}
                   >#{cate}</li>
                 )
               })}
