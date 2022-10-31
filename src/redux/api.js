@@ -45,9 +45,10 @@ export const getFlickr = async (Option)=>{
 
 // 유튜브
 export const getYoutube = async (Option)=>{
-
+  //AIzaSyAlE3K17lN4g8uTtWUmZgj0WmpV5Ih6TmM
+  //AIzaSyBiOlx-OiCnABYBdphO59DYaid3MDzX9H8
   const params = {
-    key: 'AIzaSyBiOlx-OiCnABYBdphO59DYaid3MDzX9H8',
+    key: 'AIzaSyAlE3K17lN4g8uTtWUmZgj0WmpV5Ih6TmM',
     part: 'snippet',  // 제목 등 정보 포함
     q: Option.query, // 검색어
     maxResults: Option.size, // 출력갯수
