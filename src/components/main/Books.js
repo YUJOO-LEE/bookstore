@@ -15,7 +15,17 @@ export default function Books() {
   const titleFrame = useRef(null);
   const [ Clickable, setClickable ] = useState(true);
   const [ Autoplay, setAutoplay ] = useState(true);
+  const slideSize = 5;
 
+
+  const showTitle = ()=>{
+    const curIdx = frame.current.querySelectorAll('article')[1]?.dataset.index;
+    const titles = titleFrame.current.querySelectorAll('li');
+    for (let li of titles) {
+      li?.classList.remove('on');
+    }
+    titles[curIdx]?.classList.add('on');
+  }
 
   // 슬라이드 초기화
   useEffect(()=>{
@@ -29,10 +39,11 @@ export default function Books() {
       articles.forEach((el)=>{
         el.style.width = `${100 / len}%`;
       })
+      showTitle();
     }
 
     init();
-  }, []);
+  }, [frame.current]);
 
   // 클릭 시 이벤트
   const handleSlider = (event)=>{
@@ -40,13 +51,6 @@ export default function Books() {
     setAutoplay(false);
     setClickable(false);
     sliding(event);
-    
-    const curIdx = frame.current.querySelectorAll('article')[2].dataset.index;
-    const titles = titleFrame.current.querySelectorAll('li');
-    for (let li of titles) {
-      li.classList.remove('on');
-    }
-    titles[curIdx].classList.add('on');
   };
 
   // 슬라이드 동작
@@ -66,6 +70,7 @@ export default function Books() {
         frame.current.style.left = '-100%';
         setClickable(true);
         setAutoplay(true);
+        showTitle();
       }
     })
   }
@@ -89,7 +94,7 @@ export default function Books() {
   useEffect(() => {
     dispatch({
       type: types.BOOKS.start,
-      Option: {query: '책', size: 4}
+      Option: {query: '인문', size: 8}
     });
   }, [])
   
@@ -97,14 +102,14 @@ export default function Books() {
     <section id='books' className='myScroll'>
       <div className='inner'>
         <div className="txt">
-          <h2>Books</h2>
+          <h2>Today's book</h2>
           <ul ref={titleFrame}>
           {Books?.length && Books.map((item, idx)=>{
-            if (idx > 3) return;
+            if (idx >= slideSize) return;
             
             return(
               <li key={idx}>
-                {item.title}
+                {item.publisher}
               </li>
             );
           })}
@@ -121,7 +126,7 @@ export default function Books() {
         <div className='slider'>
           <div className='frame' ref={frame}>
           {Books?.length ? Books.map((item, idx)=>{
-            if (idx > 3) return;
+            if (idx >= slideSize) return;
             
             return(
             <article key={idx} data-index={idx}>
@@ -130,16 +135,15 @@ export default function Books() {
                 <div className='bg'>
                   <img src={item.thumbnail} alt={item.title} />
                 </div>
-                <div className='title'>
-                  <p>{item.publisher}</p>
-                  <h3>{item.title}</h3>
-                </div>
                 <div className='pic'>
                   <img src={item.thumbnail} alt={item.title} />
                 </div>
               </Link>
               </div>
               <div className='txtBox'>
+                <h3>
+                  {item.title}
+                </h3>
                 <p className='desc'>
                   {item.contents}
                 </p>
@@ -147,12 +151,46 @@ export default function Books() {
                   {item.authors[0]}
                   {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
                 </p>
+                {item.translators.length > 0 &&
+                  <p className='translators'>
+                    {item.translators[0]}
+                    {item.translators.length > 1 ? `외 ${item.translators.length - 1}명` : null}
+                  </p>
+                }
+                <p className='datetime'>
+                  {item.datetime.split('T')[0]}
+                </p>
               </div>
             </article>
           )})
           : <div className='noData'>검색된 데이터가 없습니다.</div>
           }
           </div>
+        </div>
+        <div className="bookList">
+          <ul>
+          {Books?.length && Books.map((item, idx)=>{
+            if (idx < slideSize) return;
+            
+            return(
+            <li key={idx} data-index={idx}>
+              <div className='imgBox'>
+                <Link to={`/content/${item.isbn.split(' ')[0]}`}>
+                  <img src={item.thumbnail} alt={item.title} />
+                </Link>
+              </div>
+              <div className='txtBox'>
+                <h3>
+                  {item.title}
+                </h3>
+                <p className='author'>
+                  {item.authors[0]}
+                  {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
+                </p>
+              </div>
+            </li>
+          )})}
+          </ul>
         </div>
       </div>
     </section>

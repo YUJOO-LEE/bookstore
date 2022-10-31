@@ -1,27 +1,9 @@
 main{
   figure,section{
     height: auto;
-    min-height: 100vh;
     
     &:nth-child(odd){
       background-color: $color-white-gray;
-    }
-  }
-
-  section{
-    .inner{
-      height: auto;
-      min-height: 100vh;
-      padding: 100px 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-
-      h2{
-        font-size: $font-size-larger;
-        text-align: center;
-        margin-bottom: 30px;
-      }
     }
   }
 }
