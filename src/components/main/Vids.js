@@ -36,6 +36,7 @@ export default function Vids() {
 
           return (
             <article key={idx}>
+              <h3>{title}</h3>
               <div className='imgBox' onClick={()=>{ pop.current.setOpen(true); setIndex(idx)}}>
                 <div className='pic'>
                   <img src={data.snippet.thumbnails.high.url} alt={data.snippet.title} />
@@ -43,7 +44,6 @@ export default function Vids() {
                 </div>
               </div>
               <div className='txtBox'>
-                <h3>{title}</h3>
                 <p className='desc'>
                   {description}
                 </p>

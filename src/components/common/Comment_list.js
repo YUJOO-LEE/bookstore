@@ -9,7 +9,6 @@ export default function CommentsList({Posts, setPosts, bookId}) {
   const EditBookData = useSelector(store => store.bookSearchReducer.bookSearch);
   const [ Option, setOption ] = useState({});
 
-  //const [ EditBookData, setEditBookData ] = useState(null);
   const [ CurPosts, setCurPosts ] = useState(Posts);
   const editBookList = useRef(null);
   const editBookId = useRef(null);

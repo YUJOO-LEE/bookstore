@@ -1,7 +1,7 @@
 section#Pics{
   .inner{
     height: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
     padding: 100px 0;
     display: flex;
     flex-direction: column;
@@ -11,9 +11,8 @@ section#Pics{
       font-size: $font-size-larger;
       text-align: center;
       margin-bottom: 30px;
-      transform: translateY(-50px);
     }
-    
+
     .frame{
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -40,7 +39,7 @@ section#Pics{
           .pic{
             filter: grayscale(0);
             transform: translate((-5px, -5px));
-            box-shadow: 10px 10px 0 $color-white;
+            box-shadow: 10px 10px 0 $color-theme-3;
           }
           .txt{
             transform: translate((-5px, -5px));

@@ -1,4 +1,5 @@
 section#Vids{
+  background-color: $color-white-gray;
 
   &.on{
     .inner{
@@ -8,10 +9,20 @@ section#Vids{
 
           &:nth-of-type(odd){
             transform: translateY(-50px);
+
+            &:hover{
+              transform: translate(-5px, -55px);
+              box-shadow: 10px 10px 0 $color-theme-3;
+            }
           }
       
           &:nth-of-type(even){
             transform: translateY(50px);
+
+            &:hover{
+              transform: translate(-5px, 45px);
+              box-shadow: 10px 10px 0 $color-theme-3;
+            }
           }
         }
       }
@@ -20,7 +31,7 @@ section#Vids{
 
   .inner{
     height: auto;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
     padding: 100px 0;
     display: flex;
     flex-direction: column;
@@ -41,9 +52,23 @@ section#Vids{
 
       article{
         position: relative;
-        border: 1px solid $color-light-gray;
         opacity: 0;
         transition: 0.5s;
+        background-color: $color-black;
+
+        h3{
+          padding: 10px 20px;
+          margin: 10px 0;
+          font-size: $font-size-medium;
+          line-height: 2;
+          color: $color-white;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          word-break: break-all;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
 
         .imgBox{
           height: calc((1180px - 20px * 4) / 7);
@@ -88,23 +113,8 @@ section#Vids{
         }
 
         .txtBox{
-          padding: 30px 20px 40px;
-
-          h3{
-            padding: 5px 10px;
-            background-color: $color-theme-1;
-            font-size: $font-size-medium;
-            line-height: 1.5;
-            color: $color-white;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            word-break: break-all;
-            display: -webkit-box;
-            -webkit-line-clamp: 1;
-            -webkit-box-orient: vertical;
-            margin-bottom: 20px;
-            transform: translateX(-30px);
-          }
+          padding: 30px 20px 30px;
+          background-color: $color-white;
 
           .desc{
             width: 100%;
@@ -112,7 +122,7 @@ section#Vids{
             text-overflow: ellipsis;
             word-break: break-all;
             display: -webkit-box;
-            -webkit-line-clamp: 2;
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             font-size: $font-size-small;
             line-height: 1.5;
@@ -120,7 +130,7 @@ section#Vids{
           }
 
           .author{
-            font-family: Arial, Helvetica, sans-serif;
+            font-family: 'Noto Sans KR', sans-serif;
             font-size: $font-size-regular;
             font-weight: 500;
           }

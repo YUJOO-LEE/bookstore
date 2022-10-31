@@ -1,4 +1,6 @@
 section#Reviews{
+  background-color: $color-white-gray;
+
   &.on{
     .inner{
       .frame{
@@ -6,7 +8,7 @@ section#Reviews{
           ul{
             .img{
               opacity: 1;
-              transform: translate(0, -50%);
+              transform: translate(0, 50%);
             }
             .txt{
               opacity: 1;
@@ -20,8 +22,7 @@ section#Reviews{
 
   .inner{
     height: auto;
-    min-height: 100vh;
-    padding: 100px 0;
+    min-height: calc(100vh - 100px);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -30,7 +31,6 @@ section#Reviews{
       font-size: $font-size-larger;
       text-align: center;
       margin-bottom: 30px;
-      transform: translateY(-50px);
     }
 
     .frame{
@@ -49,21 +49,21 @@ section#Reviews{
           position: relative;
           
           .img{
-            width: 60px;
+            width: 70px;
             position: absolute;
-            top: 50%;
+            top: 0;
             left: 0;
             z-index: 2;
-            transform: translate(200%, -50%);
+            transform: translate(200%, 50%);
             opacity: 0;
             transition: 1s;
+            border: 5px solid $color-theme-1;
   
             a{
               display: block;
               width: 100%;
               height: 100%;
               overflow: hidden;
-              border: 1px solid $color-light-gray;
               font-size: 0;
   
               img{
@@ -77,25 +77,34 @@ section#Reviews{
           .txt{
             width: 100%;
             height: 100%;
-            padding: 50px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            border: 1px solid $color-light-gray;
-            border-radius: 20px;
+            padding: 50px 40px 50px 60px;
+            background-color: $color-white;
             transform: translateX(-50%);
             opacity: 0;
             transition: 0.5s;
+
+            &:nth-of-type(3n){
+              padding-right: 0;
+            }
   
             h3{
               font-size: $font-size-medium;
-              margin-bottom: 10px;
+              margin-bottom: 20px;
+              color: $color-black;
             }
   
             p{
               font-family: 'Noto Sans KR', sans-serif;
               font-size: $font-size-regular;
               line-height: 1.5;
+              color: $color-dark-gray;
+              text-align: justify;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              word-break: break-all;
+              display: -webkit-box;
+              -webkit-line-clamp: 5;
+              -webkit-box-orient: vertical;
             }
           }
         }

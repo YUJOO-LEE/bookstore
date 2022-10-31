@@ -34,12 +34,12 @@ export default function Btns(props) {
         <FontAwesomeIcon icon={faFilm}></FontAwesomeIcon>
         Videos
       </li>
-      <li
+      {/* <li
         onClick={()=>props.setIndex(5)}
       >
         <FontAwesomeIcon icon={faPaperPlane}></FontAwesomeIcon>
         Subscribe
-      </li>
+      </li> */}
     </ul>
   );
 }

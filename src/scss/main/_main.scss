@@ -1,16 +1,4 @@
-main{
-  figure,section{
-    height: auto;
-    
-    &:nth-child(odd){
-      background-color: $color-white-gray;
-    }
-  }
-}
-
-// @media screen and (max-width: $screen-size-tablet) {
-//   main{
-//     figure,section{
-//     }
+// main{
+//   figure,section{
 //   }
 // }
