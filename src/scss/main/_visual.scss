@@ -16,10 +16,12 @@ figure#mainVideo{
 
   .inner{
     position: absolute;
+    left: 50%;
     bottom: 20%;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
+    transform: translateX(-50%);
 
     &.on{
       h2{
