@@ -53,12 +53,14 @@
     createDOM();
     endLoading();
 
+    // DOM 요소 생성
     function createDOM() {
       imgs.forEach(src=>tags+=`<img src=${src} />`);
       vids.forEach(src=>tags+=`<video src=${src}></video>`);
       defaults.innerHTML = tags;
     }
 
+    // img 로드
     function loadImg() {
       return new Promise((res,rej)=>{
         let countImg = 0;
@@ -66,14 +68,14 @@
 
         imgDOM.forEach(img=>{
           img.onload = ()=>{
-            // 로드 완료 후 변수 하나씩 증가
             countImg++;
-            // 완료된 갯수가 배열 값의 갯수와 같다면 정상값 반환
             if (countImg === imgs.length) res(true);
           }
         })
       })
     }
+
+    // video 로드
     function loadVid() {
       return new Promise((res,rej)=>{
         let countVid = 0;
@@ -88,22 +90,19 @@
       })
     }
     
+    // 전체 로드 여부 확인
     async function endLoading() {
       const result = await Promise.all([loadImg(), loadVid()])
-      // 배열 내 모든 Promise가 완료되면 각각의 값을 result로 받음 
       const [loadedImg, loadedVid] = result;
-      // result의 결과값들이 배열에 담겨있으므로 편리하게 사용하기 위해 변수로 재할당 
 
       if (loadedImg && loadedVid) {
-        // 둘 다 true 상태라면 로딩 화면을 안보이도록 처리
         mask.classList.add('off');
       }
 
       setTimeout(()=>{
-        // 로딩화면 투명효과 적용이후, 생성했던 DOM 요소들을 제거
         mask.remove();
         defaults.remove();
-      }, 2000); // 로딩화면 transition이 1s이므로 해당시간보다 길게 지정
+      }, 2000);
     }
   </script>
 </body>
