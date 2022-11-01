@@ -45,11 +45,14 @@
           padding: 0 5px;
           display: flex;
           align-items: center;
-          font-size: $font-size-small;
-          color: $color-medium-gray;
 
-          &.on{
-            color: $color-dark-gray;
+          a{
+            font-size: $font-size-small;
+            color: $color-medium-gray;
+
+            &.on{
+              color: $color-dark-gray;
+            }
           }
 
           &::after{
@@ -89,10 +92,14 @@
         font-size: $font-size-medium;
         line-height: 2;
         color: $color-dark-gray;
-        @include logo;
-        p{
-          &:nth-of-type(2){
-            margin-bottom: 6px;
+        
+        a{
+          @include logo;
+
+          p{
+            &:nth-of-type(2){
+              margin-bottom: 1px;
+            }
           }
         }
       }

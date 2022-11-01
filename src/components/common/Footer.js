@@ -46,9 +46,11 @@ export default function Footer() {
       <address>
         <div className='inner'>
           <h2>
+            <NavLink to='/'>
             <p>Yu</p>
             <p><span></span><span></span></p>
             <p>joo</p>
+            </NavLink>
           </h2>
           <p>Garosu-gil, Gangnam-gu, Seoul, 43</p>
           <p>2022 Yujoo &copy; All Right reserved.</p>
