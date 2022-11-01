@@ -4,6 +4,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
+import Anime from '../../asset/anime';
 
 export default function Header(props) {
   const { pathname } = useLocation();
@@ -54,10 +55,15 @@ export default function Header(props) {
   }, [scrollPosition]);
 
 
-  // 페이지 이동 시 모바일 메뉴 비활성화
+  // 페이지 이동 시 모바일 메뉴 비활성화, 스크롤 상단으로 이동
   useEffect(()=>{
     return (()=>{
       setMobileNav(false);
+      new Anime(window, {
+        prop: 'scroll',
+        value: 0,
+        duration: 300
+      })
     });
   }, [pathname]);
 
