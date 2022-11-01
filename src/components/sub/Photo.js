@@ -73,7 +73,7 @@ export default function Photo() {
     <Layout name='photo'>
       <div className='inner'>
         {Loading && 
-          <img src={`${process.env.PUBLIC_URL}/img/spinner.gif`} className='loading' alt='' />
+          <div className="loading"></div>
         }
         <div className='searchBox'>
           <ul>

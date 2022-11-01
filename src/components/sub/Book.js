@@ -60,7 +60,7 @@ export default function Book() {
     <Layout name='book'>
     <div className='inner'>
       {Loading && 
-        <img src={`${process.env.PUBLIC_URL}/img/spinner.gif`} className='loading' alt='' />
+        <div className="loading"></div>
       }
       <div className='searchBox'>
         <ul>
