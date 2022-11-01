@@ -1,5 +1,8 @@
 import './scss/style.scss';
+import { useEffect } from 'react';
 import { Route, Switch } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import * as types from './redux/actionType';
 
 // common
 import Header from './components/common/Header';
@@ -19,6 +22,13 @@ import Video from './components/sub/Video';
 import Login from './components/sub/Login';
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    dispatch({
+      type: types.STORES.start
+    });
+  }, []);
 
 	return (
 		<>

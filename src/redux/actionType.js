@@ -33,3 +33,9 @@ export const YOUTUBE = {
   success: 'YOUTUBE_SUCCESS',
   fail: 'YOUTUBE_FAIL'
 }
+
+export const STORES = {
+  start: 'STORES_START',
+  success: 'STORES_SUCCESS',
+  fail: 'STORES_FAIL'
+}

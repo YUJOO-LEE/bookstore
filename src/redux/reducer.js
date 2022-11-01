@@ -103,6 +103,23 @@ const youtubeReducer = (state = { youtube: [] }, action) => {
 	}
 }
 
-const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer });
+// store
+const storesReducer = (state = { stores: [] }, action) => {
+	switch (action.type) {
+		case types.STORES.start:
+			return state;
+
+		case types.STORES.success:
+			return { ...state, stores: action.payload }
+
+		case types.STORES.fail:
+			return { ...state, stores: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer, storesReducer });
 
 export default reducers;

@@ -60,3 +60,10 @@ export const getYoutube = async (Option)=>{
   const url = 'https://www.googleapis.com/youtube/v3/search';
   return await axios.get(url, { params });
 }
+
+
+// store검색
+export const getStores = async ()=>{
+  const url = `${process.env.PUBLIC_URL}/DB/store.json`;
+  return await axios.get(url);
+}

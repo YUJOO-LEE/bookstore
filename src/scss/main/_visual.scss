@@ -35,6 +35,8 @@ figure#mainVideo{
 
     h2{
       padding: 30px;
+      margin-bottom: -20px;
+      z-index: 1;
       background-color: $color-theme-1;
       color: $color-white;
       font-size: $font-size-largest;
@@ -47,12 +49,13 @@ figure#mainVideo{
 
       span{
         font-weight: 700;
+        color: $color-black;
       }
     }
   
     p{
       max-width: 600px;
-      padding: 30px;
+      padding: 40px 30px 30px;
       background-color: $color-white;
       color: $color-black;
       font-size: $font-size-regular;

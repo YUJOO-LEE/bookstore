@@ -1,5 +1,5 @@
 import { takeLatest, all, put, fork, call } from 'redux-saga/effects';
-import { getBooks, getFlickr, getYoutube } from './api';
+import { getBooks, getFlickr, getYoutube, getStores } from './api';
 import * as types from './actionType';
 
 // 책정보
@@ -72,6 +72,20 @@ function* callYoutube() {
   yield takeLatest(types.YOUTUBE.start, returnYoutube);
 }
 
+// store 정보
+function* returnStores() {
+  try {
+    const response = yield call(getStores);
+    yield put({type: types.STORES.success, payload: response.data.stores});
+  } catch (error) {
+    yield put({type: types.STORES.fail, payload: error});
+  }
+}
+
+function* callStores() {
+  yield takeLatest(types.STORES.start, returnStores);
+}
+
 export default function* rootSaga(){
-  yield all([fork(callBooks), fork(callBookSearch), fork(callContent), fork(callFlickr), fork(callYoutube)]);
+  yield all([fork(callBooks), fork(callBookSearch), fork(callContent), fork(callFlickr), fork(callYoutube), fork(callStores)]);
 }

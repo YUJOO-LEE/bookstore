@@ -1,0 +1,84 @@
+{
+  "stores": [
+    {
+      "id": "0",
+      "listTitle": "Gangnam Main shop",
+      "address": "43, Garosu-gil Gangnam-gu, Seoul",
+      "tel": "080-500-0029",
+      "mapTitle": "Main shop",
+      "latLng": "37.5208062,127.0227158"
+    },
+    {
+      "id": "1",
+      "listTitle": "Coex Mall",
+      "address": "513, Yeongdong-daero, Gangnam-gu, Seoul",
+      "tel": "02-6002-1620",
+      "mapTitle": "Coex Mall",
+      "latLng": "37.5118014,127.0609938"
+    },
+    {
+      "id": "2",
+      "listTitle": "Times Square",
+      "address": "15, Yeongjung-ro, Yeongdeungpo-gu, Seoul",
+      "tel": "0507-1304-2074",
+      "mapTitle": "Times Square",
+      "latLng": "37.5171885,126.9035385"
+    },
+    {
+      "id": "3",
+      "listTitle": "Hongik University",
+      "address": "11, Hongik-ro, Mapo-gu, Seoul",
+      "tel": "02-323-1765",
+      "mapTitle": "Hongik University",
+      "latLng": "37.5534726,126.9232678"
+    },
+    {
+      "id": "4",
+      "listTitle": "Myeongdong",
+      "address": "11, Myeongdong 8-gil, Jung-gu, Seoul",
+      "tel": "02-318-7120",
+      "mapTitle": "Myeongdong",
+      "latLng": "37.5632348,126.9846716"
+    },
+    {
+      "id": "5",
+      "listTitle": "Daejeon Main shop",
+      "address": "166, Jungang-ro, Jung-gu, Daejeon",
+      "tel": "042-221-7041",
+      "mapTitle": "Daejeon shop",
+      "latLng": "36.329193,127.4280158"
+    },
+    {
+      "id": "6",
+      "listTitle": "Galleria Time World",
+      "address": "West 1F, 211, Daedeok-daero, Seo-gu, Daejeon",
+      "tel": "042-720-6190",
+      "mapTitle": "Galleria Daejeon",
+      "latLng": "36.3525117,127.3779744"
+    },
+    {
+      "id": "7",
+      "listTitle": "Busan Main shop",
+      "address": "Lotte Department Store's 9F, 772, Gaya-daero, Busanjin-gu, Busan",
+      "tel": "0507-1353-4675",
+      "mapTitle": "Busan shop",
+      "latLng": "35.1568526,129.0566466"
+    },
+    {
+      "id": "8",
+      "listTitle": "Seomyeon",
+      "address": "Samjeong Tower 1F, 672, Jungang-daero, Busanjin-gu, Busan",
+      "tel": "051-808-0947",
+      "mapTitle": "Seomyeon",
+      "latLng": "35.1529425,129.0595638"
+    },
+    {
+      "id": "9",
+      "listTitle": "Centum City",
+      "address": "B2F, 59, Centumnam-daero, Haeundae-gu, Busan",
+      "tel": "051-730-3338",
+      "mapTitle": "Centum City",
+      "latLng": "35.1696956,129.1314144"
+    }
+  ]
+}
