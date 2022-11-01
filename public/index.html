@@ -57,7 +57,7 @@
     // DOM 요소 생성
     function createDOM() {
       imgs.forEach(src=>tags+=`<img src=${src} />`);
-      vids.forEach(src=>tags+=`<video src=${src}></video>`);
+      vids.forEach(src=>tags+=`<video src=${src} autoPlay muted playsinline></video>`);
       defaults.innerHTML = tags;
     }
 
@@ -68,10 +68,10 @@
         const imgDOM = defaults.querySelectorAll('img');
 
         imgDOM.forEach(img=>{
-          img.onload = ()=>{
+          img.addEventListener('load', ()=>{
             countImg++;
             if (countImg === imgs.length) res(true);
-          }
+          });
         })
       })
     }
@@ -83,17 +83,17 @@
         const vidDOM = defaults.querySelectorAll('video');
 
         vidDOM.forEach(vid=>{
-          vid.onloadeddata = ()=>{
+          vid.addEventListener('loadeddata', ()=>{
             countVid++;
             if (countVid === vids.length) res(true);
-          }
+          });
         })
       })
     }
     
     // 전체 로드 여부 확인
     async function endLoading() {
-      const result = await Promise.all([loadImg(), loadVid()])
+      const result = await Promise.all([loadImg(), loadVid()]);
       const [loadedImg, loadedVid] = result;
 
       if (loadedImg && loadedVid) {
