@@ -73,7 +73,7 @@ export default function Photo() {
     <Layout name='photo'>
       <div className='inner'>
         {Loading && 
-          <div className="loading"></div>
+          <div className='loading'></div>
         }
         <div className='searchBox'>
           <ul>
@@ -92,7 +92,7 @@ export default function Photo() {
           </ul>
           <p className='articleTotal'>
             <span>총 {TotalCount}개</span>
-            <span className="provided">
+            <span className='provided'>
               <span>provided by</span>
               <a href='https://www.flickr.com/services/' target='_blank' rel='noopener noreferrer'>
                 <img src={process.env.PUBLIC_URL + '/img/flickr.png'} alt='flickr' />

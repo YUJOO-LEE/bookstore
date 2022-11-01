@@ -101,7 +101,7 @@ export default function Books() {
   return (
     <section id='books' className='myScroll'>
       <div className='inner'>
-        <div className="txt">
+        <div className='txt'>
           <h2>Today's book</h2>
           <ul ref={titleFrame}>
           {Books?.length && Books.map((item, idx)=>{
@@ -167,7 +167,7 @@ export default function Books() {
           }
           </div>
         </div>
-        <div className="bookList">
+        <div className='bookList'>
           <ul>
           {Books?.length && Books.map((item, idx)=>{
             if (idx < slideSize) return;

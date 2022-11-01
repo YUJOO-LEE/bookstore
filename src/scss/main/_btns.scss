@@ -10,6 +10,7 @@
 
   li{
     width: auto;
+    min-width: 15px;
     max-width: 15px;
     height: auto;
     min-height: 15px;
@@ -22,7 +23,7 @@
     background-color: $color-white;
     border-radius: 40px;
     box-shadow: 0 0 10px rgba($color: $color-black, $alpha: 0.5);
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: $font-size-small;
     color: transparent;
@@ -39,6 +40,24 @@
 
     svg{
       margin-right: 5px;
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile) {
+  .scrollNavi{
+    li{
+      font-size: 0;
+      margin: 5px 0;
+
+      &:hover,&.on{
+        border-radius: 15px;
+      }
+
+      svg{
+        font-size: $font-size-regular;
+        margin-right: 0;
+      }
     }
   }
 }

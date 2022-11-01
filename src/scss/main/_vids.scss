@@ -164,10 +164,29 @@ section#Vids{
 
 @media screen and (max-width: $screen-size-mobile) {
   section#Vids{
+    &.on{
+      .inner{
+        .frame{
+          article{
+            &:nth-of-type(odd){
+              transform: none;
+            }
+        
+            &:nth-of-type(even){
+              transform: none;
+            }
+          }
+        }
+      }
+    }
     .inner{
+      h2{
+        transform: none;
+      }
       .frame{
         grid-template-columns: 1fr;
         article{
+          opacity: 1;
           .imgBox{
             height: calc((100vw - 20px * 2) / 2);
             a{

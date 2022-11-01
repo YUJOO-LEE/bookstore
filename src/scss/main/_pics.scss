@@ -131,6 +131,13 @@ section#Pics{
           .pic{
             height: calc((100vw - 20px * 2) / 2);
           }
+          &:nth-of-type(1){
+            grid-row: 1 / 2;
+  
+            .pic{
+              height: calc(100vw - 20px * 2);
+            }
+          }
         }
       }
     }

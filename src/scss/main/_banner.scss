@@ -44,6 +44,21 @@ section.desk{
   }
 }
 
+@media screen and (max-width: $screen-size-tablet) {
+  section.desk{
+    .inner{
+      padding: 0;
+      border-radius: 0;
+      .txt{
+        font-size: $font-size-small;
+        a{
+          font-size: $font-size-small;
+        }
+      }
+    }
+  }
+}
+
 section.grayToWhite{
   background: linear-gradient(0deg, $color-white, $color-white-gray);
   .inner{
@@ -55,5 +70,31 @@ section.whiteToGray{
   background: linear-gradient(0deg, $color-white-gray, $color-white);
   .inner{
     height: 100px;
+  }
+}
+
+@media screen and (max-width: $screen-size-tablet) {
+  section.desk{
+    .inner{
+      padding: 0;
+      border-radius: 0;
+      .txt{
+        font-size: $font-size-small;
+        a{
+          font-size: $font-size-small;
+        }
+      }
+    }
+  }
+  section.grayToWhite{
+    .inner{
+      height: 50px;
+    }
+  }
+  
+  section.whiteToGray{
+    .inner{
+      height: 50px;
+    }
   }
 }

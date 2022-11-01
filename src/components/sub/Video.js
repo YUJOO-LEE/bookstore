@@ -61,7 +61,7 @@ export default function Video() {
       <Layout name='video'>
         <div className='inner'>
           {Loading && 
-            <div className="loading"></div>
+            <div className='loading'></div>
           }
           <div className='searchBox'>
             <ul>
@@ -76,7 +76,7 @@ export default function Video() {
             </ul>
             <p className='articleTotal'>
               <span>총 {TotalCount}개</span>
-              <span className="provided">
+              <span className='provided'>
                 <span>provided by</span>
                 <a href='https://developers.google.com/youtube?hl=ko' target='_blank' rel='noopener noreferrer'>
                   <img src={process.env.PUBLIC_URL + '/img/youtube.png'} alt='youtube' />

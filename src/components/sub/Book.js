@@ -60,7 +60,7 @@ export default function Book() {
     <Layout name='book'>
     <div className='inner'>
       {Loading && 
-        <div className="loading"></div>
+        <div className='loading'></div>
       }
       <div className='searchBox'>
         <ul>
@@ -75,7 +75,7 @@ export default function Book() {
         </ul>
         <p className='articleTotal'>
           <span>총 {TotalCount}개</span>
-          <span className="provided">
+          <span className='provided'>
             <span>provided by</span>
             <a href='https://developers.kakao.com/' target='_blank' rel='noopener noreferrer'>
               <img src={process.env.PUBLIC_URL + '/img/kakao.png'} alt='kakao' />

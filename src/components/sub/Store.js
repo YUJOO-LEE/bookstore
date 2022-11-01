@@ -72,7 +72,7 @@ export default function Store() {
   return (
     <Layout name='store'>
       <div className='inner'>
-        <div className="searchBox">
+        <div className='searchBox'>
           <ul className='category'>
             <li
               onClick={()=>{setOption('')}}
@@ -91,7 +91,7 @@ export default function Store() {
             <span>총 {Start ? Stores.filter(store=>
                 !Option || store.address.includes(Option)
               ).length : 0}개</span>
-            <span className="provided">
+            <span className='provided'>
               <span>provided by</span>
               <a href='https://apis.map.kakao.com/' target='_blank' rel='noopener noreferrer'>
                 <img src={process.env.PUBLIC_URL + '/img/kakao.png'} alt='kakao' />
@@ -99,7 +99,7 @@ export default function Store() {
             </span>
           </p>
         </div>
-        <div className="frame">
+        <div className='frame'>
           <div className='storeList'>
             <ul>
               {Start ? Stores.filter(store=>

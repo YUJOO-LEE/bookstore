@@ -3,7 +3,7 @@ import { faPanorama, faBook, faFeather, faCameraRetro, faFilm, faPaperPlane } fr
 
 export default function Btns(props) {
   return (
-    <ul className="scrollNavi">
+    <ul className='scrollNavi'>
       <li
         onClick={()=>props.setIndex(0)}
       >

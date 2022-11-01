@@ -222,7 +222,7 @@
   }
 }
 
-@media screen and (max-width: 1179px) {
+@media screen and (max-width: $screen-size-tablet) {
   .store{
     .inner{
       .searchBox{
@@ -230,16 +230,25 @@
           gap: 10px;
         }
       }
-
       .frame{
+        height: auto;
+        flex-direction: column;
         .storeList{
           width: 100%;
+          height: 268px;
+          padding-right: 0;
+          margin-bottom: 20px;
+          ul{
+            li{
+              .address{
+                display: none;
+              }
+            }
+          }
         }
-  
         .storeMap{
           width: 100%;
-          padding: 5%;
-          flex: 1;
+          flex: 0 0 450px;
           border-top: 0;
         }
       }
@@ -248,7 +257,7 @@
 }
 
 
-@media screen and (max-width: 539px) {
+@media screen and (max-width: $screen-size-mobile) {
   .store{
     .inner{
       .searchBox{
@@ -260,6 +269,24 @@
           li{
             padding: 10px;
           }
+        }
+      }
+      .frame{
+        .storeList{
+          height: 183px;
+          ul{
+            li{
+              h3{
+                margin-bottom: 0;
+              }
+              .tel{
+                display: none;
+              }
+            }
+          }
+        }
+        .storeMap{
+          flex: 0 0 300px;
         }
       }
     }
