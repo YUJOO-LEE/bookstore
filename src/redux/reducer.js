@@ -120,6 +120,23 @@ const storesReducer = (state = { stores: [] }, action) => {
 	}
 }
 
-const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer, storesReducer });
+// store
+const aboutReducer = (state = { about: [] }, action) => {
+	switch (action.type) {
+		case types.ABOUT.start:
+			return state;
+
+		case types.ABOUT.success:
+			return { ...state, about: action.payload }
+
+		case types.ABOUT.fail:
+			return { ...state, about: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer, storesReducer, aboutReducer });
 
 export default reducers;

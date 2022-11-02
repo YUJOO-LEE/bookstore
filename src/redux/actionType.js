@@ -39,3 +39,9 @@ export const STORES = {
   success: 'STORES_SUCCESS',
   fail: 'STORES_FAIL'
 }
+
+export const ABOUT = {
+  start: 'ABOUT_START',
+  success: 'ABOUT_SUCCESS',
+  fail: 'ABOUT_FAIL'
+}

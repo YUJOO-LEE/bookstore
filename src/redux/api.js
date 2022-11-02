@@ -67,3 +67,9 @@ export const getStores = async ()=>{
   const url = `${process.env.PUBLIC_URL}/DB/store.json`;
   return await axios.get(url);
 }
+
+// about
+export const getAbout = async ()=>{
+  const url = `${process.env.PUBLIC_URL}/DB/about.json`;
+  return await axios.get(url);
+}

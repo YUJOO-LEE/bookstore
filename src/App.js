@@ -28,6 +28,9 @@ function App() {
     dispatch({
       type: types.STORES.start
     });
+    dispatch({
+      type: types.ABOUT.start
+    });
   }, []);
 
 	return (
