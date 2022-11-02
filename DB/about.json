@@ -1,0 +1,69 @@
+{
+  "about": {
+    "history": [
+      {
+        "date": "2020.01",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      },
+      {
+        "date": "2020.02",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      },
+      {
+        "date": "2020.03",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      },
+      {
+        "date": "2020.04",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      },
+      {
+        "date": "2020.05",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      },
+      {
+        "date": "2020.06",
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+      }
+    ],
+  
+    "members": [
+      {
+        "position": "CEO",
+        "name": "Jennifer",
+        "text": "A description of this person's aspirations",
+        "img": "member4.jpg"
+      },
+      {
+        "position": "Marketing Coordinator",
+        "name": "Amelia",
+        "text": "A description of this person's aspirations",
+        "img": "member1.jpg"
+      },
+      {
+        "position": "Accountant",
+        "name": "Morgan",
+        "text": "A description of this person's aspirations",
+        "img": "member3.jpg"
+      },
+      {
+        "position": "Software Developer",
+        "name": "Austin",
+        "text": "A description of this person's aspirations",
+        "img": "member5.jpg"
+      },
+      {
+        "position": "UX/UI Designer",
+        "name": "Justin",
+        "text": "A description of this person's aspirations",
+        "img": "member6.jpg"
+      },
+      {
+        "position": "Data Analyst",
+        "name": "Gemma",
+        "text": "A description of this person's aspirations",
+        "img": "member2.jpg"
+      }
+    ]
+  }
+}
