@@ -2,28 +2,28 @@
   "about": {
     "history": [
       {
-        "date": "2020.01",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      },
-      {
-        "date": "2020.02",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      },
-      {
-        "date": "2020.03",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
-      },
-      {
         "date": "2020.04",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        "text": "Establishment of bookstore"
       },
       {
-        "date": "2020.05",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        "date": "2020.08",
+        "text": "Registered as a venture company"
       },
       {
-        "date": "2020.06",
-        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit."
+        "date": "2021.06",
+        "text": "Capital increase (300 million won)"
+      },
+      {
+        "date": "2021.11",
+        "text": "Expand and transfer the company"
+      },
+      {
+        "date": "2022.05",
+        "text": "Certified as an excellent technology evaluation company"
+      },
+      {
+        "date": "2022.10",
+        "text": "2022 Designated as a promising enterprise"
       }
     ],
   
@@ -31,37 +31,37 @@
       {
         "position": "CEO",
         "name": "Jennifer",
-        "text": "A description of this person's aspirations",
+        "text": "There is a great deal of difference between an eager man who wants to read a book and the tired man who wants a book to read.",
         "img": "member4.jpg"
       },
       {
         "position": "Marketing Coordinator",
         "name": "Amelia",
-        "text": "A description of this person's aspirations",
+        "text": "When I am attacked by gloomy thoughts, nothing helps me so much as running to my books. They quickly absorb me and banish the clouds from my mind.",
         "img": "member1.jpg"
       },
       {
         "position": "Accountant",
         "name": "Morgan",
-        "text": "A description of this person's aspirations",
+        "text": "The reading of all good books is like a conversation with the finest men of past centuries.",
         "img": "member3.jpg"
       },
       {
         "position": "Software Developer",
         "name": "Austin",
-        "text": "A description of this person's aspirations",
+        "text": "I really had a lot of dreams when I was a kid, and I think a great deal of that grew out of the fact that I had a chance to read a lot.",
         "img": "member5.jpg"
       },
       {
         "position": "UX/UI Designer",
         "name": "Justin",
-        "text": "A description of this person's aspirations",
+        "text": "Time is like a river. You cannot touch the same water twice, because the flow that has passed will never pass again. Enjoy every moment of your life.",
         "img": "member6.jpg"
       },
       {
         "position": "Data Analyst",
         "name": "Gemma",
-        "text": "A description of this person's aspirations",
+        "text": "If I have ever made any valuable discoveries, it has been owing more to patient attention, than to any other talent.",
         "img": "member2.jpg"
       }
     ]

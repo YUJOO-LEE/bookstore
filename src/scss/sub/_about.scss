@@ -201,8 +201,11 @@
             }
   
             .desc{
+              width: calc(100% - 60px);
+              margin-top: 10px;
               font-family: 'Noto Sans KR', sans-serif;
               font-size: $font-size-regular;
+              line-height: 2;
               position: absolute;
               transform: translateY(100px);
               opacity: 0;
@@ -243,6 +246,7 @@
             cursor: default;
 
             .wrap{
+              background-color: rgba($color: $color-light-gray, $alpha: 0.2);
               backdrop-filter: blur(20px);
 
               .position{
