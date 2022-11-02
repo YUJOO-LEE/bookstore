@@ -53,8 +53,18 @@ export default function Login() {
     <Layout name='search'>
       <div className='searchBox'>
         <div className='inner'>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <form onSubmit={(e)=>{e.preventDefault(); setKeyword(e.target.search.value)}}>
+          <form 
+            id='searchForm' name='searchForm'
+            onSubmit={(e)=>{
+              e.preventDefault();
+              setKeyword(e.target.search.value);
+            }}
+          >
+            <FontAwesomeIcon icon={faMagnifyingGlass}
+              onClick={(e)=>{
+                setKeyword(e.target.parentElement.search?.value);
+              }}
+            />
             <input type='text'
               placeholder='검색어를 입력하세요'
               id='search'
