@@ -1,0 +1,129 @@
+.login{
+  .inner{
+    .frame{
+      margin: 100px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h2{
+        @include logo;
+        margin-bottom: 30px;
+
+        p{
+          font-size: $font-size-largest;
+          &:nth-of-type(2){
+            margin: 2px 0;
+            span{
+              width: 6px;
+              height: 6px;
+            }
+          }
+        }
+      }
+      
+      form{
+        width: 100%;
+        max-width: 400px;
+        ul{
+          width: 100%;
+          li{
+            width: 100%;
+            padding: 10px 0;
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            span{
+              cursor: pointer;
+            }
+
+            .placeholder{
+              position: absolute;
+              top: 0;
+              left: 0;
+              padding: 0 5px;
+              background-color: $color-white;
+              font-size: $font-size-small;
+              color: $color-dark-gray;
+              transform: translate(5px, 3px);
+            }
+
+            input[type=email],input[type=password]{
+              width: 100%;
+              padding: 10px;
+              font-family: 'Noto Sans KR', sans-serif;
+              font-weight: 300;
+              font-size: $font-size-regular;
+              border: 1px solid $color-medium-gray;
+            }
+
+            .remember{
+              font-family: 'Noto Sans KR', sans-serif;
+              font-size: $font-size-small;
+            }
+
+            input[type=checkbox]{
+              width: 15px;
+              height: 15px;
+              accent-color: $color-black;
+              margin-right: 5px;
+            }
+
+            p{
+              display: flex;
+              span{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: $font-size-small;
+                display: flex;
+                
+                &.find{
+                  &::after{
+                    content: '/';
+                    display: block;
+                    height: 100%;
+                    margin: 0 5px;
+                    color: $color-light-gray;
+                  }
+                }
+              }
+            }
+
+            button{
+              width: 100%;
+              padding: 20px;
+              border: 0;
+              outline: 0;
+              background-color: $color-black;
+              color: $color-white;
+              border-radius: 30px;
+              cursor: pointer;
+            }
+
+            &.join{
+              border-top: 1px solid $color-light-gray;
+              margin-top: 10px;
+              padding-top: 20px;
+              justify-content: center;
+              span{
+                font-family: 'Noto Sans KR', sans-serif;
+                font-size: $font-size-regular;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: $screen-size-mobile) {
+  .login{
+    .inner{
+      .frame{
+        margin: 50px 0;
+      }
+    }
+  }
+}
