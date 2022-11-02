@@ -2,12 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faMagnifyingGlass, faX, faPenNib, faAt } from '@fortawesome/free-solid-svg-icons';
 import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink, Link, useLocation, useHistory } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
 import Anime from '../../asset/anime';
 
 export default function Header(props) {
   const { pathname } = useLocation();
+  const history = useHistory();
 
   // 메뉴 출력
   const Header = useRef(null);
@@ -66,6 +67,16 @@ export default function Header(props) {
       })
     });
   }, [pathname]);
+
+  // 검색 이벤트
+  const goSearch = (e)=>{
+    e.preventDefault();
+    history.push({
+      pathname: '/search',
+      state: {q: e.target.search.value}
+    });
+    e.target.search.value = '';
+  }
 
   return (
     <header id='header' className={`${props.type} ${isHeaderOn && 'on'} ${isScrollTop && 'top'}`} ref={Header}>
@@ -131,14 +142,16 @@ export default function Header(props) {
             </Link>
           </nav>
 
-          <div className="navBtns">
+          <div className='navBtns'>
             <span className='login'>
               <NavLink to='/login' activeClassName='on'>
               Login / Join
               </NavLink>
             </span>
             <span className='search'>
-              <FontAwesomeIcon icon={faMagnifyingGlass} />
+              <Link to='/search'>
+                <FontAwesomeIcon icon={faMagnifyingGlass} />
+              </Link>
             </span>
           </div>
         </div>
@@ -158,7 +171,9 @@ export default function Header(props) {
 
         <div className='mobileSearch'>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
-          <input type="text" placeholder='검색어를 입력하세요' />
+          <form onSubmit={goSearch}>
+            <input type='text' placeholder='검색어를 입력하세요' id='search' />
+          </form>
         </div>
 
         <ul className='mobileMainNav'>

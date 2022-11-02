@@ -20,6 +20,7 @@ import Review from './components/sub/Review';
 import Store from './components/sub/Store';
 import Video from './components/sub/Video';
 import Login from './components/sub/Login';
+import Search from './components/sub/Search';
 
 function App() {
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ function App() {
 			<Route path='/about' component={About}></Route>
 			<Route path='/store' component={Store}></Route>
 			<Route path='/login' component={Login}></Route>
+			<Route path='/search' component={Search}></Route>
 
 			<Footer></Footer>
 		</>

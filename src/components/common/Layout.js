@@ -7,7 +7,8 @@ export default function Layout(props) {
     video: ['#79BEDB', '#f5d547'],
     login: ['#f5d547', '#e38883'],
     about: ['#e38883', '#888'],
-    store: ['#888', '#266A2E']
+    store: ['#888', '#266A2E'],
+    search: ['#888', '#000']
   };
 
   return (

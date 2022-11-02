@@ -18,7 +18,7 @@ export default function Login() {
               </li>
               <li>
                 <label htmlFor='password' className='placeholder'>Password</label>
-                <input type='password' name='password' id='password' />
+                <input type='password' name='password' id='password' autoComplete='off' />
               </li>
               <li>
                 <p>
