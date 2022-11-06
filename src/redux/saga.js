@@ -1,5 +1,5 @@
 import { takeLatest, all, put, fork, call } from 'redux-saga/effects';
-import { getBooks, getFlickr, getYoutube, getStores, getAbout } from './api';
+import { getBooks, getFlickr, getYoutube, getStores, getAbout, getVisual } from './api';
 import * as types from './actionType';
 
 // 책정보
@@ -100,6 +100,20 @@ function* callAbout() {
   yield takeLatest(types.ABOUT.start, returnAbout);
 }
 
+// visual 리스트
+function* returnVisual() {
+  try {
+    const response = yield call(getVisual);
+    yield put({type: types.VISUAL.success, payload: response.data.visual});
+  } catch (error) {
+    yield put({type: types.VISUAL.fail, payload: error});
+  }
+}
+
+function* callVisual() {
+  yield takeLatest(types.VISUAL.start, returnVisual);
+}
+
 export default function* rootSaga(){
-  yield all([fork(callBooks), fork(callBookSearch), fork(callContent), fork(callFlickr), fork(callYoutube), fork(callStores), fork(callAbout)]);
+  yield all([fork(callBooks), fork(callBookSearch), fork(callContent), fork(callFlickr), fork(callYoutube), fork(callStores), fork(callAbout), fork(callVisual)]);
 }

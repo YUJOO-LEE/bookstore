@@ -120,7 +120,7 @@ const storesReducer = (state = { stores: [] }, action) => {
 	}
 }
 
-// store
+// about
 const aboutReducer = (state = { about: [] }, action) => {
 	switch (action.type) {
 		case types.ABOUT.start:
@@ -137,6 +137,23 @@ const aboutReducer = (state = { about: [] }, action) => {
 	}
 }
 
-const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer, storesReducer, aboutReducer });
+// visual
+const visualReducer = (state = { visual: [] }, action) => {
+	switch (action.type) {
+		case types.VISUAL.start:
+			return state;
+
+		case types.VISUAL.success:
+			return { ...state, visual: action.payload }
+
+		case types.VISUAL.fail:
+			return { ...state, visual: action.payload }
+
+		default:
+			return state;
+	}
+}
+
+const reducers = combineReducers({ booksReducer, contentReducer, bookSearchReducer, reviewsReducer, flickrReducer, youtubeReducer, storesReducer, aboutReducer, visualReducer });
 
 export default reducers;

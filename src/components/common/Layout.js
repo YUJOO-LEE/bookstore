@@ -2,7 +2,7 @@ export default function Layout(props) {
   const figureColor = {
     book: ['#266A2E', '#593E1A'],
     content: ['#593E1A', '#266A2E'],
-    review: ['#593E1A', '#6B78B4'],
+    review: ['#266A2E', '#6B78B4'],
     photo: ['#6B78B4', '#79BEDB'],
     video: ['#79BEDB', '#f5d547'],
     login: ['#f5d547', '#e38883'],

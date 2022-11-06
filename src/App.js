@@ -32,6 +32,9 @@ function App() {
     dispatch({
       type: types.ABOUT.start
     });
+    dispatch({
+      type: types.VISUAL.start
+    });
   }, []);
 
 	return (

@@ -45,3 +45,9 @@ export const ABOUT = {
   success: 'ABOUT_SUCCESS',
   fail: 'ABOUT_FAIL'
 }
+
+export const VISUAL = {
+  start: 'VISUAL_START',
+  success: 'VISUAL_SUCCESS',
+  fail: 'VISUAL_FAIL'
+}

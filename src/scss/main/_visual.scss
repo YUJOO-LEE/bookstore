@@ -5,6 +5,7 @@ figure#mainVisual{
   position: relative;
 
   .frame{
+    margin-top: 30px;
     width: 100%;
     height: 650px;
     display: flex;
@@ -33,13 +34,17 @@ figure#mainVisual{
         h2{
           position: absolute;
           top: 150px;
+          font-weight: 900;
           font-size: $font-size-larger;
         }
 
         p{
           position: absolute;
           top: 200px;
-          font-size: $font-size-medium;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 100;
+          font-size: $font-size-regular;
+          color: $color-dark-gray;
         }
       }
 
@@ -49,22 +54,77 @@ figure#mainVisual{
         position: absolute;
         bottom: 0;
         border-radius: 20px 0 0 20px;
-      }
 
-      &[data-index='1']{
-        .wrap{
-          background-color: $color-light-gray;
+        .imgBox{
+          width: 1180px;
+          height: 130%;
+          padding-left: 10%;
+          padding-bottom: 30px;
+          position: absolute;
+          bottom: 50px;
+          left: 0;
+
+          img{
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            filter: drop-shadow(15px -10px 10px rgba(0,0,0,0.3));
+          }
         }
       }
-      &[data-index='2']{
-        .wrap{
-          background-color: $color-theme-4;
+    }
+  }
+
+  .timer{
+    position: absolute;
+    left: 20px;
+    bottom: 15px;
+
+    .bg{
+      width: 30px;
+      height: 30px;
+      opacity: 0.3;
+
+      circle{
+        fill: transparent;
+        stroke: $color-white;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: 88;
+      }
+    }
+
+    .progress{
+      width: 30px;
+      height: 30px;
+      position: absolute;
+      left: 0;
+      transform: rotate(-90deg);
+      circle{
+        fill: transparent;
+        stroke: $color-white;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-dasharray: 88;
+
+        &.on{
+          animation: circle 5s linear 0s 1;
         }
       }
-      &[data-index='3']{
-        .wrap{
-          background-color: $color-light-gray;
-        }
+    }
+
+    .btnTimer{
+      width: 16px;
+      height: 16px;
+      padding: 7px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: $color-white;
+      cursor: pointer;
+
+      &:nth-last-of-type(2){
+        padding-left: 8px;
       }
     }
   }
@@ -75,21 +135,27 @@ figure#mainVisual{
     position: absolute;
     bottom: 0;
     left: 150px;
+    display: flex;
+    align-items: center;
 
     ul{
+      flex: 1;
       height: 60px;
+      padding: 0 30px;
       display: flex;
       align-items: flex-end;
       background-color: rgba($color: $color-white, $alpha: 0.8);
 
       li{
         height: 100%;
-        padding: 0 30px;
+        padding: 0 25px;
         display: flex;
         align-items: flex-end;
+        cursor: pointer;
   
         span{
           height: 100%;
+          padding: 0 5px;
           display: flex;
           align-items: center;
           border-bottom: 2px solid transparent;
@@ -108,21 +174,56 @@ figure#mainVisual{
   }
 
   .floatingBox{
-    width: 250px;
+    display: block;
+    width: 200px;
     overflow: hidden;
     border-radius: 20px 0 20px 20px;
     position: absolute;
-    top: 200px;
-    right: calc((100% - 1180px) / 2);
+    top: 143px;
+    right: calc(100% - 1180px - 50px);
 
     .imgBox{
-      height: 200px;
-      background-color: $color-medium-gray;
+      width: 100%;
+      height: 150px;
+      overflow: hidden;
+      background: linear-gradient(45deg, $color-medium-gray, $color-light-gray);
+
+      svg{
+        margin-top: 20px;
+        width: 100%;
+        height: 70%;
+        object-fit: contain;
+        color: $color-white;
+        filter: drop-shadow(0 0 7px rgba(0,0,0,0.2));
+      }
     }
 
     .txtBox{
-      height: 100px;
+      height: auto;
+      padding: 20px;
       background-color: $color-white;
+
+      h3{
+        font-size: $font-size-regular;
+        font-weight: 900;
+        line-height: 2;
+      }
+
+      span{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 300;
+        font-size: $font-size-smallest;
+        color: $color-dark-gray;
+      }
     }
+  }
+}
+
+@keyframes circle {
+  0%{
+    stroke-dashoffset: 88;
+  }
+  100%{
+    stroke-dashoffset: 0;
   }
 }

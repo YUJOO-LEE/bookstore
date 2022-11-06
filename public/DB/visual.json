@@ -1,0 +1,44 @@
+{
+  "visual" : [
+    {
+      "name": "relax",
+      "title": "Seeing is believing",
+      "desc": "You will never know until you try",
+      "img": "sofa.png",
+      "color1": "#79BEDB",
+      "color2": "#f5d547"
+    },
+    {
+      "name": "kids",
+      "title": "He that can have patience can have what he will",
+      "desc": "Liberty without learning is always in peril; learning without liberty is always in vain",
+      "img": "boy.png",
+      "color1": "#e38883",
+      "color2": "#6B78B4"
+    },
+    {
+      "name": "read",
+      "title": "Woe be to him that reads but one book",
+      "desc": "Live always in the best company when you read",
+      "img": "books.png",
+      "color1": "#f5d547",
+      "color2": "#e38883"
+    },
+    {
+      "name": "place",
+      "title": "Sincerity is the way of Heaven",
+      "desc": "That indolent but agreeable condition of doing nothing",
+      "img": "bookshelf.png",
+      "color1": "#6B78B4",
+      "color2": "#79BEDB"
+    },
+    {
+      "name": "know",
+      "title": "Well begun is half done",
+      "desc": "The journey is the reward",
+      "img": "dictionary.png",
+      "color1": "#888",
+      "color2": "#e38883"
+    }
+  ]
+}

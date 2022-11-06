@@ -73,3 +73,9 @@ export const getAbout = async ()=>{
   const url = `${process.env.PUBLIC_URL}/DB/about.json`;
   return await axios.get(url);
 }
+
+// visual
+export const getVisual = async ()=>{
+  const url = `${process.env.PUBLIC_URL}/DB/visual.json`;
+  return await axios.get(url);
+}
