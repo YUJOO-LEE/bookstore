@@ -10,6 +10,7 @@ export default function Visual() {
   const Visual = useSelector(store=>store.visualReducer.visual);
   const [ Index, setIndex ] = useState(0);
   const [ Timer, setTimer ] = useState(false);
+  const [ TimerBtn, setTimerBtn ] = useState(true);
 
   useEffect(()=>{
     if (!Timer) return;
@@ -31,6 +32,10 @@ export default function Visual() {
       clearTimeout(showNext);
     });
   }, [Timer, Index]);
+
+  useEffect(()=>{
+    setTimer(TimerBtn);
+  }, [TimerBtn])
 
   useEffect(()=>{
     setTimer(true);
@@ -71,14 +76,14 @@ export default function Visual() {
           ></circle>
         </svg>
         <FontAwesomeIcon icon={faPlay}
-          onClick={()=>setTimer(!Timer)}
+          onClick={()=>setTimerBtn(!TimerBtn)}
           className='btnTimer'
-          style={{display: Timer ? 'none' : 'block'}}
+          style={{display: TimerBtn ? 'none' : 'block'}}
         ></FontAwesomeIcon>
         <FontAwesomeIcon icon={faPause}
-          onClick={()=>setTimer(!Timer)}
+          onClick={()=>setTimerBtn(!TimerBtn)}
           className='btnTimer'
-          style={{display: Timer ? 'block' : 'none'}}
+          style={{display: TimerBtn ? 'block' : 'none'}}
         ></FontAwesomeIcon>
       </div>
       <div className='control'>
