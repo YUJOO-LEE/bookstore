@@ -1,11 +1,12 @@
 figure#mainVisual{
-  width: 100%;
-  padding-top: 100px;
-  margin-left: calc((100% - 1180px) / 2);
+  width: calc(100% - ((100% - 1180px) / 2 - 50px));
+  // padding-top: 100px;
+  margin-left: calc((100% - 1180px) / 2 - 50px);
+  position: relative;
 
   .frame{
     width: 100%;
-    height: 500px;
+    height: 650px;
     display: flex;
     transform-style: preserve-3d;
     position: relative;
@@ -15,7 +16,7 @@ figure#mainVisual{
       height: 100%;
       position: absolute;
       opacity: 0;
-      transition: 0.2s;
+      transition: 0.5s;
 
       &.on{
         opacity: 1;
@@ -25,42 +26,103 @@ figure#mainVisual{
       .inner{
         height: 100%;
         margin: 0;
+        padding-top: 100px;
+        padding-left: 50px;
         position: relative;
 
         h2{
           position: absolute;
+          top: 150px;
           font-size: $font-size-larger;
         }
 
         p{
           position: absolute;
+          top: 200px;
           font-size: $font-size-medium;
         }
       }
 
-      .frame{
+      .wrap{
         width: 100%;
-        height: 70%;
+        height: 55%;
         position: absolute;
         bottom: 0;
-        border-radius: 20px 0 0 0;
+        border-radius: 20px 0 0 20px;
       }
 
       &[data-index='1']{
-        .frame{
+        .wrap{
           background-color: $color-light-gray;
         }
       }
       &[data-index='2']{
-        .frame{
+        .wrap{
           background-color: $color-theme-4;
         }
       }
       &[data-index='3']{
-        .frame{
+        .wrap{
           background-color: $color-light-gray;
         }
       }
+    }
+  }
+
+  .control{
+    width: calc(100% - 150px);
+    padding-left: calc((100% - 1180px) / 2 - 50px);
+    position: absolute;
+    bottom: 0;
+    left: 150px;
+
+    ul{
+      height: 60px;
+      display: flex;
+      align-items: flex-end;
+      background-color: rgba($color: $color-white, $alpha: 0.8);
+
+      li{
+        height: 100%;
+        padding: 0 30px;
+        display: flex;
+        align-items: flex-end;
+  
+        span{
+          height: 100%;
+          display: flex;
+          align-items: center;
+          border-bottom: 2px solid transparent;
+          font-family: 'Noto Sans KR', sans-serif;
+          font-weight: 300;
+          font-size: $font-size-regular;
+        }
+  
+        &.on{
+          span{
+            border-bottom: 2px solid $color-black;
+          }
+        }
+      }
+    }
+  }
+
+  .floatingBox{
+    width: 250px;
+    overflow: hidden;
+    border-radius: 20px 0 20px 20px;
+    position: absolute;
+    top: 200px;
+    right: calc((100% - 1180px) / 2);
+
+    .imgBox{
+      height: 200px;
+      background-color: $color-medium-gray;
+    }
+
+    .txtBox{
+      height: 100px;
+      background-color: $color-white;
     }
   }
 }

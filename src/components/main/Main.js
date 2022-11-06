@@ -66,6 +66,7 @@ export default function Main() {
     <main ref={main}>
       <Header type='main'></Header>
       <Visual></Visual>
+      <Banner type='whiteToGray'></Banner>
       <Books></Books>
       <Banner type='desk'>
         <img src={`${process.env.PUBLIC_URL}/img/review.jpg`} />
