@@ -130,7 +130,7 @@ figure#mainVisual{
         stroke: $color-white;
         stroke-width: 2;
         stroke-linecap: round;
-        stroke-dasharray: 88;
+        stroke-dasharray: 87;
 
         &.on{
           animation: circle 5s linear 0s 1;
@@ -248,7 +248,7 @@ figure#mainVisual{
 
 @keyframes circle {
   0%{
-    stroke-dashoffset: 88;
+    stroke-dashoffset: 87;
   }
   100%{
     stroke-dashoffset: 0;
