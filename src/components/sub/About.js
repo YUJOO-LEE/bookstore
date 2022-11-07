@@ -27,6 +27,8 @@ export default function About() {
         if (scroll >= top + base) {
           setHistoryIndex(idx);
         }
+
+        return '';
       })
     }
     window.addEventListener('scroll', scrollEvent);

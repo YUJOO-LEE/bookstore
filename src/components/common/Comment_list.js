@@ -156,7 +156,7 @@ export default function CommentsList({Posts, setPosts, bookId}) {
                 {!bookId && 
                   <li className='img'>
                     <Link to={`/content/${data.bookId}`}>
-                      <img src={data.thumbnail} />
+                      <img src={data.thumbnail} alt={data.bookId}/>
                     </Link>
                   </li>
                 }

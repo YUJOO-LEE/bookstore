@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPanorama, faBook, faFeather, faCameraRetro, faFilm, faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+import { faPanorama, faBook, faFeather, faCameraRetro, faFilm } from '@fortawesome/free-solid-svg-icons';
 
 export default function Btns(props) {
   return (

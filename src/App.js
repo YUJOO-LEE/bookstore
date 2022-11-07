@@ -35,7 +35,7 @@ function App() {
     dispatch({
       type: types.VISUAL.start
     });
-  }, []);
+  }, [dispatch]);
 
 	return (
 		<>

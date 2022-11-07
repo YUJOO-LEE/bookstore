@@ -69,7 +69,7 @@ export default function Main() {
       <Banner type='whiteToGray'></Banner>
       <Books></Books>
       <Banner type='desk'>
-        <img src={`${process.env.PUBLIC_URL}/img/review.jpg`} />
+        <img src={`${process.env.PUBLIC_URL}/img/review.jpg`} alt='sign up for membership'/>
         <div className="txt">
           sign up for membership, you can leave a review.<br />
           share my review with others!

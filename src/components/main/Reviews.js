@@ -21,7 +21,7 @@ export default function Reviews() {
     return data;
   }
 
-  const [ Posts, _ ] = useState(getLocalData());
+  const [ Posts ] = useState(getLocalData());
 
   useEffect(()=>{
     // post 로컬 스토리지에 저장
@@ -33,15 +33,15 @@ export default function Reviews() {
       <div className='inner'>
         <h2>Recent Reviews</h2>
 
-        <div className="frame">
+        <div className='frame'>
           {Posts?.length ? Posts.map((data, idx)=>{
-            if (idx > 5) return;
+            if (idx > 5) return '';
             return (
               <article key={idx}>
                 <ul>
                   <li className='img'>
                     <Link to={`/content/${data.bookId}`}>
-                      <img src={data.thumbnail} />
+                      <img src={data.thumbnail} alt={data.title} />
                     </Link>
                   </li>
                   <li className='txt'>

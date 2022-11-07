@@ -42,7 +42,7 @@ export default function Book() {
       setClickable(true);
       frame.current?.classList.add('on');
     }
-  });
+  }, [Loading]);
 
   // 데이터 변경 시 로딩 효과 전환
   useEffect(()=>{

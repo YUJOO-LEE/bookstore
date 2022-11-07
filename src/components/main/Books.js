@@ -105,7 +105,7 @@ export default function Books() {
           <h2>Today's book</h2>
           <ul ref={titleFrame}>
           {Books?.length && Books.map((item, idx)=>{
-            if (idx >= slideSize) return;
+            if (idx >= slideSize) return '';
             
             return(
               <li key={idx}>
@@ -126,70 +126,70 @@ export default function Books() {
         <div className='slider'>
           <div className='frame' ref={frame}>
           {Books?.length ? Books.map((item, idx)=>{
-            if (idx >= slideSize) return;
+            if (idx >= slideSize) return '';
             
             return(
-            <article key={idx} data-index={idx}>
-              <div className='imgBox'>
-              <Link to={`/content/${item.isbn.split(' ')[0]}`}>
-                <div className='bg'>
-                  <img src={item.thumbnail} alt={item.title} />
+              <article key={idx} data-index={idx}>
+                <div className='imgBox'>
+                <Link to={`/content/${item.isbn.split(' ')[0]}`}>
+                  <div className='bg'>
+                    <img src={item.thumbnail} alt={item.title} />
+                  </div>
+                  <div className='pic'>
+                    <img src={item.thumbnail} alt={item.title} />
+                  </div>
+                </Link>
                 </div>
-                <div className='pic'>
-                  <img src={item.thumbnail} alt={item.title} />
-                </div>
-              </Link>
-              </div>
-              <div className='txtBox'>
-                <h3>
-                  {item.title}
-                </h3>
-                <p className='desc'>
-                  {item.contents}
-                </p>
-                <p className='author'>
-                  {item.authors[0]}
-                  {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
-                </p>
-                {item.translators.length > 0 &&
-                  <p className='translators'>
-                    {item.translators[0]}
-                    {item.translators.length > 1 ? `외 ${item.translators.length - 1}명` : null}
+                <div className='txtBox'>
+                  <h3>
+                    {item.title}
+                  </h3>
+                  <p className='desc'>
+                    {item.contents}
                   </p>
-                }
-                <p className='datetime'>
-                  {item.datetime.split('T')[0]}
-                </p>
-              </div>
-            </article>
-          )})
-          : <div className='noData'>검색된 데이터가 없습니다.</div>
-          }
+                  <p className='author'>
+                    {item.authors[0]}
+                    {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
+                  </p>
+                  {item.translators.length > 0 &&
+                    <p className='translators'>
+                      {item.translators[0]}
+                      {item.translators.length > 1 ? `외 ${item.translators.length - 1}명` : null}
+                    </p>
+                  }
+                  <p className='datetime'>
+                    {item.datetime.split('T')[0]}
+                  </p>
+                </div>
+              </article>
+            )})
+            : <div className='noData'>검색된 데이터가 없습니다.</div>
+            }
           </div>
         </div>
         <div className='bookList'>
           <ul>
           {Books?.length && Books.map((item, idx)=>{
-            if (idx < slideSize) return;
+            if (idx < slideSize) return '';
             
             return(
-            <li key={idx} data-index={idx}>
-              <div className='imgBox'>
-                <Link to={`/content/${item.isbn.split(' ')[0]}`}>
-                  <img src={item.thumbnail} alt={item.title} />
-                </Link>
-              </div>
-              <div className='txtBox'>
-                <h3>
-                  {item.title}
-                </h3>
-                <p className='author'>
-                  {item.authors[0]}
-                  {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
-                </p>
-              </div>
-            </li>
-          )})}
+              <li key={idx} data-index={idx}>
+                <div className='imgBox'>
+                  <Link to={`/content/${item.isbn.split(' ')[0]}`}>
+                    <img src={item.thumbnail} alt={item.title} />
+                  </Link>
+                </div>
+                <div className='txtBox'>
+                  <h3>
+                    {item.title}
+                  </h3>
+                  <p className='author'>
+                    {item.authors[0]}
+                    {item.authors.length > 1 ? `외 ${item.authors.length - 1}명` : null}
+                  </p>
+                </div>
+              </li>
+            )})}
           </ul>
         </div>
       </div>
