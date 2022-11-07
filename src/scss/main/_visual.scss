@@ -230,6 +230,22 @@ figure#mainVisual{
   }
 }
 
+@media screen and (max-width: 1279px) {
+  figure#mainVisual{
+    width: 100%;
+    margin-left: 0;
+    .frame{
+      article{
+        .wrap{
+          border-radius: 0;
+        }
+      }
+    }
+    .floatingBox{
+      display: none;
+    }
+  }
+}
 @media screen and (max-width: $screen-size-tablet) {
   figure#mainVisual{
     width: 100%;
@@ -270,9 +286,6 @@ figure#mainVisual{
           padding: 0 3%;
         }
       }
-    }
-    .floatingBox{
-      display: none;
     }
   }
 }
