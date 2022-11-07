@@ -26,7 +26,7 @@
     box-shadow: 0 0 10px rgba($color: $color-black, $alpha: 0.2);
     color: $color-black;
     cursor: pointer;
-    transition: all 0.5s, color 0.5s 0.1s;
+    transition: all 0.5s;
 
     span{
       margin-left: 5px;
@@ -50,16 +50,5 @@
       }
     }
 
-  }
-}
-@media screen and (max-width: $screen-size-mobile) {
-  .scrollNavi{
-    li{
-      font-size: 0;
-
-      svg{
-        font-size: $font-size-regular;
-      }
-    }
   }
 }
