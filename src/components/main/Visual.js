@@ -22,7 +22,9 @@ export default function Visual() {
       } else {
         setIndex(0);
       };
-      setTimer(true);
+      setTimeout(()=>{
+        setTimer(true);
+      })
     }, 5000);
 
     return (()=>{

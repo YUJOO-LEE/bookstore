@@ -45,11 +45,15 @@
     let tags = '';
     const baseUrl = '%PUBLIC_URL%/img/';
     const imgs = [
-      baseUrl+'review.jpg',
+      baseUrl+'sofa.png',
+      baseUrl+'boy.png',
+      baseUrl+'books.png',
+      baseUrl+'bookshelf.png',
+      baseUrl+'dictionary.png',
     ]
-    const vids= [
-      baseUrl+'library.mp4',
-    ]
+    // const vids= [
+    //   baseUrl+'library.mp4',
+    // ]
 
     createDOM();
     endLoading();
@@ -57,7 +61,7 @@
     // DOM 요소 생성
     function createDOM() {
       imgs.forEach(src=>tags+=`<img src=${src} />`);
-      vids.forEach(src=>tags+=`<video src=${src} autoPlay muted playsinline></video>`);
+      //vids.forEach(src=>tags+=`<video src=${src} autoPlay muted playsinline></video>`);
       defaults.innerHTML = tags;
     }
 
@@ -93,7 +97,7 @@
     
     // 전체 로드 여부 확인
     async function endLoading() {
-      const result = await Promise.all([loadImg(), loadVid()]);
+      const result = await Promise.all([loadImg()]);
       const [loadedImg, loadedVid] = result;
 
       if (loadedImg && loadedVid) {
