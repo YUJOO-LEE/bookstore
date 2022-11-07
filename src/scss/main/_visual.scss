@@ -22,29 +22,50 @@ figure#mainVisual{
       &.on{
         opacity: 1;
         z-index: 1;
+
+        .inner{
+          h2{
+            opacity: 1;
+            transform: translateX(0);
+          }
+          p{
+            opacity: 1;
+            transform: translateX(0);
+          }
+        }
+
+        .wrap{
+          .imgBox{
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
       }
 
       .inner{
-        height: 100%;
         margin: 0;
-        padding-top: 100px;
         padding-left: 50px;
-        position: relative;
+        position: absolute;
+        top: 150px;
 
         h2{
-          position: absolute;
-          top: 150px;
           font-weight: 900;
           font-size: $font-size-larger;
+          line-height: 1.5;
+          opacity: 0;
+          transform: translateX(-100px);
+          transition: 0.5s;
         }
 
         p{
-          position: absolute;
-          top: 200px;
           font-family: 'Noto Sans KR', sans-serif;
           font-weight: 100;
           font-size: $font-size-regular;
+          line-height: 1.5;
           color: $color-dark-gray;
+          opacity: 0;
+          transform: translateX(-100px);
+          transition: 0.5s 0.2s;
         }
       }
 
@@ -63,6 +84,9 @@ figure#mainVisual{
           position: absolute;
           bottom: 50px;
           left: 0;
+          opacity: 0;
+          transform: translateY(100px);
+          transition: 0.5s;
 
           img{
             width: 100%;
@@ -254,12 +278,7 @@ figure#mainVisual{
       height: 500px;
       article{
         .inner{
-          h2{
-            top: 100px;
-          }
-          p{
-            top: 150px;
-          }
+          top: 80px;
         }
         .wrap{
           border-radius: 0;
@@ -297,12 +316,11 @@ figure#mainVisual{
       article{
         .inner{
           width: 85%;
+          top: 60px;
           h2{
-            line-height: 1.3;
             font-size: $font-size-medium;
           }
           p{
-            line-height: 1.5;
             font-size: $font-size-small;
           }
         }
