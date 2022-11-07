@@ -22,10 +22,7 @@ export default function Visual() {
       } else {
         setIndex(0);
       };
-      
-      setTimeout(()=>{
-        setTimer(true);
-      }, 0)
+      setTimer(true);
     }, 5000);
 
     return (()=>{
@@ -92,7 +89,13 @@ export default function Visual() {
             return (
               <li key={idx}
                 className={Index === idx ? 'on' : null}
-                onClick={()=>setIndex(idx)}
+                onClick={()=>{
+                  setTimer(false);
+                  setIndex(idx);
+                  setTimeout(()=>{
+                    setTimer(true);
+                  })
+                }}
               >
                 <span>
                   {data.name}
