@@ -51,9 +51,6 @@
       baseUrl+'bookshelf.png',
       baseUrl+'dictionary.png',
     ]
-    // const vids= [
-    //   baseUrl+'library.mp4',
-    // ]
 
     createDOM();
     endLoading();
@@ -61,7 +58,6 @@
     // DOM 요소 생성
     function createDOM() {
       imgs.forEach(src=>tags+=`<img src=${src} />`);
-      //vids.forEach(src=>tags+=`<video src=${src} autoPlay muted playsinline></video>`);
       defaults.innerHTML = tags;
     }
 
@@ -80,27 +76,12 @@
       })
     }
 
-    // video 로드
-    function loadVid() {
-      return new Promise((res,rej)=>{
-        let countVid = 0;
-        const vidDOM = defaults.querySelectorAll('video');
-
-        vidDOM.forEach(vid=>{
-          vid.addEventListener('loadeddata', ()=>{
-            countVid++;
-            if (countVid === vids.length) res(true);
-          });
-        })
-      })
-    }
-    
     // 전체 로드 여부 확인
     async function endLoading() {
       const result = await Promise.all([loadImg()]);
-      const [loadedImg, loadedVid] = result;
+      const [loadedImg] = result;
 
-      if (loadedImg && loadedVid) {
+      if (loadedImg) {
         mask.classList.add('off');
       }
 

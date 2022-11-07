@@ -1,4 +1,4 @@
-.scrollNavi{
+.scrollNavi.one{
   position: fixed;
   top: 50%;
   right: 20px;
@@ -16,13 +16,13 @@
     min-height: 15px;
     max-height: 15px;
     overflow: hidden;
-    margin: 8px 0;
+    margin: 6px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: $color-white;
-    border-radius: 40px;
-    box-shadow: 0 0 10px rgba($color: $color-black, $alpha: 0.5);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba($color: $color-black, $alpha: 0.2);
     font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
     font-size: $font-size-small;
@@ -35,7 +35,14 @@
       max-height: 40px;
       overflow: visible;
       padding: 10px;
+      border-radius: 8px 8px 0 8px;
       color: $color-black;
+    }
+
+    &:last-of-type{
+      &:hover,&.on{
+        border-radius: 8px 0 8px 8px;
+      }
     }
 
     svg{
@@ -43,7 +50,60 @@
     }
   }
 }
+.scrollNavi.two{
+  position: fixed;
+  top: 50%;
+  right: 0;
+  z-index: 5;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
+  li{
+    width: auto;
+    min-width: 30px;
+    max-width: 30px;
+    height: auto;
+    min-height: 30px;
+    max-height: 30px;
+    overflow: hidden;
+    margin: 5px 0;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $color-white;
+    border-radius: 5px 0 0 5px;
+    box-shadow: 0 0 10px rgba($color: $color-black, $alpha: 0.2);
+    color: $color-black;
+    cursor: pointer;
+    transition: all 0.5s, color 0.5s 0.1s;
+
+    span{
+      font-family: 'Noto Sans KR', sans-serif;
+      font-weight: 400;
+      font-size: 0;
+    }
+
+    svg{
+      font-size: $font-size-regular;
+      margin-right: 5px;
+    }
+
+    &:hover,&.on{
+      max-width: 150px;
+      overflow: visible;
+
+      span{
+        font-family: 'Noto Sans KR', sans-serif;
+        font-weight: 400;
+        font-size: $font-size-smallest;
+      }
+    }
+
+  }
+}
 @media screen and (max-width: $screen-size-mobile) {
   .scrollNavi{
     li{
