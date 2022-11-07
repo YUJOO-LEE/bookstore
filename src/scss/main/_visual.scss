@@ -54,7 +54,7 @@ figure#mainVisual{
           line-height: 1.5;
           opacity: 0;
           transform: translateX(-100px);
-          transition: 0.5s;
+          transition: 0.5s 0.2s;
         }
 
         p{
@@ -65,7 +65,7 @@ figure#mainVisual{
           color: $color-dark-gray;
           opacity: 0;
           transform: translateX(-100px);
-          transition: 0.5s 0.2s;
+          transition: 0.5s 0.3s;
         }
       }
 
