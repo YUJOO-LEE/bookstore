@@ -148,6 +148,9 @@ section#Reviews{
           &:nth-of-type(n){
             ul{
               padding-right: 0;
+              .txt{
+                padding-right: 30px;
+              }
             }
           }
         }

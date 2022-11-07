@@ -131,6 +131,7 @@ figure#mainVisual{
 
   .control{
     width: calc(100% - 150px);
+    overflow: hidden;
     padding-left: calc((100% - 1180px) / 2 - 50px);
     position: absolute;
     bottom: 0;
@@ -279,7 +280,7 @@ figure#mainVisual{
 @media screen and (max-width: $screen-size-mobile) {
   figure#mainVisual{
     .frame{
-      height: 400px;
+      height: 350px;
       article{
         .inner{
           width: 85%;
@@ -294,6 +295,38 @@ figure#mainVisual{
         }
         .wrap{
           height: 35%;
+          .imgBox{
+            padding-left: 10%;
+            padding-right: 5%;
+            padding-bottom: 0;
+            bottom: 30px;
+          }
+        }
+      }
+    }
+    .timer{
+      left: 10px;
+      bottom: 10px;
+      svg{
+        &.bg,&.progress{
+          width: 20px;
+          height: 20px;
+        }
+      }
+      .btnTimer{
+        width: 10px;
+        height: 10px;
+        padding: 5px;
+      }
+    }
+    .control{
+      ul{
+        height: 40px;
+        li{
+          span{
+            padding: 0;
+            font-size: $font-size-smallest;
+          }
         }
       }
     }
