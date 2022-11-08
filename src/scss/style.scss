@@ -66,13 +66,14 @@ $screen-size-mobile: 539px;
 
 // main
 @import './main/main';
-@import './main/books';
 @import './main/visual';
+@import './main/btns';
+@import './main/books';
 @import './main/reviews';
 @import './main/pics';
 @import './main/vids';
 @import './main/subs';
-@import './main/btns';
+@import './main/scrollNavi';
 @import './main/banner';
 
 // sub

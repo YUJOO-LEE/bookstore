@@ -2,12 +2,12 @@ import { useEffect, useState, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../common/Header';
 import Visual from './Visual';
+import Btns from './Btns';
 import Books from './Books';
 import Reviews from './Reviews';
 import Pics from './Pics';
 import Vids from './Vids';
-//import Subs from './Subs';
-import Btns from './Btns';
+import ScrollNavi from './ScrollNavi';
 import Banner from './Banner';
 import Anime from '../../asset/anime';
 
@@ -66,6 +66,7 @@ export default function Main() {
     <main ref={main}>
       <Header type='main'></Header>
       <Visual></Visual>
+      <Btns></Btns>
       <Banner type='whiteToGray'></Banner>
       <Books></Books>
       <Banner type='desk'>
@@ -82,7 +83,7 @@ export default function Main() {
       <Banner type='whiteToGray'></Banner>
       <Vids></Vids>
       <Banner type='grayToWhite'></Banner>
-      <Btns setIndex={setIndex} curIndex={Index}></Btns>
+      <ScrollNavi setIndex={setIndex} curIndex={Index}></ScrollNavi>
     </main>
   );
 }

@@ -1,40 +1,83 @@
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPanorama, faBook, faFeather, faCameraRetro, faFilm } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faGithub, faFlickr, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faEnvelope, faHeart, faImages, faMap, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
-export default function Btns(props) {
 
+function Btns() {
   return (
-    <ul className='scrollNavi'>
-      <li
-        onClick={()=>props.setIndex(0)}
-      >
-        <FontAwesomeIcon icon={faPanorama}></FontAwesomeIcon>
-        <span>Visual</span>
-      </li>
-      <li
-        onClick={()=>props.setIndex(1)}
-      >
-        <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
-        <span>Books</span>
-      </li>
-      <li
-        onClick={()=>props.setIndex(2)}
-      >
-        <FontAwesomeIcon icon={faFeather}></FontAwesomeIcon>
-        <span>Reviews</span>
-      </li>
-      <li
-        onClick={()=>props.setIndex(3)}
-      >
-        <FontAwesomeIcon icon={faCameraRetro}></FontAwesomeIcon>
-        <span>Photos</span>
-      </li>
-      <li
-        onClick={()=>props.setIndex(4)}
-      >
-        <FontAwesomeIcon icon={faFilm}></FontAwesomeIcon>
-        <span>Videos</span>
-      </li>
-    </ul>
-  );
+    <section id='btns'>
+      <div className='inner'>
+        <ul>
+          <li>
+            <a href='https://github.com/YUJOO-LEE/bookstore' target='_blank'>
+              <span>
+                <FontAwesomeIcon icon={faGithub}></FontAwesomeIcon>
+              </span>
+              <span>Github</span>
+            </a>
+          </li>
+          <li>
+            <a href='https://leeyujoo.com' target='_blank'>
+              <span>
+                <FontAwesomeIcon icon={faPenToSquare}></FontAwesomeIcon>
+              </span>
+              <span>Blog</span>
+            </a>
+          </li>
+          <li>
+            <a href='mailto:lllllllllee@gmail.com' target='_blank'>
+              <span>
+                <FontAwesomeIcon icon={faEnvelope}></FontAwesomeIcon>
+              </span>
+              <span>E-mail</span>
+            </a>
+          </li>
+          <li>
+            <Link to='/about'>
+              <span>
+                <FontAwesomeIcon icon={faMap}></FontAwesomeIcon>
+              </span>
+              <span>about</span>
+            </Link>
+          </li>
+          <li>
+            <Link to='/book'>
+              <span>
+                <FontAwesomeIcon icon={faBook}></FontAwesomeIcon>
+              </span>
+              <span>book</span>
+            </Link>
+          </li>
+          <li>
+            <Link to='/review'>
+              <span>
+                <FontAwesomeIcon icon={faHeart}></FontAwesomeIcon>
+              </span>
+              <span>Review</span>
+            </Link>
+          </li>
+          <li>
+            <Link to='/photo'>
+              <span>
+                <FontAwesomeIcon icon={faImages}></FontAwesomeIcon>
+              </span>
+              <span>Filckr</span>
+            </Link>
+          </li>
+          <li>
+            <Link to='/video'>
+              <span>
+                <FontAwesomeIcon icon={faYoutube}></FontAwesomeIcon>
+              </span>
+              <span>Youtube</span>
+            </Link>
+          </li>
+        </ul>
+      </div>
+    </section>
+  )
 }
+
+export default Btns

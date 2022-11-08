@@ -57,13 +57,19 @@ export default function Footer() {
 
           <div className='sns'>
             <span>
-              <FontAwesomeIcon icon={faGithub} />
+              <a href='https://github.com/YUJOO-LEE/bookstore' target='_blank'>
+                <FontAwesomeIcon icon={faGithub} />
+              </a>
             </span>
             <span>
-              <FontAwesomeIcon icon={faPenNib} />
+              <a href='https://leeyujoo.com' target='_blank'>
+                <FontAwesomeIcon icon={faPenNib} />
+              </a>
             </span>
             <span>
-              <FontAwesomeIcon icon={faAt} />
+              <a href='mailto:lllllllllee@gmail.com' target='_blank'>
+                <FontAwesomeIcon icon={faAt} />
+              </a>
             </span>
           </div>
         </div>
