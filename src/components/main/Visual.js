@@ -14,6 +14,7 @@ export default function Visual() {
 
   useEffect(()=>{
     if (!Timer) return;
+    setTimerBtn(true);
 
     const showNext = setTimeout(()=>{
       setTimer(false);
