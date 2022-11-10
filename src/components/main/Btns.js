@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
-import { faGithub, faFlickr, faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faYoutube } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope, faHeart, faImages, faMap, faPenToSquare } from '@fortawesome/free-regular-svg-icons';
 
 
