@@ -215,17 +215,17 @@ export default function Header(props) {
         <div className='address'>
           <div className='sns'>
             <span>
-              <a href='https://github.com/YUJOO-LEE/bookstore' target='_blank'>
+              <a href='https://github.com/YUJOO-LEE/bookstore' target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faGithub} />
               </a>
             </span>
             <span>
-              <a href='https://leeyujoo.com' target='_blank'>
+              <a href='https://leeyujoo.com' target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faPenNib} />
               </a>
             </span>
             <span>
-              <a href='mailto:lllllllllee@gmail.com' target='_blank'>
+              <a href='mailto:lllllllllee@gmail.com' target='_blank' rel='noreferrer'>
                 <FontAwesomeIcon icon={faAt} />
               </a>
             </span>
