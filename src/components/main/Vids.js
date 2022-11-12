@@ -1,24 +1,15 @@
-import { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useState, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faYoutube } from '@fortawesome/free-brands-svg-icons';
-import * as types from '../../redux/actionType';
 import Popup from '../common/Popup';
 
 export default function Vids() {
 
-  const dispatch = useDispatch();
   const Vids = useSelector(store=>store.youtubeReducer.youtube.items);
   const [ Index, setIndex ] = useState(0);
   const pop = useRef(null);
   const frame = useRef(null);
-
-  useEffect(() => {
-    dispatch({
-      type: types.YOUTUBE.start,
-      Option: {query: '재즈', size: 4}
-    });
-  }, [])
 
   return (
     <section id='Vids' className='myScroll'>
@@ -27,6 +18,8 @@ export default function Vids() {
 
         <div className='frame' ref={frame}>
         {Vids ? Vids.map((data, idx)=>{
+          if (idx > 3) return <></>;
+
           let title = data.snippet.title;
           let description = data.snippet.description;
           let date = data.snippet.publishedAt;

@@ -27,13 +27,21 @@ function App() {
 
   useEffect(()=>{
     dispatch({
-      type: types.STORES.start
+      type: types.VISUAL.start
+    });
+    dispatch({
+      type: types.FLICKR.start,
+      Option: {type: 'interest', size: 5}
+    });
+    dispatch({
+      type: types.YOUTUBE.start,
+      Option: {query: '재즈', size: 4}
     });
     dispatch({
       type: types.ABOUT.start
     });
     dispatch({
-      type: types.VISUAL.start
+      type: types.STORES.start
     });
   }, [dispatch]);
 

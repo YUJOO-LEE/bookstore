@@ -1,22 +1,13 @@
-import { useEffect, useRef, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import * as types from '../../redux/actionType';
+import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 import Popup from '../common/Popup';
 
 export default function Pics() {
 
-  const dispatch = useDispatch();
   const Pics = useSelector(store => store.flickrReducer.flickr.photo);
   const [ Index, setIndex ] = useState(0);
   const frame = useRef(null);
   const pop = useRef(null);
-
-  useEffect(() => {
-    dispatch({
-      type: types.FLICKR.start,
-      Option: {type: 'interest', size: 5}
-    });
-  }, [])
 
   return (
     <section id='Pics' className='myScroll'>
@@ -25,6 +16,8 @@ export default function Pics() {
 
         <div className='frame' ref={frame}>
           {Pics ? Pics.map((item, idx)=>{
+            if (idx > 4) return <></>;
+
             return (
               <article key={idx}>
                 <div className='pic' onClick={()=>{
