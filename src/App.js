@@ -38,6 +38,10 @@ function App() {
       Option: {query: '재즈', size: 4}
     });
     dispatch({
+      type: types.BOOKS.start,
+      Option: {query: '책', size: 8}
+    });
+    dispatch({
       type: types.ABOUT.start
     });
     dispatch({

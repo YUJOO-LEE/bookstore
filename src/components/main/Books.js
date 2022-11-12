@@ -1,14 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import * as types from '../../redux/actionType';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import Anime from '../../asset/js/anime';
 
 export default function Books() {
-
-  const dispatch = useDispatch();
 
   const Books = useSelector(store=> store.booksReducer.books.documents);
   const frame = useRef(null);
@@ -89,14 +86,6 @@ export default function Books() {
       clearTimeout(play);
     });
   }, [Autoplay])
-
-  // 도서 리스트 출력
-  useEffect(() => {
-    dispatch({
-      type: types.BOOKS.start,
-      Option: {query: '인문', size: 8}
-    });
-  }, [])
   
   return (
     <section id='books' className='myScroll'>
@@ -170,7 +159,7 @@ export default function Books() {
         <div className='bookList'>
           <ul>
           {Books?.length && Books.map((item, idx)=>{
-            if (idx < slideSize) return '';
+            if (idx < slideSize || idx > slideSize + 2) return <></>;
             
             return(
               <li key={idx} data-index={idx}>
