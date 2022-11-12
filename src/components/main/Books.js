@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import * as types from '../../redux/actionType';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import Anime from '../../asset/anime';
+import Anime from '../../asset/js/anime';
 
 export default function Books() {
 

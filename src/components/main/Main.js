@@ -9,7 +9,7 @@ import Pics from './Pics';
 import Vids from './Vids';
 import ScrollNavi from './ScrollNavi';
 import Banner from './Banner';
-import Anime from '../../asset/anime';
+import Anime from '../../asset/js/anime';
 
 export default function Main() {
   const main = useRef(null);

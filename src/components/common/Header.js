@@ -4,7 +4,7 @@ import { faGithub } from '@fortawesome/free-brands-svg-icons';
 import { faUser } from '@fortawesome/free-regular-svg-icons';
 import { NavLink, Link, useLocation, useHistory } from 'react-router-dom';
 import { useEffect, useRef, useState } from 'react';
-import Anime from '../../asset/anime';
+import Anime from '../../asset/js/anime';
 
 export default function Header(props) {
   const { pathname } = useLocation();
